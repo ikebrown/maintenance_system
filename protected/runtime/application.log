@@ -1,0 +1,165 @@
+2013/11/19 07:09:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jobrequest/imag...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\mms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mms/jobrequest/images/unknown.png
+HTTP_REFERER=http://localhost/mms/jobrequest/createrequest
+---
+2013/11/19 07:35:19 [error] [php] Undefined variable: jo (C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\success.php:3)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(56): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionSuccess()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\mms\index.php(13): CWebApplication->run()
+REQUEST_URI=/mms/jobrequest/success?jo=JO2013110006
+in C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\success.php (3)
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (56)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
+2013/11/19 07:58:07 [error] [php] Trying to get property of non-object (C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php:20)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\Devroot\workspace\risingtide\mms\index.php(13): CWebApplication->run()
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (20)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
+2013/11/19 07:58:34 [error] [exception.CException] exception 'CException' with message 'Property "JobrequestForm.createstatus" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(24): CComponent->__set('createstatus', 'Pending')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jobrequest/view...')
+#7 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Devroot\workspace\risingtide\mms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+HTTP_REFERER=http://localhost/mms/main
+---
+2013/11/19 07:59:41 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY job_id ASC) LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `jobrequest` `t` WHERE `t`.`job_id`='7' AND (requester_uid=:requester_uid ORDER BY job_id ASC) LIMIT 1.
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (15)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
+2013/11/19 07:59:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY job_id ASC) LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `jobrequest` `t` WHERE `t`.`job_id`='7' AND (requester_uid=:requester_uid ORDER BY job_id ASC) LIMIT 1' in C:\Devroot\workspace\risingtide\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(1351): CDbCommand->queryRow()
+#2 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(1486): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(15): CActiveRecord->findByPk('7', 'requester_uid=:...', Array)
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jobrequest/view...')
+#10 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Devroot\workspace\risingtide\mms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+HTTP_REFERER=http://localhost/mms/main
+---
+2013/11/19 08:00:05 [error] [exception.CException] exception 'CException' with message 'Property "JobrequestForm.createstatus" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(24): CComponent->__set('createstatus', 'Pending')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jobrequest/view...')
+#7 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Devroot\workspace\risingtide\mms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+HTTP_REFERER=http://localhost/mms/main
+---
+2013/11/19 08:01:53 [error] [php] Undefined variable: form (C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\viewrequest.php:12)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(26): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\mms\index.php(13): CWebApplication->run()
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+in C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\viewrequest.php (12)
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (26)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
+2013/11/19 08:02:44 [error] [php] Undefined variable: model (C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\viewrequest.php:21)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(26): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\mms\index.php(13): CWebApplication->run()
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+in C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\viewrequest.php (21)
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (26)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
+2013/11/19 08:03:00 [error] [exception.CException] exception 'CException' with message 'Property "JobrequestForm.status" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\helpers\CHtml.php(2529): CComponent->__get('status')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(JobrequestForm), 'status')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\helpers\CHtml.php(1434): CHtml::activeInputField('text', Object(JobrequestForm), 'status', Array)
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\widgets\CActiveForm.php(725): CHtml::activeTextField(Object(JobrequestForm), 'status', Array)
+#4 C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\viewrequest.php(63): CActiveForm->textField(Object(JobrequestForm), 'status', Array)
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require('C:\Devroot\work...')
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Devroot\work...', Array, true)
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\Devroot\work...', Array, true)
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): CController->renderPartial('viewrequest', Array, true)
+#9 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(26): CController->render('viewrequest', Array)
+#10 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#11 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#15 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jobrequest/view...')
+#16 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\Devroot\workspace\risingtide\mms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/mms/jobrequest/viewrequest?job_id=7
+HTTP_REFERER=http://localhost/mms/main
+---
+2013/11/19 08:05:44 [error] [php] Undefined variable: x (C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\index.php:17)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php(10): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionIndex()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\mms\index.php(13): CWebApplication->run()
+REQUEST_URI=/mms/jobrequest
+in C:\Devroot\workspace\risingtide\mms\protected\views\jobrequest\index.php (17)
+in C:\Devroot\workspace\risingtide\mms\protected\controllers\JobrequestController.php (10)
+in C:\Devroot\workspace\risingtide\mms\index.php (13)
