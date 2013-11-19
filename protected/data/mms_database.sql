@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
   CONSTRAINT `FK1_user_requester_id2` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.jobrequest: ~0 rows (approximately)
+-- Dumping data for table mms_db.jobrequest: ~3 rows (approximately)
 DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`) VALUES
@@ -194,30 +194,32 @@ DELETE FROM `passengers`;
 -- Dumping structure for table mms_db.triprequest
 CREATE TABLE IF NOT EXISTS `triprequest` (
   `trip_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `requester_id` bigint(20) DEFAULT NULL,
-  `dateofuse_from` date DEFAULT NULL,
-  `dateofuse_to` date DEFAULT NULL,
-  `request_date` datetime DEFAULT NULL,
-  `car_id` bigint(20) DEFAULT NULL,
-  `purpose` text,
-  `et_departure` datetime DEFAULT NULL,
-  `et_arrival` datetime DEFAULT NULL,
-  `createstatus` set('Pending','Approve','Denied','Close') DEFAULT NULL,
+  `requester_uid` bigint(20) NOT NULL,
+  `dateofuse_from` date NOT NULL,
+  `dateofuse_to` date NOT NULL,
+  `request_date` datetime NOT NULL,
+  `car_id` bigint(20) NOT NULL,
+  `purpose` text NOT NULL,
+  `et_departure` time NOT NULL,
+  `et_arrival` time NOT NULL,
+  `createstatus` set('Pending','Approve','Denied','Close') NOT NULL,
   `modifiedby` bigint(20) DEFAULT NULL,
   `departure_time` datetime DEFAULT NULL,
   `departure_guard` varchar(50) DEFAULT NULL,
   `arrival_time` datetime DEFAULT NULL,
   `arrival_guard` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`trip_id`),
-  KEY `FK1_user_requester_id` (`requester_id`),
   KEY `FK2_car_car_id` (`car_id`),
+  KEY `FK2_user_requester_uid` (`requester_uid`),
   CONSTRAINT `FK2_car_car_id` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`),
-  CONSTRAINT `FK1_user_requester_id` FOREIGN KEY (`requester_id`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='TripRequest\r\ntrip_id\r\nrequester_id\r\ndateofuse_from\r\ndateofuse_to\r\nrequest_date\r\ncar_id\r\npurpose\r\net_departure\r\net_arrival\r\ncreatestatus\r\nmodified_by\r\ndeparture_time\r\ndeparture_guard\r\narrival_time\r\narrival_guard\r\n';
+  CONSTRAINT `FK2_user_requester_uid` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='TripRequest\r\ntrip_id\r\nrequester_id\r\ndateofuse_from\r\ndateofuse_to\r\nrequest_date\r\ncar_id\r\npurpose\r\net_departure\r\net_arrival\r\ncreatestatus\r\nmodified_by\r\ndeparture_time\r\ndeparture_guard\r\narrival_time\r\narrival_guard\r\n';
 
--- Dumping data for table mms_db.triprequest: ~0 rows (approximately)
+-- Dumping data for table mms_db.triprequest: ~1 rows (approximately)
 DELETE FROM `triprequest`;
 /*!40000 ALTER TABLE `triprequest` DISABLE KEYS */;
+INSERT INTO `triprequest` (`trip_id`, `requester_uid`, `dateofuse_from`, `dateofuse_to`, `request_date`, `car_id`, `purpose`, `et_departure`, `et_arrival`, `createstatus`, `modifiedby`, `departure_time`, `departure_guard`, `arrival_time`, `arrival_guard`) VALUES
+	(8, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Pending', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `triprequest` ENABLE KEYS */;
 
 
