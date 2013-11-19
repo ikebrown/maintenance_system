@@ -18,7 +18,8 @@
                                 'encodeLabel' => false,
                                 'items'=>array(
                                         array('label'=>'Home', 'url'=>array('/site')),
-                                        array('label'=>'My Request', 'url'=>array('/jobrequest'), 'visible'=>!Yii::app()->user->isGuest),
+                                        array('label'=>'Job Request', 'url'=>array('/jobrequest'), 'visible'=>!Yii::app()->user->isGuest),
+                                        array('label'=>'Daily Trip Request', 'url'=>array('/dailytrip'), 'visible'=>!Yii::app()->user->isGuest),
                                         array('label'=> 'Create <b class="caret"></b>', 'url'=>"#", 'visible'=>!Yii::app()->user->isGuest,
                                         'items'=>array(
                                          array('label'=>'Job Request', 'url'=>array('/jobrequest/createrequest')),

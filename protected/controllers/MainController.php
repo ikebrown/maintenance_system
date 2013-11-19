@@ -35,7 +35,9 @@ class MainController extends Controller
 	public function actionIndex()
 	{
             $request = Jobrequest::model()->findAll('requester_uid=:requester_uid ORDER BY date_needed ASC', array(':requester_uid'=>Yii::app()->user->id));
-            $this->render('index', array('request'=>$request));   
+            
+             $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
+            $this->render('index', array('request'=>$request, 'dailytrip'=>$dailytrip));   
 	}
 
 	// Uncomment the following methods and override them if needed

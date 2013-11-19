@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'triprequest':
  * @property string $trip_id
- * @property string $requester_id
+ * @property string $requester_uid
  * @property string $dateofuse_from
  * @property string $dateofuse_to
  * @property string $request_date
@@ -23,7 +23,7 @@
  * The followings are the available model relations:
  * @property Passengers[] $passengers
  * @property Car $car
- * @property User $requester
+ * @property User $requesterU
  */
 class Triprequest extends CActiveRecord
 {
@@ -43,12 +43,13 @@ class Triprequest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requester_id, car_id, modifiedby', 'length', 'max'=>20),
+			array('requester_uid, dateofuse_from, dateofuse_to, request_date, car_id, purpose, et_departure, et_arrival, createstatus', 'required'),
+			array('requester_uid, car_id, modifiedby', 'length', 'max'=>20),
 			array('departure_guard, arrival_guard', 'length', 'max'=>50),
-			array('dateofuse_from, dateofuse_to, request_date, purpose, et_departure, et_arrival, createstatus, departure_time, arrival_time', 'safe'),
+			array('departure_time, arrival_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('trip_id, requester_id, dateofuse_from, dateofuse_to, request_date, car_id, purpose, et_departure, et_arrival, createstatus, modifiedby, departure_time, departure_guard, arrival_time, arrival_guard', 'safe', 'on'=>'search'),
+			array('trip_id, requester_uid, dateofuse_from, dateofuse_to, request_date, car_id, purpose, et_departure, et_arrival, createstatus, modifiedby, departure_time, departure_guard, arrival_time, arrival_guard', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +63,7 @@ class Triprequest extends CActiveRecord
 		return array(
 			'passengers' => array(self::HAS_MANY, 'Passengers', 'trip_id'),
 			'car' => array(self::BELONGS_TO, 'Car', 'car_id'),
-			'requester' => array(self::BELONGS_TO, 'User', 'requester_id'),
+			'requesterU' => array(self::BELONGS_TO, 'User', 'requester_uid'),
 		);
 	}
 
@@ -73,7 +74,7 @@ class Triprequest extends CActiveRecord
 	{
 		return array(
 			'trip_id' => 'Trip',
-			'requester_id' => 'Requester',
+			'requester_uid' => 'Requester Uid',
 			'dateofuse_from' => 'Dateofuse From',
 			'dateofuse_to' => 'Dateofuse To',
 			'request_date' => 'Request Date',
@@ -109,7 +110,7 @@ class Triprequest extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('trip_id',$this->trip_id,true);
-		$criteria->compare('requester_id',$this->requester_id,true);
+		$criteria->compare('requester_uid',$this->requester_uid,true);
 		$criteria->compare('dateofuse_from',$this->dateofuse_from,true);
 		$criteria->compare('dateofuse_to',$this->dateofuse_to,true);
 		$criteria->compare('request_date',$this->request_date,true);

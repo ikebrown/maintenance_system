@@ -49,7 +49,7 @@
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'et_departure'); ?>
-		<?php echo $form->textField($model,'et_departure', array('class'=>'form-control', 'placeholder'=>'ET Departure')); ?>
+		<?php echo $form->timeField($model,'et_departure', array('class'=>'form-control', 'placeholder'=>'ET Departure')); ?>
 		<?php echo $form->error($model,'et_departure'); ?>
 	</div>
     </div>
@@ -79,7 +79,7 @@
         
 	<div class="row"  style="margin-top: 48px">
 		<?php echo $form->labelEx($model,'et_arrival'); ?>
-		<?php echo $form->textField($model,'et_arrival', array('class'=>'form-control', 'placeholder'=>'ET Arrival')); ?>
+		<?php echo $form->timeField($model,'et_arrival', array('class'=>'form-control', 'placeholder'=>'ET Arrival')); ?>
 		<?php echo $form->error($model,'et_arrival'); ?>
 	</div>
         

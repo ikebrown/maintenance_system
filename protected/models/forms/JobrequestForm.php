@@ -30,7 +30,7 @@ class JobrequestForm extends CFormModel
             if(!$this->hasErrors())
             {
                 if($this->nature_of_job == 'OTHERS'){
-                    if($this->other_specified == ""){
+                    if($this->other_specified == ''){
                         $this->addError('nature_of_job','Please specify other nature of job.');
                     }
                 }

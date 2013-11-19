@@ -25,8 +25,22 @@ class DailytripController extends Controller
                 $model->attributes=$_POST['DailytripForm'];
                 if($model->validate())
                 {
-                    // form inputs are valid, do something here
-                    return;
+                    $dailytrip = new Triprequest();
+                    $dailytrip->attributes = array(
+                        'requester_uid'=>Yii::app()->user->id,
+                        'request_date'=> new CDbExpression('NOW()'),
+                        'dateofuse_from'=>$model->date_use_from,
+                        'dateofuse_to'=>$model->date_use_to,
+                        'car_id'=>$model->car, 
+                        'purpose'=>$model->purpose, 
+                        'et_departure'=>$model->et_departure, 
+                        'et_arrival'=>$model->et_arrival, 
+                        'createstatus'=>'PENDING'
+                    );
+                    if($dailytrip->save()){
+                        $this->redirect(Yii::app()->getBaseUrl(true).'/dailytrip');
+                    }
+                    
                 }
             }
             
@@ -37,7 +51,8 @@ class DailytripController extends Controller
 
 	public function actionIndex()
 	{
-		$this->render('index');
+            $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
+            $this->render('index', array('dailytrip'=>$dailytrip));
 	}
 
 	// Uncomment the following methods and override them if needed

@@ -1,6 +1,6 @@
 <div>
     
-    
+    <?php echo CHtml::link('Create Request', 'jobrequest/createrequest', array('class'=>'btn btn-primary'))?><br/><br/>
     <table class="table table-striped">
         <thead>
         <tr>

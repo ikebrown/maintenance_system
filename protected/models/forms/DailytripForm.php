@@ -25,6 +25,7 @@ class DailytripForm extends CFormModel
 		return array(
 			// username and password are required
 			array('name, department, date_created, date_use_from, date_use_to, car, purpose, et_departure, et_arrival', 'required')
+                        
 		);
 	}
 
