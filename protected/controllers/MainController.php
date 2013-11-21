@@ -2,7 +2,8 @@
 
 class MainController extends Controller
 {
-        public $layout='//layouts/column2';
+        public $layout='//layouts/main';
+        public $page_title = 'Main';
     
         /**
 	 * @return array action filters
@@ -34,10 +35,41 @@ class MainController extends Controller
         
 	public function actionIndex()
 	{
-            $request = Jobrequest::model()->findAll('requester_uid=:requester_uid ORDER BY date_needed ASC', array(':requester_uid'=>Yii::app()->user->id));
+            switch (Yii::app()->user->user_type) {
+                case 'REQUESTER':
+                    $request = Jobrequest::model()->findAll('requester_uid=:requester_uid ORDER BY date_needed ASC', array(':requester_uid'=>Yii::app()->user->id));
+
+                    $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
+                    $this->render('requester_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
+
+                    break;
+                case 'CDMO_ADMIN':
+                    $job = new Jobrequest();
+                    $request = $job->getAllJobRequestByCreatestatus('Pending');
+
+                    $trip = new Triprequest();
+                    $dailytrip = $trip->getAllTripRequestByCreatestatus('Pending');
+                    $this->render('cdmo_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
+
+                    break;
+                
+                case 'SUPERADMIN':
+                    $job = new Jobrequest();
+                    $request = $job->getAllJobRequestByCreatestatus('Pending');
+
+                    $trip = new Triprequest();
+                    $dailytrip = $trip->getAllTripRequestByCreatestatus('Pending');
+                    $this->render('superadmin_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
+
+                    break;
+                case 'TECHNICIAN':
+
+
+                    break;
+                default:
+                    break;
+            }
             
-             $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
-            $this->render('index', array('request'=>$request, 'dailytrip'=>$dailytrip));   
 	}
 
 	// Uncomment the following methods and override them if needed

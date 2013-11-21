@@ -1,0 +1,25 @@
+
+.numbers {
+    width: 40px;
+    text-align: center; 
+    font-family: Tahoma; 
+    font-size: 40px; 
+    font-weight: lighter;   /* options are normal, bold, bolder, lighter */
+    font-style: normal;  /* options are normal or italic */
+    color: #ffffff;      /* change color using the hexadecimal color codes for HTML */
+    
+}
+.title {    /* the styles below will affect the title under the numbers, i.e., "Days", "Hours", etc. */
+    width: 40px;
+    text-align: center; 
+    font-size: 12px; 
+    font-weight: lighter;   /* options are normal, bold, bolder, lighter */
+    /* change color using the hexadecimal color codes for HTML */
+}
+#table {
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: transparent;
+}

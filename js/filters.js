@@ -1,13 +1,5 @@
 'use_strict';
 
-define(['app'], function (app) {
-app.filter('duration', function(){
-   return function(duration){
-       
-   } 
-});
-
-
 app.filter('imgDefault', function(){
    return function(player){
        if(player){
@@ -33,28 +25,4 @@ app.filter('imgDefault', function(){
             }
        }
    } 
-});
-
-app.filter('genderDefault', function(){
-   return function(gender){
-       
-       if(gender){
-           return gender;
-       }else{
-           return "m";
-       }
-   } 
-});
-
-app.filter('playerTypeImage', function(){
-   return function(gender, player_type, isEnable){
-       
-       if(player_type === 'zombie'){
-           return "";
-       }
-       
-       
-   } 
-});
-
 });

@@ -120,4 +120,15 @@ class Jobrequest extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        /*
+         * Custom Query
+         */
+        public function getAllJobRequestByCreatestatus($createstatus){
+            return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus ORDER BY date_needed ASC', array(':createstatus'=>  strtoupper($createstatus)));            
+        } 
+        
+        public function getAllJobRequestByNatureCreatestatus($nature, $createstatus){
+            return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND UCASE(nature)=:nature ORDER BY date_needed ASC', array(':nature'=>$nature, ':createstatus'=>  strtoupper($createstatus)));            
+        } 
 }

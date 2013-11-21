@@ -16,22 +16,33 @@
 	'enableAjaxValidation'=>false,
         'htmlOptions'=>array('class'=>'form')
 )); ?>
-
-    <div class="col-md-8 col-lg-6">
-	<div class="row">
+    
+	<div class="row col-md-6">
                 <?php echo $form->labelEx($model,'Name'); ?>
 		<?php echo $form->textField($model,'name', array('class'=>'form-control', 'placeholder'=>'Name', 'disabled'=>'disabled')); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
         
+
+	<div class="row col-md-6 col-md-offset-6">
+                <?php echo $form->labelEx($model,'department'); ?>
+		<?php echo $form->textField($model,'department', array('class'=>'form-control', 'placeholder'=>'Department', 'disabled'=>'disabled')); ?>
+		<?php echo $form->error($model,'department'); ?>
+	</div>
         
-	<div class="row">
+	<div class="row col-md-6">
+		<?php echo $form->labelEx($model,'date_needed'); ?>
+		<?php echo $form->dateField($model,'date_needed', array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'date_needed'); ?>
+	</div>
+
+	<div class="row col-md-6 col-md-offset-6">
 		<?php echo $form->labelEx($model,'date_created'); ?>
 		<?php echo $form->dateField($model,'date_created', array('class'=>'form-control', 'disabled'=>'disabled')); ?>
 		<?php echo $form->error($model,'date_created'); ?>
 	</div>
         
-        <div class="row">
+        <div class="row col-md-6">
 		<?php echo $form->labelEx($model,'nature_of_job'); ?>
                 <?php echo $form->radioButtonList(
                         $model,
@@ -44,29 +55,12 @@
 		<?php echo $form->error($model,'nature_of_job'); ?>
 	</div>
         
-        
-    </div>
-    
-    <div class="col-md-8 col-lg-6">
-	<div class="row">
-                <?php echo $form->labelEx($model,'department'); ?>
-		<?php echo $form->textField($model,'department', array('class'=>'form-control', 'placeholder'=>'Department', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'department'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'date_needed'); ?>
-		<?php echo $form->dateField($model,'date_needed', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'date_needed'); ?>
-	</div>
-
-    </div>
-    <div class="clearfix "></div>
-    <div class="col-lg-12">
-        <div class="row buttons pull-right">
+        <div class="clearfix "></div>
+ 
+        <div class="row col-md-6">
                 <?php echo CHtml::submitButton('Submit', array('class'=>'btn btn-lg btn-primary')); ?>
         </div>
-    </div> 
 <?php $this->endWidget(); ?>
 
     <div class="clearfix "></div>

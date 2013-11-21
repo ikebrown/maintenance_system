@@ -60,7 +60,7 @@ class JobrequestForm extends CFormModel
                     return array('CONSTRUCTION'=>'Construction',
                          'INSTALATION'=>'Installation',
                          'REPAIR'=>'Repair',
-                         'REPALCEMENT_OF_DEFECTIVE_PARTS'=>'Replacement of Defective Parts',
+                         'REPLACEMENT_OF_DEFECTIVE_PARTS'=>'Replacement of Defective Parts',
                          'PREVENTIVE_MAINTENANCE'=>'Preventive Maintenance',
                          'COST_ESTIMATION'=>'Cost Estimation',
                          'OTHERS'=>'Others');

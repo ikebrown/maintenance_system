@@ -140,4 +140,11 @@ class Triprequest extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        /*
+         * Custom Query
+         */
+        public function getAllTripRequestByCreatestatus($createstatus){
+            return Triprequest::model()->findAll('UCASE(createstatus)=:createstatus ORDER BY request_date ASC', array(':createstatus'=>  strtoupper($createstatus)));
+        }
 }

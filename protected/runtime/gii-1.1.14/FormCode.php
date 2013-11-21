@@ -1,5 +1,5 @@
 <?php
 return array (
-  'template' => 'default',
+  'template' => 'bootstrap3',
   'viewPath' => 'application.views',
 );

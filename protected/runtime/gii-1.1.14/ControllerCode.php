@@ -2,5 +2,5 @@
 return array (
   'template' => 'default',
   'baseClass' => 'Controller',
-  'actions' => 'index createrequest',
+  'actions' => 'index creatework viewwork',
 );

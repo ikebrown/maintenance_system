@@ -15,6 +15,7 @@
         <tbody>
         <?php 
         $x = 1;
+        if(count($request) > 0):
         foreach ($request as $row):?>
         <tr>
             <td><?php echo $x++?></td>
@@ -24,7 +25,14 @@
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
             <td><a href="jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>"><i class="fa fa-eye"></i></a></td>
         </tr>
+        <?php endforeach;
+        else:
+        ?>
+        <tr>
+            <td colspan="6" class="text-center">No Results</td>
+        </tr>
+        <?php endif;?>
+        
         </tbody>
-        <?php endforeach;?>
     </table>
 </div>

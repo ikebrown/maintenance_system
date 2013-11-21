@@ -17,6 +17,7 @@
         <tbody>
         <?php 
         $x = 1;
+        if(count($dailytrip) > 0):
         foreach ($dailytrip as $row):?>
         <tr>
             <td><?php echo $x++?></td>
@@ -27,7 +28,13 @@
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
             <td><a href="dailytrip/viewrequest?trip_id=<?php echo $row->trip_id;?>"><i class="fa fa-eye"></i></a></td>
         </tr>
+        <?php endforeach;
+        else:
+        ?>
+        <tr>
+            <td colspan="7" class="text-center">No Results</td>
+        </tr>
+        <?php endif;?>
         </tbody>
-        <?php endforeach;?>
     </table>
 </div>

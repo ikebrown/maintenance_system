@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
   `requester_uid` bigint(20) NOT NULL,
   `date_needed` date NOT NULL,
   `date_requested` datetime NOT NULL,
-  `nature` set('CONSTRUCTION','INSTALATION','REPAIR','REPALCEMENT_OF_DEFECTIVE_PARTS','PREVENTIVE_MAINTENANCE','COST_ESTIMATION','OTHERS') NOT NULL,
+  `nature` set('CONSTRUCTION','INSTALATION','REPAIR','REPLACEMENT_OF_DEFECTIVE_PARTS','PREVENTIVE_MAINTENANCE','COST_ESTIMATION','OTHERS') NOT NULL,
   `other_specified` varchar(50) DEFAULT NULL,
-  `createstatus` set('Pending','Issued','Denied','On-Hold','Cancelled','Close') NOT NULL,
+  `createstatus` set('Pending','Issued','Denied','On-Hold','Canceled','Closed') NOT NULL,
   PRIMARY KEY (`job_id`),
   KEY `FK1_user_requester_id2` (`requester_uid`),
   CONSTRAINT `FK1_user_requester_id2` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
@@ -84,7 +84,7 @@ DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`) VALUES
 	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'INSTALATION', '', 'Pending'),
-	(8, 'JO2013110008', 3, '2013-11-21', '2013-11-19 08:07:20', 'REPALCEMENT_OF_DEFECTIVE_PARTS', '', 'Pending'),
+	(8, 'JO2013110008', 3, '2013-11-21', '2013-11-19 08:07:20', 'CONSTRUCTION', '', 'Pending'),
 	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending');
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   PRIMARY KEY (`jobact_id`),
   KEY `FK1_job_job_id` (`job_id`),
   KEY `FK2_action_act_id` (`act_id`),
-  CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`),
-  CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`)
+  CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
+  CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
 -- Dumping data for table mms_db.jobrequest_action: ~0 rows (approximately)
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   PRIMARY KEY (`jobmat_id`),
   KEY `FK1_material_mat_id` (`mat_id`),
   KEY `FK2_job_job_id` (`job_id`),
-  CONSTRAINT `FK2_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
-  CONSTRAINT `FK1_material_mat_id` FOREIGN KEY (`mat_id`) REFERENCES `material` (`mat_id`)
+  CONSTRAINT `FK1_material_mat_id` FOREIGN KEY (`mat_id`) REFERENCES `material` (`mat_id`),
+  CONSTRAINT `FK2_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='jobmat_id\r\nmat_id\r\njob_id\r\nquantity\r\ncreatedby\r\n';
 
 -- Dumping data for table mms_db.jobrequest_material: ~0 rows (approximately)
@@ -152,8 +152,8 @@ CREATE TABLE IF NOT EXISTS `material` (
   PRIMARY KEY (`mat_id`),
   KEY `FK1_type_type_id` (`type_id`),
   KEY `FK2_location_location_id` (`location_id`),
-  CONSTRAINT `FK2_location_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`loc_id`),
-  CONSTRAINT `FK1_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `material_type` (`type_id`)
+  CONSTRAINT `FK1_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `material_type` (`type_id`),
+  CONSTRAINT `FK2_location_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`loc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
 
 -- Dumping data for table mms_db.material: ~0 rows (approximately)
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `triprequest` (
   `purpose` text NOT NULL,
   `et_departure` time NOT NULL,
   `et_arrival` time NOT NULL,
-  `createstatus` set('Pending','Approve','Denied','Close') NOT NULL,
+  `createstatus` set('Pending','Approved','Denied','Closed') NOT NULL,
   `modifiedby` bigint(20) DEFAULT NULL,
   `departure_time` datetime DEFAULT NULL,
   `departure_guard` varchar(50) DEFAULT NULL,
@@ -239,8 +239,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`),
   KEY `FK1_user_usertype_id` (`usertype_id`),
   KEY `FK2_dept_dept_id` (`dept_id`),
-  CONSTRAINT `FK2_dept_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`),
-  CONSTRAINT `FK1_user_usertype_id` FOREIGN KEY (`usertype_id`) REFERENCES `usertype` (`usertype_id`)
+  CONSTRAINT `FK1_user_usertype_id` FOREIGN KEY (`usertype_id`) REFERENCES `usertype` (`usertype_id`),
+  CONSTRAINT `FK2_dept_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table mms_db.user: ~8 rows (approximately)

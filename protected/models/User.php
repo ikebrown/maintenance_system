@@ -159,4 +159,21 @@ class User extends CActiveRecord
 
             parent::afterFind();
         }
-}
+        
+        public function getUserList($user_type){
+                $connection=Yii::app()->db;
+
+                $sql = "SELECT u.uid, u.first_name, u.last_name, u.mobile_no, u.email
+                        FROM `user` u
+                        LEFT JOIN usertype ut
+                                ON ut.usertype_id = u.usertype_id
+                        WHERE ut.utype = :user_type
+                        ORDER BY u.last_name ASC";
+
+                $command = $connection->createCommand($sql);
+                $command->bindParam(":user_type",$user_type,PDO::PARAM_INT);
+                $result = $command->queryAll();
+
+                return $result;
+            }
+    }

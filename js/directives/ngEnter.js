@@ -1,6 +1,5 @@
 'use strict';
 
-define(['app'], function (app) {
 app.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
@@ -13,5 +12,4 @@ app.directive('ngEnter', function () {
             }
         });
     };
-});
 });
