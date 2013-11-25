@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           
-        <?php 
+        <?php /*
         $user_type = Yii::app()->user->user_type;
         if($user_type == 'CDMO_ADMIN'):?>   
             <?php $this->beginContent('//elements/_cdmo_nav'); ?>     
@@ -25,11 +25,12 @@
         <?php elseif($user_type == 'SUPERADMIN'):?>
             <?php $this->beginContent('//elements/_superadmin_nav'); ?>     
             <?php $this->endContent(); ?>
-        <?php endif;?>
+        <?php endif; */?>
+            <?php $this->widget('application.extensions.sidemenu.SidemenuWidget');?>
             
 
           <ul class="nav navbar-nav navbar-right navbar-user">
-            <li class="dropdown messages-dropdown">
+<!--            <li class="dropdown messages-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">7 New Messages</li>
@@ -75,7 +76,7 @@
                 <li class="divider"></li>
                 <li><a href="#">View All</a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="dropdown user-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo ucwords(Yii::app()->user->display_name)?> <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -83,7 +84,7 @@
                 <li><a href="#"><i class="fa fa-gear"></i> Account Settings</a></li>
                 <li class="divider"></li>
                 <li>
-                    <?php echo CHtml::link('<i class="fa fa-power-off"></i> Log Out', '/site/logout')?>
+                    <?php echo CHtml::link('<i class="fa fa-power-off"></i> Log Out', Yii::app()->getBaseUrl(1).'/site/logout')?>
                 </li>
               </ul>
             </li>

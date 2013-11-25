@@ -112,4 +112,32 @@ class Material extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public function getOptionMaterialType(){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT type_id, mat_type
+                        FROM material_type";
+
+            $command = $connection->createCommand($sql);
+            $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+            $result = $command->queryAll();
+
+            return $result;
+        }
+        
+        public function getOptionLocation(){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT loc_id, location
+                        FROM location";
+
+            $command = $connection->createCommand($sql);
+            $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+            $result = $command->queryAll();
+
+            return $result;
+        }
+        
+        
 }

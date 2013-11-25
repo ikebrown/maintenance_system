@@ -58,7 +58,7 @@ class JobrequestForm extends CFormModel
         
         public function getNatureOfJob(){
                     return array('CONSTRUCTION'=>'Construction',
-                         'INSTALATION'=>'Installation',
+                         'INSTALLATION'=>'Installation',
                          'REPAIR'=>'Repair',
                          'REPLACEMENT_OF_DEFECTIVE_PARTS'=>'Replacement of Defective Parts',
                          'PREVENTIVE_MAINTENANCE'=>'Preventive Maintenance',

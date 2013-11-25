@@ -131,4 +131,32 @@ class Jobrequest extends CActiveRecord
         public function getAllJobRequestByNatureCreatestatus($nature, $createstatus){
             return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND UCASE(nature)=:nature ORDER BY date_needed ASC', array(':nature'=>$nature, ':createstatus'=>  strtoupper($createstatus)));            
         } 
+        
+        public function getPendingRequestGroupTotal(){
+        $connection=Yii::app()->db;
+
+                $sql = "SELECT nature, COUNT(*) as total
+                            FROM jobrequest 
+                                    WHERE createstatus = 'Pending'
+                            GROUP BY nature";
+
+                $command = $connection->createCommand($sql);
+                $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+                $result = $command->queryAll();
+
+                return $result;
+        }
+        
+        public function getPendingRequestTotal(){
+        $connection=Yii::app()->db;
+
+                $sql = "SELECT COUNT(*) as total
+                            FROM jobrequest 
+                        WHERE createstatus = 'Pending'";
+
+                $command = $connection->createCommand($sql);
+                $result = $command->queryRow();
+
+                return $result['total'];
+        }
 }

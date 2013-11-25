@@ -1,6 +1,6 @@
 
 <ul class="nav navbar-nav side-nav">
-    <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><?php echo CHtml::link('<i class="fa fa-dashboard"></i> Dashboard', array('/main'))?></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file-o"></i> Job Request  <span class="badge">7</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -32,29 +32,27 @@
         <li><a href="#">Closed</a></li>
       </ul>
     </li>
-    <li><a href="typography.html"><i class="fa fa-wrench"></i> Technician</a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Users<b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Create New User</a></li>
-        <li><a href="#">View All Users</a></li>
+        <li><?php echo CHtml::link('Create New User',Yii::app()->getBaseUrl(1).'/superadmin/user/create')?></li>
+        <li><?php echo CHtml::link('View All Users',Yii::app()->getBaseUrl(1).'/superadmin/user')?></li>
       </ul>
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-briefcase"></i> Assets<b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Materials</a></li>
-        <li><a href="#">Cars</a></li>
+        <li><?php echo CHtml::link('Material',Yii::app()->getBaseUrl(1).'/superadmin/material')?></li>
+        <li><?php echo CHtml::link('Material Type',Yii::app()->getBaseUrl(1).'/superadmin/materialtype')?></li>
+        <li><?php echo CHtml::link('Car',Yii::app()->getBaseUrl(1).'/superadmin/car')?></li>
+        <li><?php echo CHtml::link('Location',Yii::app()->getBaseUrl(1).'/superadmin/location')?></li>
       </ul>
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i> Settings<b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#">User Type</a></li>
-        <li><a href="#">Department</a></li>
-        <li><a href="#">Job Action</a></li>
-        <li><a href="#">Material Type</a></li>
-        <li><a href="#">Material Job Action</a></li>
+        <li><?php echo CHtml::link('Department',Yii::app()->getBaseUrl(1).'/superadmin/department')?></li>
+        <li><?php echo CHtml::link('Job Action',Yii::app()->getBaseUrl(1).'/superadmin/action')?></li>
       </ul>
     </li>
   </ul>

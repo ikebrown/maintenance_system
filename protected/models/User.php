@@ -42,7 +42,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('createdate, usertype_id, dept_id', 'required'),
+			array('username, password, first_name, last_name, email, mobile_no, usertype_id, dept_id', 'required'),
 			array('username', 'length', 'max'=>15),
 			array('password', 'length', 'max'=>100),
 			array('first_name, last_name, email', 'length', 'max'=>50),
@@ -83,8 +83,8 @@ class User extends CActiveRecord
 			'mobile_no' => 'Mobile No',
 			'email' => 'Email',
 			'createdate' => 'Createdate',
-			'usertype_id' => 'Usertype',
-			'dept_id' => 'Dept',
+			'usertype_id' => 'User Type',
+			'dept_id' => 'Department',
 		);
 	}
 
@@ -176,4 +176,31 @@ class User extends CActiveRecord
 
                 return $result;
             }
+            
+              
+        public function getOptionUserType(){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT usertype_id, utype
+                        FROM usertype";
+
+            $command = $connection->createCommand($sql);
+            $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+            $result = $command->queryAll();
+
+            return $result;
+        }
+        
+        public function getOptionDepartment(){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT dept_id, department
+                        FROM department";
+
+            $command = $connection->createCommand($sql);
+            $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+            $result = $command->queryAll();
+
+            return $result;
+        }
     }

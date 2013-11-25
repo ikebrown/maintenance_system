@@ -29,6 +29,7 @@ class MaterialType extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('mat_type', 'required'),
+                        array('mat_type', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('type_id, mat_type', 'safe', 'on'=>'search'),
@@ -54,7 +55,7 @@ class MaterialType extends CActiveRecord
 	{
 		return array(
 			'type_id' => 'Type',
-			'mat_type' => 'Mat Type',
+			'mat_type' => 'Material Type',
 		);
 	}
 

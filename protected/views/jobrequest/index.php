@@ -1,6 +1,11 @@
-<div>
-    
-    <?php echo CHtml::link('Create Request', 'jobrequest/createrequest', array('class'=>'btn btn-primary'))?><br/><br/>
+<div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-file-text"></i>&nbsp;My Job Order Requests</h3>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+                    
     <table class="table table-striped">
         <thead>
         <tr>
@@ -35,4 +40,11 @@
         
         </tbody>
     </table>
+
+        </div>
+    <div class="text-right">
+      <?php echo CHtml::link('Create Request', 'jobrequest/createrequest', array('class'=>'btn btn-primary'))?><br/><br/>
+    </div>
+  </div>
 </div>
+</div>        

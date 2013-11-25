@@ -15,11 +15,18 @@ CREATE TABLE IF NOT EXISTS `action` (
   `act_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `action` varchar(50) NOT NULL,
   PRIMARY KEY (`act_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.action: ~0 rows (approximately)
+-- Dumping data for table mms_db.action: ~6 rows (approximately)
 DELETE FROM `action`;
 /*!40000 ALTER TABLE `action` DISABLE KEYS */;
+INSERT INTO `action` (`act_id`, `action`) VALUES
+	(1, 'Visual Inspection / Initial Assessment'),
+	(2, 'Prepared List of Materials Needed'),
+	(3, 'Recommended Replacement / Disposal'),
+	(4, 'Informed Requester of Work Plan'),
+	(5, 'Commenced on Work Required'),
+	(6, 'Work Completed');
 /*!40000 ALTER TABLE `action` ENABLE KEYS */;
 
 
@@ -71,21 +78,24 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
   `requester_uid` bigint(20) NOT NULL,
   `date_needed` date NOT NULL,
   `date_requested` datetime NOT NULL,
-  `nature` set('CONSTRUCTION','INSTALATION','REPAIR','REPLACEMENT_OF_DEFECTIVE_PARTS','PREVENTIVE_MAINTENANCE','COST_ESTIMATION','OTHERS') NOT NULL,
+  `nature` set('CONSTRUCTION','INSTALLATION','REPAIR','REPLACEMENT_OF_DEFECTIVE_PARTS','PREVENTIVE_MAINTENANCE','COST_ESTIMATION','OTHERS') NOT NULL,
   `other_specified` varchar(50) DEFAULT NULL,
   `createstatus` set('Pending','Issued','Denied','On-Hold','Canceled','Closed') NOT NULL,
   PRIMARY KEY (`job_id`),
   KEY `FK1_user_requester_id2` (`requester_uid`),
   CONSTRAINT `FK1_user_requester_id2` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.jobrequest: ~3 rows (approximately)
+-- Dumping data for table mms_db.jobrequest: ~6 rows (approximately)
 DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`) VALUES
-	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'INSTALATION', '', 'Pending'),
+	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'CONSTRUCTION', '', 'Pending'),
 	(8, 'JO2013110008', 3, '2013-11-21', '2013-11-19 08:07:20', 'CONSTRUCTION', '', 'Pending'),
-	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending');
+	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
+	(10, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
+	(11, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
+	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Pending');
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
 
@@ -133,11 +143,32 @@ CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `location` varchar(50) NOT NULL,
   PRIMARY KEY (`loc_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.location: ~0 rows (approximately)
+-- Dumping data for table mms_db.location: ~20 rows (approximately)
 DELETE FROM `location`;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` (`loc_id`, `location`) VALUES
+	(1, 'A1'),
+	(2, 'A2'),
+	(3, 'A3'),
+	(4, 'A4'),
+	(5, 'A5'),
+	(6, 'A6'),
+	(7, 'A7'),
+	(8, 'A8'),
+	(9, 'A9'),
+	(10, 'A10'),
+	(11, 'B1'),
+	(12, 'B2'),
+	(13, 'B3'),
+	(14, 'B4'),
+	(15, 'B5'),
+	(16, 'B6'),
+	(17, 'B7'),
+	(18, 'B8'),
+	(19, 'B9'),
+	(20, 'B10');
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 
 
@@ -154,24 +185,29 @@ CREATE TABLE IF NOT EXISTS `material` (
   KEY `FK2_location_location_id` (`location_id`),
   CONSTRAINT `FK1_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `material_type` (`type_id`),
   CONSTRAINT `FK2_location_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`loc_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
 
--- Dumping data for table mms_db.material: ~0 rows (approximately)
+-- Dumping data for table mms_db.material: ~1 rows (approximately)
 DELETE FROM `material`;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
+INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quantity`, `type_id`, `location_id`) VALUES
+	(1, 'Hammer', 'Hammer', 4, 2, 1);
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.material_type
 CREATE TABLE IF NOT EXISTS `material_type` (
   `type_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `mat_type` set('Tools','Assets') NOT NULL,
+  `mat_type` varchar(50) NOT NULL,
   PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.material_type: ~0 rows (approximately)
+-- Dumping data for table mms_db.material_type: ~2 rows (approximately)
 DELETE FROM `material_type`;
 /*!40000 ALTER TABLE `material_type` DISABLE KEYS */;
+INSERT INTO `material_type` (`type_id`, `mat_type`) VALUES
+	(1, 'Equipment'),
+	(2, 'Asset');
 /*!40000 ALTER TABLE `material_type` ENABLE KEYS */;
 
 
@@ -226,12 +262,12 @@ INSERT INTO `triprequest` (`trip_id`, `requester_uid`, `dateofuse_from`, `dateof
 -- Dumping structure for table mms_db.user
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `username` varchar(15) NOT NULL DEFAULT '0',
-  `password` varchar(100) NOT NULL DEFAULT '0',
-  `first_name` varchar(50) NOT NULL DEFAULT '0',
-  `last_name` varchar(50) NOT NULL DEFAULT '0',
-  `mobile_no` varchar(20) NOT NULL DEFAULT '0',
-  `email` varchar(50) NOT NULL DEFAULT '0',
+  `username` varchar(15) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `mobile_no` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `usertype_id` bigint(20) NOT NULL,
   `dept_id` bigint(20) NOT NULL,

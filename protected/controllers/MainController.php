@@ -37,30 +37,19 @@ class MainController extends Controller
 	{
             switch (Yii::app()->user->user_type) {
                 case 'REQUESTER':
-                    $request = Jobrequest::model()->findAll('requester_uid=:requester_uid ORDER BY date_needed ASC', array(':requester_uid'=>Yii::app()->user->id));
+                    $request = Jobrequest::model()->findAll('requester_uid=:requester_uid ORDER BY date_needed ASC LIMIT 5', array(':requester_uid'=>Yii::app()->user->id));
 
-                    $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
-                    $this->render('requester_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
+                    $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC LIMIT 5', array(':requester_uid'=>Yii::app()->user->id));
+                    $this->render('index', array('request'=>$request, 'dailytrip'=>$dailytrip));   
 
                     break;
                 case 'CDMO_ADMIN':
-                    $job = new Jobrequest();
-                    $request = $job->getAllJobRequestByCreatestatus('Pending');
-
-                    $trip = new Triprequest();
-                    $dailytrip = $trip->getAllTripRequestByCreatestatus('Pending');
-                    $this->render('cdmo_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
+                    $this->redirect(Yii::app()->getBaseUrl(1).'/admin');
 
                     break;
                 
                 case 'SUPERADMIN':
-                    $job = new Jobrequest();
-                    $request = $job->getAllJobRequestByCreatestatus('Pending');
-
-                    $trip = new Triprequest();
-                    $dailytrip = $trip->getAllTripRequestByCreatestatus('Pending');
-                    $this->render('superadmin_main', array('request'=>$request, 'dailytrip'=>$dailytrip));   
-
+                    $this->redirect(Yii::app()->getBaseUrl(1).'/superadmin');
                     break;
                 case 'TECHNICIAN':
 

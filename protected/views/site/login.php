@@ -9,8 +9,13 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<div class="form" style="margin-top: 50px;">
-    <h3>Please login your account.</h3>
+<div class="panel panel-default"  style="margin-top: 50px;">
+  <div class="panel-heading">
+    <h3 class="panel-title">Please login your account.</h3>
+  </div>
+  <div class="panel-body">
+  
+<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -45,3 +50,6 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+</div>
+</div>

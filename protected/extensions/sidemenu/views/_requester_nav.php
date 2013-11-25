@@ -1,18 +1,18 @@
 
 <ul class="nav navbar-nav side-nav">
-    <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><?php echo CHtml::link('<i class="fa fa-dashboard"></i> Dashboard', array('/main'))?></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file-o"></i> Job Request<b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Create Job Request</a></li>
-        <li><a href="#">My Job Order</a></li>
+        <li><?php echo CHtml::link('Create Job Request', array('/jobrequest/createrequest'))?></li>
+        <li><?php echo CHtml::link('My Job Request', array('/jobrequest'))?></li>
       </ul>
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request<b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Create Trip Request</a></li>
-        <li><a href="#">My Trip Request</a></li>
+        <li><?php echo CHtml::link('Create Trip Request', array('/dailytrip/createrequest'))?></li>
+        <li><?php echo CHtml::link('My Trip Request', array('/dailytrip'))?></li>
       </ul>
     </li>
   </ul>

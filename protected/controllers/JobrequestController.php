@@ -12,12 +12,7 @@ class JobrequestController extends Controller
         
         public function actionViewRequest(){
                 $job_id = Yii::app()->request->getQuery('job_id');
-                $user_type = Yii::app()->user->user_type;
-                if($user_type == 'REQUESTER'){
-                    $request = Jobrequest::model()->findByPk($job_id, 'requester_uid=:requester_uid', array(':requester_uid'=>Yii::app()->user->id));
-                }else{
-                    $request = Jobrequest::model()->findByPk($job_id);
-                }
+                $request = Jobrequest::model()->findByPk($job_id, 'requester_uid=:requester_uid', array(':requester_uid'=>Yii::app()->user->id));
                 
                 $model=new JobrequestForm;
                 $model->name = Yii::app()->user->display_name;
@@ -77,7 +72,6 @@ class JobrequestController extends Controller
         public function actionSuccess(){
             $this->render('success', array('job_no'=>Yii::app()->request->getQuery('jo')));
         }
-        
         
 	// Uncomment the following methods and override them if needed
 	/*
