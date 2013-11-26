@@ -10,6 +10,7 @@ class JobrequestForm extends CFormModel
         public $nature_of_job;
         public $other_specified;
         public $createstatus;
+        public $request_type;
 
 	
 	/**
@@ -21,7 +22,7 @@ class JobrequestForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('name, department, date_created, date_needed, nature_of_job', 'required'),
+			array('name, department, date_created, date_needed, nature_of_job, request_type', 'required'),
                         array('other_specified', 'safe'),
                         array('nature_of_job', 'checkOthers'),
 		);
@@ -54,7 +55,8 @@ class JobrequestForm extends CFormModel
                     	'date_needed'=>'Date Needed',
                     	'nature_of_job'=>'Nature of Job Request',
                         'other_specified'=>'Others',
-                        'createstatus'=>'Status'
+                        'createstatus'=>'Status',
+                        'request_type'=>'Request Type'
 		);
 	}
         
@@ -66,6 +68,11 @@ class JobrequestForm extends CFormModel
                          'PREVENTIVE_MAINTENANCE'=>'Preventive Maintenance',
                          'COST_ESTIMATION'=>'Cost Estimation',
                          'OTHERS'=>'Others');
+        }
+        
+        public function getRequestType(){
+            $model = new Jobrequest();
+            return $model->getRequestType();
         }
 
 }

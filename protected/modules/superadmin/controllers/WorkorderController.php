@@ -64,12 +64,6 @@ class WorkorderController extends Controller
             
 	}
 
-        public function actionIssueMaterial(){
-            $job_id = Yii::app()->request->getQuery('job_id');
-            if(!$job_id){
-                
-            }
-        }
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

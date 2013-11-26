@@ -56,6 +56,16 @@
 		<?php echo $form->textField($model,'other_specified', array('class'=>'form-control', 'placeholder'=>'Please specify')); ?>
 		<?php echo $form->error($model,'nature_of_job'); ?>
 	</div>
+        <div class="row col-md-6">
+		<?php echo $form->labelEx($model,'request_type'); ?>
+                <?php echo $form->radioButtonList(
+                        $model,
+                        'request_type', 
+                        $model->getRequestType(),
+                        array( 'labelOptions'=>array('style'=>'display:inline;width:150px;'), 'template'=>"{input} {label}", 'separator'=>'<br/>'));
+                  ?>
+		<?php echo $form->error($model,'request_type'); ?>
+	</div>
     <div class="clearfix "></div>
 </div><!-- form -->
 

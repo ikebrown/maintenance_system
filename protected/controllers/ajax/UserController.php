@@ -37,7 +37,21 @@ class UserController extends Controller
 	}
         
         public function actionGetTechnician(){
-            $user = User::model()->getUserList('TECHNICIAN');
+            $user_type = Yii::app()->user->user_type;
+            
+            switch ($user_type) {
+                case 'CDMO':
+                    $tech = 'CDMO_TECH';
+                    break;
+                case 'LMO':
+                    $tech = 'LMO_TECH';
+                    break;
+                case 'DOIT':
+                    $tech = 'DOIT_TECH';
+                    break;
+            }
+            
+            $user = User::model()->getUserList($tech);
             echo CJSON::encode(array('data'=>$user,'count'=> count($user)));
         }
 

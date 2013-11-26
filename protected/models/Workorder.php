@@ -131,4 +131,15 @@ class Workorder extends CActiveRecord
                 return 0;
             }
         }
+        
+        public function addJobAction($job_id){
+            $connection=Yii::app()->db;
+
+            $sql = "INSERT INTO jobrequest_action (act_id, job_id, createdate)
+                        (SELECT act_id, :job_id, NOW() FROM `action`)";
+
+            $command = $connection->createCommand($sql);
+            $command->bindParam(":job_id",$job_id,PDO::PARAM_INT);
+            return $command->execute();
+        }
 }

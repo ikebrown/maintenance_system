@@ -6,11 +6,12 @@
       <div class="panel-body">
         <div class="table-responsive">
 
-            <table class="table table-striped">
+            <table class="table table-striped" ng-controller="JobrequestController">
                 <thead>
                 <tr>
                     <th>No.</th>
                     <th>JO Order No.</th>
+                    <th>Requester</th>
                     <th>Date Needed</th>
                     <th>Date Requested</th>
                     <th>Status</th>
@@ -25,6 +26,7 @@
                 <tr>
                     <td><?php echo $x++?></td>
                     <td><?php echo CHtml::link($row->job_no, array('/admin/jobrequest/viewrequest', 'job_id'=>$row->job_id));?></td>
+                    <td><?php echo $row->requesterU->first_name. ' '.$row->requesterU->last_name;?></td>
                     <td><?php echo $row->date_needed;?></td>
                     <td><?php echo $row->date_requested;?></td>
                     <td><span class="badge"><?php echo $row->createstatus;?></span></td>
@@ -37,9 +39,9 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">On-Hold</a></li>
-                            <li><a href="#">Denied</a></li>
-                            <li><a href="#">Cancel</a></li>
+                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','On-Hold')">On-Hold</a></li>
+                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Denied')">Denied</a></li>
+                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Canceled')">Cancel</a></li>
                           </ul>
                         </div>
                         

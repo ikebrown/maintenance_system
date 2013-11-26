@@ -8,7 +8,7 @@
 	<?php echo ++$index;?>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-2">
 	<?php echo CHtml::link(CHtml::encode($data->material_name), array('view', 'id'=>$data->mat_id)); ?>
     </div>
     
@@ -20,8 +20,8 @@
 	Qty: <?php echo CHtml::encode($data->quantity); ?>
     </div>
     
-    <div class="col-lg-2">
-	<?php echo CHtml::encode($data->type->mat_type); ?>
+    <div class="col-lg-3">
+	<?php echo CHtml::encode($data->type->mat_type).' - '.$data->m_type; ?>
     </div>
     
     <div class="col-lg-2">

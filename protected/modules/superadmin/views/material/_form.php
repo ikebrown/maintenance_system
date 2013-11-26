@@ -46,6 +46,12 @@
 		<?php echo $form->dropDownList($model,'location_id', $model->getOptionLocation(),array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'location_id'); ?>
 	</div>
+        
+	<div class="row">
+		<?php echo $form->labelEx($model,'m_type'); ?>
+		<?php echo $form->dropDownList($model,'m_type', $model->getOptionMType(),array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'m_type'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-primary')); ?>

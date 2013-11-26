@@ -2,7 +2,7 @@
 
 class JobrequestController extends Controller
 {
-        public $layout='//layouts/column2';
+        public $layout='//layouts/main';
 
 	public function actionIndex()
 	{
@@ -54,7 +54,8 @@ class JobrequestController extends Controller
                         'date_requested'=>new CDbExpression('NOW()'),
                         'nature'=>$model->nature_of_job,
                         'other_specified'=>$model->other_specified,
-                        'createstatus'=>'PENDING'
+                        'createstatus'=>'PENDING',
+                        'request_type'=>$model->request_type
                     );
                     
                     if($jobRequest->save()){

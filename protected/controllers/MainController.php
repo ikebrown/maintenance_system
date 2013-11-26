@@ -43,16 +43,16 @@ class MainController extends Controller
                     $this->render('index', array('request'=>$request, 'dailytrip'=>$dailytrip));   
 
                     break;
-                case 'CDMO_ADMIN':
+                case 'CDMO':
+                case 'LMO':
+                case 'DOIT':    
                     $this->redirect(Yii::app()->getBaseUrl(1).'/admin');
-
                     break;
                 
                 case 'SUPERADMIN':
                     $this->redirect(Yii::app()->getBaseUrl(1).'/superadmin');
                     break;
                 case 'TECHNICIAN':
-
 
                     break;
                 default:

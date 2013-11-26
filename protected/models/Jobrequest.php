@@ -37,12 +37,12 @@ class Jobrequest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requester_uid, date_needed, date_requested, nature, createstatus', 'required'),
+			array('requester_uid, date_needed, date_requested, nature, createstatus, request_type', 'required'),
 			array('job_no, other_specified', 'length', 'max'=>50),
 			array('requester_uid', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('job_id, job_no, requester_uid, date_needed, date_requested, nature, other_specified, createstatus', 'safe', 'on'=>'search'),
+			array('job_id, job_no, requester_uid, date_needed, date_requested, nature, other_specified, createstatus, request_type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -124,13 +124,21 @@ class Jobrequest extends CActiveRecord
         /*
          * Custom Query
          */
-        public function getAllJobRequestByCreatestatus($createstatus){
-            return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus ORDER BY date_needed ASC', array(':createstatus'=>  strtoupper($createstatus)));            
+        public function getAllJobRequestByCreatestatus($createstatus, $request_type = 'CDMO', $isSuperAdmin = 0){
+            if($isSuperAdmin){
+                return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus ORDER BY date_needed ASC', array(':createstatus'=>  strtoupper($createstatus)));            
+            }else{
+                return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND request_type=:request_type ORDER BY date_needed ASC', array(':createstatus'=>  strtoupper($createstatus), ':request_type'=> $request_type));            
+            }
         } 
         
-        public function getAllJobRequestByNatureCreatestatus($nature, $createstatus){
-            return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND UCASE(nature)=:nature ORDER BY date_needed ASC', array(':nature'=>$nature, ':createstatus'=>  strtoupper($createstatus)));            
-        } 
+        public function getAllJobRequestByNatureCreatestatus($nature, $createstatus, $request_type = 'CDMO', $isSuperAdmin = 0){
+            if($isSuperAdmin){
+                return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND UCASE(nature)=:nature ORDER BY date_needed ASC', array(':nature'=>$nature, ':createstatus'=>  strtoupper($createstatus)));            
+            }else{
+                return Jobrequest::model()->findAll('UCASE(createstatus)=:createstatus AND UCASE(nature)=:nature AND request_type=:request_type ORDER BY date_needed ASC', array(':nature'=>$nature, ':createstatus'=>  strtoupper($createstatus), ':request_type'=> $request_type));            
+            }
+        }
         
         public function getPendingRequestGroupTotal(){
         $connection=Yii::app()->db;
@@ -167,5 +175,15 @@ class Jobrequest extends CActiveRecord
                 'createstatus' => $status
             );
             return $job->update();
+        }
+        
+        public function getRequestType(){
+            $type = array(
+                'CDMO' => 'CDMO',
+                'LMO' => 'LMO',
+                'DOIT' => 'DOIT',
+            );
+            
+            return $type;
         }
 }

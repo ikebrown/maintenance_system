@@ -11,8 +11,8 @@ class JobrequestController extends Controller
             if(!$status){
                 $status = 'Pending';
             }
-            
-            $request = Jobrequest::model()->getAllJobRequestByCreatestatus($status);
+            $user_type = Yii::app()->user->user_type;
+            $request = Jobrequest::model()->getAllJobRequestByCreatestatus($status, $user_type);
             $this->render('index', array('request'=>$request, 'status'=>$status));    
 	}
         
@@ -38,7 +38,8 @@ class JobrequestController extends Controller
             $nature = Yii::app()->request->getQuery('nature');
             
             if($nature){
-                $request = Jobrequest::model()->getAllJobRequestByNatureCreatestatus($nature, 'Pending');
+                $user_type = Yii::app()->user->user_type;
+                $request = Jobrequest::model()->getAllJobRequestByNatureCreatestatus($nature, 'Pending', $user_type);
                 $this->render('view_list', array('request'=>$request, 'nature'=>ucwords($nature)));
             }
 	}

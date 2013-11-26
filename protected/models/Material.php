@@ -10,6 +10,7 @@
  * @property string $quantity
  * @property string $type_id
  * @property string $location_id
+ * @property string $m_type
  *
  * The followings are the available model relations:
  * @property JobrequestMaterial[] $jobrequestMaterials
@@ -34,12 +35,12 @@ class Material extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('material_name, material_description, quantity, type_id', 'required'),
+			array('material_name, material_description, quantity, type_id, m_type', 'required'),
 			array('material_name', 'length', 'max'=>50),
 			array('quantity, type_id, location_id', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('mat_id, material_name, material_description, quantity, type_id, location_id', 'safe', 'on'=>'search'),
+			array('mat_id, material_name, material_description, quantity, type_id, location_id, m_type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +70,7 @@ class Material extends CActiveRecord
 			'quantity' => 'Quantity',
 			'type_id' => 'Type',
 			'location_id' => 'Location',
+                        'm_type' => 'Admin Asset Type'
 		);
 	}
 
@@ -96,6 +98,7 @@ class Material extends CActiveRecord
 		$criteria->compare('quantity',$this->quantity,true);
 		$criteria->compare('type_id',$this->type_id,true);
 		$criteria->compare('location_id',$this->location_id,true);
+                $criteria->compare('m_type',$this->m_type,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -139,5 +142,12 @@ class Material extends CActiveRecord
             return $result;
         }
         
+        public function getOptionMType(){
+            return array(
+                'CDMO' => 'CDMO',
+                'LMO' => 'LMO',
+                'DOIT' => 'DOIT'
+                );
+        }
         
 }

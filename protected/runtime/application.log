@@ -1,4 +1,35 @@
-2013/11/26 18:20:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/technician".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+2013/11/26 19:34:35 [error] [php] Undefined variable: data (C:\Devroot\workspace\risingtide\maintenance_system\protected\extensions\sidemenu\SidemenuWidget.php:24)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): MainController->renderInternal()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\widgets\CContentDecorator.php(76): MainController->renderFile()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(206): CContentDecorator->run()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(300): MainController->endWidget()
+#7 C:\Devroot\workspace\risingtide\maintenance_system\themes\sb-admin\views\layouts\main.php(8): MainController->endContent()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): MainController->renderInternal()
+#10 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(784): MainController->renderFile()
+#11 C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\MainController.php(43): MainController->render()
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): MainController->actionIndex()
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(133): MainController->runAction()
+#15 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#17 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CInlineFilter.php(58): MainController->filterAccessControl()
+#18 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#19 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): MainController->runActionWithFilters()
+#21 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): MainController->run()
+#22 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#24 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/main
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\extensions\sidemenu\SidemenuWidget.php (24)
+in C:\Devroot\workspace\risingtide\maintenance_system\themes\sb-admin\views\elements\main_nav.php (29)
+in C:\Devroot\workspace\risingtide\maintenance_system\themes\sb-admin\views\layouts\main.php (8)
+2013/11/26 23:31:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/technician".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/technicia...')
 #1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
@@ -7,7 +38,7 @@ Stack trace:
 REQUEST_URI=/maintenance_system/admin/technician
 HTTP_REFERER=http://localhost/maintenance_system/admin
 ---
-2013/11/26 18:20:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/technician".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+2013/11/26 23:32:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/technician".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/technicia...')
 #1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
@@ -16,44 +47,50 @@ Stack trace:
 REQUEST_URI=/maintenance_system/admin/technician
 HTTP_REFERER=http://localhost/maintenance_system/admin
 ---
-2013/11/26 18:21:04 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '15:01' for column 'departure_time' at row 1. The SQL statement executed was: UPDATE `triprequest` SET `trip_id`=:yp0, `requester_uid`=:yp1, `dateofuse_from`=:yp2, `dateofuse_to`=:yp3, `request_date`=:yp4, `car_id`=:yp5, `purpose`=:yp6, `et_departure`=:yp7, `et_arrival`=:yp8, `createstatus`=:yp9, `modifiedby`=:yp10, `departure_time`=:yp11, `departure_guard`=:yp12, `arrival_time`=:yp13, `arrival_guard`=:yp14 WHERE `triprequest`.`trip_id`='8'.
-in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\DailytripController.php (100)
+2013/11/26 23:32:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "issuematerial".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('issuematerial')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('issuematerial')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/workorder...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/admin/workorder/issuematerial/job_id/13
+HTTP_REFERER=http://localhost/maintenance_system/admin/workorder/index/status/Issued
+---
+2013/11/26 23:53:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "superadmin/workorder/createworkorder/job_id/7".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('superadmin/work...')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/superadmin/workorder/createworkorder/job_id/7
+HTTP_REFERER=http://localhost/maintenance_system/superadmin
+---
+2013/11/26 23:57:02 [error] [php] Trying to get property of non-object (C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\JobrequestController.php:20)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/jobrequest/viewrequest?job_id=7
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\JobrequestController.php (20)
 in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
-2013/11/26 18:21:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '15:01' for column 'departure_time' at row 1. The SQL statement executed was: UPDATE `triprequest` SET `trip_id`=:yp0, `requester_uid`=:yp1, `dateofuse_from`=:yp2, `dateofuse_to`=:yp3, `request_date`=:yp4, `car_id`=:yp5, `purpose`=:yp6, `et_departure`=:yp7, `et_arrival`=:yp8, `createstatus`=:yp9, `modifiedby`=:yp10, `departure_time`=:yp11, `departure_guard`=:yp12, `arrival_time`=:yp13, `arrival_guard`=:yp14 WHERE `triprequest`.`trip_id`='8'' in C:\Devroot\workspace\risingtide\yii\framework\db\CDbCommand.php:358
+2013/11/27 00:01:52 [error] [php] Undefined variable: tech (C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\ajax\UserController.php:54)
 Stack trace:
-#0 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(1748): CDbCommand->execute()
-#1 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(1124): CActiveRecord->updateByPk('8', Array)
-#2 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\DailytripController.php(100): CActiveRecord->update()
-#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DailytripController->actionViewRequest()
-#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
-#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/dailytrip...')
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
 #9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/maintenance_system/admin/dailytrip/viewrequest/trip_id/8
-HTTP_REFERER=http://localhost/maintenance_system/admin/dailytrip/viewrequest/trip_id/8
----
-2013/11/26 18:35:10 [error] [exception.CException] exception 'CException' with message 'Property "Triprequest.user" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('user')
-#1 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\views\dailytrip\index.php(30): CActiveRecord->__get('user')
-#2 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require('C:\Devroot\work...')
-#3 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Devroot\work...', Array, true)
-#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\Devroot\work...', Array, true)
-#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
-#6 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\DailytripController.php(63): CController->render('index', Array)
-#7 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DailytripController->actionIndex()
-#8 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#9 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#10 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#11 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('index')
-#12 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/dailytrip...')
-#13 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#14 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
-#15 {main}
-REQUEST_URI=/maintenance_system/admin/dailytrip/index/status/Pending
-HTTP_REFERER=http://localhost/maintenance_system/admin
----
+#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system//ajax/user/gettechnician
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\ajax\UserController.php (54)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)

@@ -25,6 +25,10 @@
         </div>
             
         <div class="row">
+        <div class="col-lg-6 well-sm"><b>Request Type:</b> <?php echo $request->request_type;?></div>
+        </div>
+            
+        <div class="row">
             <div class="col-lg-6 well-sm"><b>Status:</b> <span class="badge badge-important"><?php echo $request->createstatus;?></span></div>
         </div>    
         
