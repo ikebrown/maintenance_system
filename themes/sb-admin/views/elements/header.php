@@ -13,10 +13,16 @@
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/app.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/directives.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/filters.js', CClientScript::POS_END )
-                
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/WorkorderController.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/UserData.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/JobrequestController.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/JobrequestData.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/TriprequestController.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/TriprequestData.js', CClientScript::POS_END )
+             
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +31,7 @@
 
     <title><?php echo Yii::app()->name;?></title>
     <script type="text/javascript">
-        var BASE_URL = '<?php echo Yii::app()->getBaseUrl(1);?>';
+        var BASE_URL = '<?php echo Yii::app()->getBaseUrl(1);?>/';
     </script>
 
     <!-- Page Specific CSS -->
@@ -33,3 +39,4 @@
   </head>
 
   <body>
+      

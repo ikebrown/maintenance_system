@@ -2,6 +2,8 @@
 
 class WorkorderForm extends CFormModel
 {
+        public $job_id;
+        public $job_no;
 	public $name;
         public $department;
 	public $date_created;
@@ -9,7 +11,7 @@ class WorkorderForm extends CFormModel
         public $nature_of_job;
         public $personnel_name;
         public $personnel_assigned_uid;
-        public $status;
+        public $createstatus;
         
 
 	
@@ -22,7 +24,7 @@ class WorkorderForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('name, department, date_created, date_needed, nature_of_job, personnel_assigned_uid, status', 'required'),
+			array('name, department, date_created, date_needed, nature_of_job, personnel_assigned_uid, createstatus', 'required'),
 		);
 	}
 
@@ -32,13 +34,14 @@ class WorkorderForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
+                        'job_no'=>'Job No.',
 			'name'=>'Name',
                     	'department'=>'Department',
                     	'date_created'=>'Date Created',
                     	'date_needed'=>'Date Needed',
                     	'nature_of_job'=>'Nature of Job Request',
                         'personnel_assigned_uid'=>'Assigned Personnel',
-                        'status'=>'Status'
+                        'createstatus'=>'Status'
 		);
 	}
 

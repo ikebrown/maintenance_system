@@ -16,21 +16,37 @@ class WorkorderController extends Controller
             $job_id = Yii::app()->request->getQuery('job_id');
             $request = Jobrequest::model()->findByPk($job_id);
                 
+            $model->job_id = $request->job_id;
+            $model->job_no = $request->job_no;
             $model->name = Yii::app()->user->display_name;
             $model->department = Yii::app()->user->department;
             $model->date_created = date('Y-m-d',  strtotime($request->date_requested));
             $model->date_needed = $request->date_needed;
             $model->nature_of_job=$request->nature;
-            $model->status = $request->createstatus;
+            $model->createstatus = $request->createstatus;
             if(isset($_POST['WorkorderForm']))
             {
                 $model->attributes=$_POST['WorkorderForm'];
-                if($model->validate())
-                {
-                    // form inputs are valid, do something here
-                    return;
+                if($model->validate()){
+                    
+                    $personnel_uid = explode('|', substr($model->personnel_assigned_uid, 0, strlen($model->personnel_assigned_uid)-1));
+                    
+                    $work = new Workorder();
+                    foreach ($personnel_uid as $uid) {
+                        $work->job_id = $model->job_id;
+                        $work->personnel_assigned_uid = $uid;
+                        $work->addPersonnel();
+                    }
+                    
+                    $job = new Jobrequest();
+                    
+                    $job->updateJobStatus($model->job_id, 'Issued');
+                    
+                    Yii::app()->user->setFlash('success', "Work Order has been successfully ISSUED!");
+                    $this->redirect(Yii::app()->getBaseUrl(1).'/admin');
                 }
             }
+            
             $this->render('workorder_form',array('model'=>$model));
         }
 

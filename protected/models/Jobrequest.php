@@ -159,4 +159,13 @@ class Jobrequest extends CActiveRecord
 
                 return $result['total'];
         }
+        
+        
+        public function updateJobStatus($pk, $status){
+            $job = Jobrequest::model()->findByPk($pk);
+            $job->attributes = array(
+                'createstatus' => $status
+            );
+            return $job->update();
+        }
 }

@@ -75,8 +75,8 @@ class Triprequest extends CActiveRecord
 		return array(
 			'trip_id' => 'Trip',
 			'requester_uid' => 'Requester Uid',
-			'dateofuse_from' => 'Dateofuse From',
-			'dateofuse_to' => 'Dateofuse To',
+			'dateofuse_from' => 'Date of use from',
+			'dateofuse_to' => 'Date of use to',
 			'request_date' => 'Request Date',
 			'car_id' => 'Car',
 			'purpose' => 'Purpose',
@@ -146,5 +146,27 @@ class Triprequest extends CActiveRecord
          */
         public function getAllTripRequestByCreatestatus($createstatus){
             return Triprequest::model()->findAll('UCASE(createstatus)=:createstatus ORDER BY request_date ASC', array(':createstatus'=>  strtoupper($createstatus)));
+        }
+        
+        public function getPendingRequestTotal(){
+        $connection=Yii::app()->db;
+
+                $sql = "SELECT COUNT(*) as total
+                            FROM triprequest 
+                        WHERE createstatus = 'Pending'";
+
+                $command = $connection->createCommand($sql);
+                $result = $command->queryRow();
+
+                return $result['total'];
+        }
+        
+        
+        public function updateTriprequestStatus($pk, $status){
+            $job = Triprequest::model()->findByPk($pk);
+            $job->attributes = array(
+                'createstatus' => $status
+            );
+            return $job->update();
         }
 }

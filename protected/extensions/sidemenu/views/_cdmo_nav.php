@@ -4,7 +4,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file-o"></i> Job Request  <?php echo (($total != 0)?'&nbsp;<span class="badge">'.$total.'</span>':'')?><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><?php echo CHtml::link('Construction'.(($result['CONSTRUCTION'])?'&nbsp;<span class="badge">'.$result['CONSTRUCTION'].'</span>':''), array('/admin/jobrequest/viewlist', 'nature'=>'construction'))?></li>
+        <li><?php echo CHtml::link('Construction'.((isset($result['CONSTRUCTION']))?'&nbsp;<span class="badge">'.$result['CONSTRUCTION'].'</span>':''), array('/admin/jobrequest/viewlist', 'nature'=>'construction'))?></li>
         <li><?php echo CHtml::link('Installation'.((isset($result['INSTALLATION']))?'&nbsp;<span class="badge">'.$result['INSTALLATION'].'</span>':''), array('/admin/jobrequest/viewlist', 'nature'=>'installation'))?></li>
         <li><?php echo CHtml::link('Repair'.((isset($result['REPAIR']))?'&nbsp;<span class="badge">'.$result['REPAIR'].'</span>':''), array('/admin/jobrequest/viewlist', 'nature'=>'repair'))?></li>
         <li><?php echo CHtml::link('Replacement'.((isset($result['REPLACEMENT_OF_DEFECTIVE_PARTS']))?'&nbsp;<span class="badge">'.$result['REPLACEMENT_OF_DEFECTIVE_PARTS'].'</span>':''), array('/admin/jobrequest/viewlist', 'nature'=>'replacement'))?></li>
@@ -24,12 +24,12 @@
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request  <span class="badge">7</span><b class="caret"></b></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request  <?php echo (($trip_total != 0)?'&nbsp;<span class="badge">'.$trip_total.'</span>':'')?><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><?php echo CHtml::link('Pending', array('/admin/dailytrip/viewlist', 'status'=>'pending'))?></li>
-        <li><?php echo CHtml::link('Approved', array('/admin/dailytrip/viewlist', 'status'=>'approved'))?></li>
-        <li><?php echo CHtml::link('Denied', array('/admin/dailytrip/viewlist', 'status'=>'denied'))?></li>
-        <li><?php echo CHtml::link('Closed', array('/admin/dailytrip/viewlist', 'status'=>'closed'))?></li>
+        <li><?php echo CHtml::link('Pending', array('/admin/dailytrip/index', 'status'=>'Pending'))?></li>
+        <li><?php echo CHtml::link('Approved', array('/admin/dailytrip/index', 'status'=>'Approved'))?></li>
+        <li><?php echo CHtml::link('Denied', array('/admin/dailytrip/index', 'status'=>'Denied'))?></li>
+        <li><?php echo CHtml::link('Closed', array('/admin/dailytrip/index', 'status'=>'Closed'))?></li>
       </ul>
     </li>
     <li><?php echo CHtml::link('<i class="fa fa-wrench"></i> Technician', array('/admin/technician'))?></li>

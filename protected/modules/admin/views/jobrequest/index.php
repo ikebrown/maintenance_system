@@ -1,12 +1,10 @@
 <div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-file-text"></i> Job Request - <?php echo $nature;?></h3>
+        <h3 class="panel-title"><i class="fa fa-file-text"></i> Job Request - <?php echo $status;?></h3>
       </div>
       <div class="panel-body">
-          <div class="table-responsive" ng-controller="JobrequestController">
-
-
+        <div class="table-responsive">
 
             <table class="table table-striped">
                 <thead>
@@ -39,9 +37,9 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','On-Hold')">On-Hold</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Denied')">Denied</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Canceled')">Cancel</a></li>
+                            <li><a href="#">On-Hold</a></li>
+                            <li><a href="#">Denied</a></li>
+                            <li><a href="#">Cancel</a></li>
                           </ul>
                         </div>
                         

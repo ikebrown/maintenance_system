@@ -1,10 +1,10 @@
-app.factory('UserData', function($resource, $q){
+app.factory('TriprequestData', function($resource, $q){
     return {
 
-            getTechnician: function(){
+            updateTriprequest: function(request){
                 var deferred = $q.defer();
-                $resource(BASE_URL+'/ajax/user/gettechnician', {}).
-                    get({},
+                $resource(BASE_URL+'/ajax/triprequest/updatetriprequest', {}).
+                    save(request,
                     function(data, status, headers, config) {
                         deferred.resolve(data);
                     },

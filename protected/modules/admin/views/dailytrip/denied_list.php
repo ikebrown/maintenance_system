@@ -17,7 +17,6 @@
             <th>Date Requested</th>
             <th>Car</th>
             <th>Status</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -33,21 +32,6 @@
             <td><?php echo date('Y-m-d', strtotime($row->request_date));?></td>
             <td><?php echo $row->car->car_model;?></td>
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
-            <td>
-                <!-- Split button -->
-                <div class="btn-group text-left">
-                  <?php echo CHtml::link('View Request', array('/admin/dailytrip/viewrequest','trip_id'=>$row->trip_id), array('class'=>'btn btn-primary'))?>
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" ng-click="updateTriprequest('<?php echo $row->trip_id?>','Approved')">Approve</a></li>
-                    <li><a href="#" ng-click="updateTriprequest('<?php echo $row->trip_id?>','Denied')">Denied</a></li>
-                  </ul>
-                </div>
-                
-            </td>
         </tr>
         <?php endforeach;
         else:

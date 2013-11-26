@@ -175,8 +175,8 @@ class User extends CActiveRecord
                 $result = $command->queryAll();
 
                 return $result;
-            }
-            
+        }
+        
               
         public function getOptionUserType(){
             $connection=Yii::app()->db;

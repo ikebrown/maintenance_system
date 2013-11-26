@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table mms_db.action
+DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `act_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `action` varchar(50) NOT NULL,
@@ -31,6 +32,7 @@ INSERT INTO `action` (`act_id`, `action`) VALUES
 
 
 -- Dumping structure for table mms_db.car
+DROP TABLE IF EXISTS `car`;
 CREATE TABLE IF NOT EXISTS `car` (
   `car_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `car_model` varchar(50) NOT NULL,
@@ -50,6 +52,7 @@ INSERT INTO `car` (`car_id`, `car_model`, `plate_no`) VALUES
 
 
 -- Dumping structure for table mms_db.department
+DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `department` varchar(50) NOT NULL,
@@ -72,6 +75,7 @@ INSERT INTO `department` (`dept_id`, `department`, `description`) VALUES
 
 
 -- Dumping structure for table mms_db.jobrequest
+DROP TABLE IF EXISTS `jobrequest`;
 CREATE TABLE IF NOT EXISTS `jobrequest` (
   `job_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_no` varchar(50) DEFAULT NULL,
@@ -92,14 +96,15 @@ DELETE FROM `jobrequest`;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`) VALUES
 	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'CONSTRUCTION', '', 'Pending'),
 	(8, 'JO2013110008', 3, '2013-11-21', '2013-11-19 08:07:20', 'CONSTRUCTION', '', 'Pending'),
-	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
-	(10, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
-	(11, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending'),
-	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Pending');
+	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Issued'),
+	(10, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Issued'),
+	(11, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'On-Hold'),
+	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Denied');
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.jobrequest_action
+DROP TABLE IF EXISTS `jobrequest_action`;
 CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   `jobact_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -119,6 +124,7 @@ DELETE FROM `jobrequest_action`;
 
 
 -- Dumping structure for table mms_db.jobrequest_material
+DROP TABLE IF EXISTS `jobrequest_material`;
 CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   `jobmat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_id` bigint(20) NOT NULL,
@@ -139,6 +145,7 @@ DELETE FROM `jobrequest_material`;
 
 
 -- Dumping structure for table mms_db.location
+DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `location` varchar(50) NOT NULL,
@@ -173,6 +180,7 @@ INSERT INTO `location` (`loc_id`, `location`) VALUES
 
 
 -- Dumping structure for table mms_db.material
+DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `mat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(50) NOT NULL,
@@ -196,6 +204,7 @@ INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quan
 
 
 -- Dumping structure for table mms_db.material_type
+DROP TABLE IF EXISTS `material_type`;
 CREATE TABLE IF NOT EXISTS `material_type` (
   `type_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_type` varchar(50) NOT NULL,
@@ -212,6 +221,7 @@ INSERT INTO `material_type` (`type_id`, `mat_type`) VALUES
 
 
 -- Dumping structure for table mms_db.passengers
+DROP TABLE IF EXISTS `passengers`;
 CREATE TABLE IF NOT EXISTS `passengers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trip_id` bigint(20) NOT NULL,
@@ -228,6 +238,7 @@ DELETE FROM `passengers`;
 
 
 -- Dumping structure for table mms_db.triprequest
+DROP TABLE IF EXISTS `triprequest`;
 CREATE TABLE IF NOT EXISTS `triprequest` (
   `trip_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `requester_uid` bigint(20) NOT NULL,
@@ -238,28 +249,32 @@ CREATE TABLE IF NOT EXISTS `triprequest` (
   `purpose` text NOT NULL,
   `et_departure` time NOT NULL,
   `et_arrival` time NOT NULL,
-  `createstatus` set('Pending','Approved','Denied','Closed') NOT NULL,
+  `createstatus` set('Pending','Approved','Denied','Canceled','Closed') NOT NULL,
   `modifiedby` bigint(20) DEFAULT NULL,
-  `departure_time` datetime DEFAULT NULL,
+  `departure_time` time DEFAULT NULL,
   `departure_guard` varchar(50) DEFAULT NULL,
-  `arrival_time` datetime DEFAULT NULL,
+  `arrival_time` time DEFAULT NULL,
   `arrival_guard` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`trip_id`),
   KEY `FK2_car_car_id` (`car_id`),
   KEY `FK2_user_requester_uid` (`requester_uid`),
   CONSTRAINT `FK2_car_car_id` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`),
   CONSTRAINT `FK2_user_requester_uid` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='TripRequest\r\ntrip_id\r\nrequester_id\r\ndateofuse_from\r\ndateofuse_to\r\nrequest_date\r\ncar_id\r\npurpose\r\net_departure\r\net_arrival\r\ncreatestatus\r\nmodified_by\r\ndeparture_time\r\ndeparture_guard\r\narrival_time\r\narrival_guard\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COMMENT='TripRequest\r\ntrip_id\r\nrequester_id\r\ndateofuse_from\r\ndateofuse_to\r\nrequest_date\r\ncar_id\r\npurpose\r\net_departure\r\net_arrival\r\ncreatestatus\r\nmodified_by\r\ndeparture_time\r\ndeparture_guard\r\narrival_time\r\narrival_guard\r\n';
 
--- Dumping data for table mms_db.triprequest: ~1 rows (approximately)
+-- Dumping data for table mms_db.triprequest: ~4 rows (approximately)
 DELETE FROM `triprequest`;
 /*!40000 ALTER TABLE `triprequest` DISABLE KEYS */;
 INSERT INTO `triprequest` (`trip_id`, `requester_uid`, `dateofuse_from`, `dateofuse_to`, `request_date`, `car_id`, `purpose`, `et_departure`, `et_arrival`, `createstatus`, `modifiedby`, `departure_time`, `departure_guard`, `arrival_time`, `arrival_guard`) VALUES
-	(8, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Pending', NULL, NULL, NULL, NULL, NULL);
+	(8, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Closed', 11, '15:01:00', 'Guard Santos', '15:01:00', 'Guard Mallari'),
+	(9, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Pending', NULL, NULL, NULL, NULL, NULL),
+	(10, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Pending', NULL, NULL, NULL, NULL, NULL),
+	(11, 1, '2013-11-22', '2013-11-22', '2013-11-19 14:48:17', 4, 'tresfdas dfasdf', '20:00:00', '20:00:00', 'Approved', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `triprequest` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
@@ -277,9 +292,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `FK2_dept_dept_id` (`dept_id`),
   CONSTRAINT `FK1_user_usertype_id` FOREIGN KEY (`usertype_id`) REFERENCES `usertype` (`usertype_id`),
   CONSTRAINT `FK2_dept_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.user: ~8 rows (approximately)
+-- Dumping data for table mms_db.user: ~9 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `mobile_no`, `email`, `createdate`, `usertype_id`, `dept_id`) VALUES
@@ -290,11 +305,13 @@ INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `m
 	(5, 'technician4', '123pass', 'Steve', 'Carter', '09321234321', 'stevecarter@gmail.com', '2013-11-17 07:10:24', 2, 1),
 	(9, 'technician5', '123pass', 'Alvin', 'Lim', '09321234098', 'alvinlim@gmail.com', '2013-11-17 07:12:22', 2, 1),
 	(10, 'superadmin', '123pass', 'Chito', 'Reyes', '09321444098', 'chitoreyes@gmail.com', '2013-11-17 07:13:09', 4, 1),
-	(11, 'cdmo', '123pass', 'Rey', 'Pineda', '09331444098', 'reypineda@gmail.com', '2013-11-17 07:13:53', 3, 1);
+	(11, 'cdmo', '123pass', 'Rey', 'Pineda', '09331444098', 'reypineda@gmail.com', '2013-11-17 07:13:53', 3, 1),
+	(12, 'test1', 'password', 'test1', 'test1', '09198889988', 'test@gmail.com', '2013-11-25 12:26:25', 1, 1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.usertype
+DROP TABLE IF EXISTS `usertype`;
 CREATE TABLE IF NOT EXISTS `usertype` (
   `usertype_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `utype` varchar(50) NOT NULL,
@@ -314,24 +331,36 @@ INSERT INTO `usertype` (`usertype_id`, `utype`, `status`) VALUES
 
 
 -- Dumping structure for table mms_db.workorder
+DROP TABLE IF EXISTS `workorder`;
 CREATE TABLE IF NOT EXISTS `workorder` (
   `work_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
   `personnel_assigned_uid` bigint(20) NOT NULL,
   `modifiedby` bigint(20) DEFAULT NULL,
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifieddate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modifieddate` timestamp NULL DEFAULT NULL,
   `createdby` bigint(20) NOT NULL,
   PRIMARY KEY (`work_id`),
   KEY `FK1_job_jobid` (`job_id`),
   KEY `FK2_user_personnel_uid` (`personnel_assigned_uid`),
   CONSTRAINT `FK1_job_jobid` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~0 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~10 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
+INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
+	(12, 8, 5, 11, '2013-11-25 19:13:24', '2013-11-25 19:13:24', 11),
+	(13, 8, 9, 11, '2013-11-25 19:13:24', '2013-11-25 19:13:24', 11),
+	(14, 8, 2, 11, '2013-11-25 19:14:34', '2013-11-25 19:14:34', 11),
+	(15, 8, 9, 11, '2013-11-25 19:14:34', '2013-11-25 19:14:34', 11),
+	(16, 7, 9, 11, '2013-11-25 19:15:00', '2013-11-25 19:15:00', 11),
+	(17, 9, 2, 11, '2013-11-25 22:35:18', '2013-11-25 22:35:18', 11),
+	(18, 9, 5, 11, '2013-11-25 22:35:18', '2013-11-25 22:35:18', 11),
+	(19, 9, 9, 11, '2013-11-25 22:35:18', '2013-11-25 22:35:18', 11),
+	(20, 10, 2, 11, '2013-11-25 22:35:49', '2013-11-25 22:35:49', 11),
+	(21, 10, 9, 11, '2013-11-25 22:35:50', '2013-11-25 22:35:50', 11);
 /*!40000 ALTER TABLE `workorder` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

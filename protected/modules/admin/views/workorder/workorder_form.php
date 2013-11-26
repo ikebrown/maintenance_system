@@ -1,11 +1,66 @@
-<?php
-/* @var $this WorkorderFormController */
-/* @var $model WorkorderForm */
-/* @var $form CActiveForm */
-?>
-
+<div ng-controller="WorkorderController">
+<div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-file-text"></i> Create Work Order - <?php echo $model->job_no;?></h3>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+            
+       
+            
 <div class="form">
-
+     <?php $this->widget('zii.widgets.CDetailView', array(
+                    'data'=>$model,
+                    'attributes'=>array(
+                            'job_no',
+                            'name',
+                            'department',
+                            'date_created',
+                            'date_needed',
+                            'nature_of_job',
+                            'createstatus'
+                    ),
+                    'htmlOptions'=>array('class'=>'table table-hover')
+            )); ?>
+    
+        <div  class="col-lg-3">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Personnel In-charge</h3>
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive" style="height: 100px">
+                <ul class="list-unstyled">
+                    <li ng-repeat="item in items.technician">
+                        {{item.last_name}} {{item.first_name}}
+                    </li>
+                </ul>
+            </div>
+            </div>
+         </div>
+        </div>
+    
+         <div class="col-lg-9">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Select Technician</h3>
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive" style="overflow-y: scroll;height: 100px">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="item in response.data" class="col-lg-3">
+                            <label for="uid_{{item.uid}}">
+                            <input type="checkbox" id="uid_{{item.uid}}" value="{{item.uid}}" name="uid" ng-model="items.uid[item.uid]" ng-click="showTechnician(item)"/>  
+                            {{item.last_name}}, {{item.first_name}}</label>
+                        </li>
+                    </ul>
+                </div>
+               </div>
+             </div>
+        </div> 
+    <div class="clearfix"></div>
+    
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'workorder-form-workorder_form-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -14,55 +69,25 @@
 	// you need to use the performAjaxValidation()-method described there.
 	'enableAjaxValidation'=>false,
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-        
-	<div class="row  col-md-6">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name', array('class'=>'form-control', 'placeholder'=>'Name', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row  col-md-6 col-md-offset-6">
-		<?php echo $form->labelEx($model,'department'); ?>
-		<?php echo $form->textField($model,'department', array('class'=>'form-control', 'placeholder'=>'Department', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'department'); ?>
-	</div>
-
-	<div class="row col-md-6">
-		<?php echo $form->labelEx($model,'date_created'); ?>
-		<?php echo $form->textField($model,'date_created', array('class'=>'form-control', 'placeholder'=>'Date Created', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'date_created'); ?>
-	</div>
-
-	<div class="row col-md-6 col-md-offset-6">
-		<?php echo $form->labelEx($model,'date_needed'); ?>
-		<?php echo $form->textField($model,'date_needed', array('class'=>'form-control', 'placeholder'=>'Date Needed', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'date_needed'); ?>
-	</div>
-
-	<div class="row col-md-6">
-		<?php echo $form->labelEx($model,'nature_of_job'); ?>
-		<?php echo $form->textField($model,'nature_of_job', array('class'=>'form-control', 'placeholder'=>'Date Needed', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'nature_of_job'); ?>
-	</div>
         
 	<div class="row col-md-6">
-                <button class="btn btn-default" >Assign Technician</button>
-		<?php echo $form->textField($model,'personnel_assigned_uid', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'personnel_assigned_uid', array('class'=>'form-control', 'ng-model'=>'assigned_personnel_uid', 'ng-hide'=>'true')); ?>
 		<?php echo $form->error($model,'personnel_assigned_uid'); ?>
-	</div>
-	<div class="row  col-md-6">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status', array('class'=>'form-control', 'placeholder'=>'Status', 'disabled'=>'disabled')); ?>
-		<?php echo $form->error($model,'status'); ?>
 	</div>
 
         <div class="clearfix"></div>
-	<div class="row buttons col-md-6">
-		<?php echo CHtml::submitButton('Issue Work Order', array('class'=>'btn btn-lg btn-primary')); ?>
+	<div class="text-right">
+		<?php echo CHtml::submitButton('Issue Work Order', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+        </div>
+  </div>
+</div>
+</div>            
+
+     
+</div>

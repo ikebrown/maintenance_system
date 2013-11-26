@@ -2,6 +2,7 @@
 
 class JobrequestForm extends CFormModel
 {
+        public $job_no;
 	public $name;
         public $department;
 	public $date_created;
@@ -46,6 +47,7 @@ class JobrequestForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
+                        'job_no'=>'Job No.',
 			'name'=>'Name',
                     	'department'=>'Department',
                     	'date_created'=>'Date Created',

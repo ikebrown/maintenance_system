@@ -2,11 +2,18 @@
 
 class JobrequestController extends Controller
 {
-        public $layout='//layouts/column2';
+        public $layout='//layouts/main';
 
 	public function actionIndex()
 	{
-                $this->redirect(Yii::app()->getBaseUrl(1).'/admin');
+            $status = Yii::app()->request->getQuery('status');
+            
+            if(!$status){
+                $status = 'Pending';
+            }
+            
+            $request = Jobrequest::model()->getAllJobRequestByCreatestatus($status);
+            $this->render('index', array('request'=>$request, 'status'=>$status));    
 	}
         
         public function actionViewRequest(){
@@ -14,6 +21,7 @@ class JobrequestController extends Controller
                 $request = Jobrequest::model()->findByPk($job_id);
                 
                 $model=new JobrequestForm;
+                $model->job_no = $request->job_no;    
                 $model->name = Yii::app()->user->display_name;
                 $model->department = Yii::app()->user->department;
                 $model->date_created = date('Y-m-d',  strtotime($request->date_requested));

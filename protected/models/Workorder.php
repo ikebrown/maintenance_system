@@ -113,4 +113,22 @@ class Workorder extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public function addPersonnel(){
+            $model = new Workorder();
+            $model->attributes = array(
+                'job_id' => $this->job_id, 
+                'personnel_assigned_uid' => $this->personnel_assigned_uid, 
+                'modifiedby' => Yii::app()->user->id, 
+                'createdate' => new CDbExpression('NOW()'), 
+                'modifieddate' => new CDbExpression('NOW()'), 
+                'createdby' => Yii::app()->user->id, 
+            );
+            
+            if($model->save()){
+                return $model->work_id;
+            }else{
+                return 0;
+            }
+        }
 }

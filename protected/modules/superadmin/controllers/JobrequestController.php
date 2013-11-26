@@ -32,7 +32,7 @@ class JobrequestController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','viewlist'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,6 +45,17 @@ class JobrequestController extends Controller
 		);
 	}
 
+        public function actionViewList()
+	{
+            $this->layout='//layouts/main';
+            $nature = Yii::app()->request->getQuery('nature');
+            
+            if($nature){
+                $request = Jobrequest::model()->getAllJobRequestByNatureCreatestatus($nature, 'Pending');
+                $this->render('view_list', array('request'=>$request, 'nature'=>ucwords($nature)));
+            }
+	}        
+        
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed

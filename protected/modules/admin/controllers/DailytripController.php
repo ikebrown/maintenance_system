@@ -2,7 +2,7 @@
 
 class DailytripController extends Controller
 {
-    public $layout='//layouts/column2';
+    public $layout='//layouts/main';
     
 	public function actionCreaterequest()
 	{
@@ -50,10 +50,64 @@ class DailytripController extends Controller
 	}
 
 	public function actionIndex()
-	{
-            $dailytrip = Triprequest::model()->findAll('requester_uid=:requester_uid ORDER BY request_date ASC', array(':requester_uid'=>Yii::app()->user->id));
-            $this->render('index', array('dailytrip'=>$dailytrip));
+	{ 
+            $status = Yii::app()->request->getQuery('status');
+            
+            if(!$status){
+                $status = 'Pending';
+            }
+            
+            $dailytrip = Triprequest::model()->findAll('createstatus=:createstatus ORDER BY request_date ASC', array(':createstatus'=>$status));
+            
+            if($status == 'Pending'){
+                $this->render('index', array('dailytrip'=>$dailytrip, 'status'=>$status));
+            }elseif($status == 'Denied'){
+                $this->render('denied_list', array('dailytrip'=>$dailytrip, 'status'=>$status));
+            }else{
+                $this->render('index_list', array('dailytrip'=>$dailytrip, 'status'=>$status));
+            }
 	}
+        
+        
+        public function actionViewRequest(){
+                $trip_id = Yii::app()->request->getQuery('trip_id');
+                $request = Triprequest::model()->findByPk($trip_id);
+                
+                $model=new DailytripCompletionForm;
+
+                // uncomment the following code to enable ajax-based validation
+                /*
+                if(isset($_POST['ajax']) && $_POST['ajax']==='dailytrip-completion-form-dailytripcompletion_form-form')
+                {
+                    echo CActiveForm::validate($model);
+                    Yii::app()->end();
+                }
+                */
+                $model->trip_id = $request->trip_id;
+                
+                if(isset($_POST['DailytripCompletionForm']))
+                {
+                    $model->attributes=$_POST['DailytripCompletionForm'];
+                    if($model->validate())
+                    {
+                        $dailytrip = Triprequest::model()->findByPk($model->trip_id);
+                        $dailytrip->attributes = array(
+                            'departure_time'=>$model->arrival_time,
+                            'departure_guard'=>$model->departure_guard,
+                            'arrival_time'=>$model->arrival_time,
+                            'arrival_guard'=>$model->arrival_guard,
+                            'modifiedby'=>Yii::app()->user->id,
+                            'createstatus'=>'Closed'
+                        );
+                        if($dailytrip->update()){
+                            $this->redirect(Yii::app()->getBaseUrl(true).'/main');
+                        }
+                    }
+                }
+                
+                
+		$this->render('viewrequest', array('request'=>$request, 'model'=>$model));
+        }
 
 	// Uncomment the following methods and override them if needed
 	/*

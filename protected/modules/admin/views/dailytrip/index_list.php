@@ -27,8 +27,8 @@
         foreach ($dailytrip as $row):?>
         <tr>
             <td><?php echo $x++?></td>
-            <td><?php echo $row->requesterU->first_name. ' '.$row->requesterU->last_name;?></td>
             <td><?php echo $row->dateofuse_from.' '.$row->et_departure;?></td>
+            <td><?php echo $row->requesterU->first_name. ' '.$row->requesterU->last_name;?></td>
             <td><?php echo $row->dateofuse_to.' '.$row->et_arrival;?></td>
             <td><?php echo date('Y-m-d', strtotime($row->request_date));?></td>
             <td><?php echo $row->car->car_model;?></td>
@@ -36,14 +36,13 @@
             <td>
                 <!-- Split button -->
                 <div class="btn-group text-left">
-                  <?php echo CHtml::link('View Request', array('/admin/dailytrip/viewrequest','trip_id'=>$row->trip_id), array('class'=>'btn btn-primary'))?>
+                  <?php echo CHtml::link('Complete Details', array('/admin/dailytrip/viewrequest','trip_id'=>$row->trip_id), array('class'=>'btn btn-primary'))?>
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" ng-click="updateTriprequest('<?php echo $row->trip_id?>','Approved')">Approve</a></li>
-                    <li><a href="#" ng-click="updateTriprequest('<?php echo $row->trip_id?>','Denied')">Denied</a></li>
+                    <li><a href="#" ng-click="updateTriprequest('<?php echo $row->trip_id?>','Canceled')">Canceled</a></li>
                   </ul>
                 </div>
                 
