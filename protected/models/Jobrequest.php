@@ -140,13 +140,14 @@ class Jobrequest extends CActiveRecord
             }
         }
         
-        public function getPendingRequestGroupTotal(){
+        public function getPendingRequestGroupTotal($user_type = ''){
         $connection=Yii::app()->db;
 
                 $sql = "SELECT nature, COUNT(*) as total
                             FROM jobrequest 
-                                    WHERE createstatus = 'Pending'
-                            GROUP BY nature";
+                                    WHERE createstatus = 'Pending'".
+                        (($user_type != '')?' AND request_type=\''.$user_type.'\'':'').
+                           " GROUP BY nature";
 
                 $command = $connection->createCommand($sql);
                 $command->setFetchMode(PDO::FETCH_KEY_PAIR);
@@ -155,12 +156,13 @@ class Jobrequest extends CActiveRecord
                 return $result;
         }
         
-        public function getPendingRequestTotal(){
+        public function getPendingRequestTotal($user_type = ''){
         $connection=Yii::app()->db;
 
                 $sql = "SELECT COUNT(*) as total
                             FROM jobrequest 
-                        WHERE createstatus = 'Pending'";
+                        WHERE createstatus = 'Pending'".
+                        (($user_type != '')?' AND request_type=\''.$user_type.'\'':'');
 
                 $command = $connection->createCommand($sql);
                 $result = $command->queryRow();

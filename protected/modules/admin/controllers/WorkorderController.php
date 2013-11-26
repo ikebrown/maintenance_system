@@ -66,8 +66,29 @@ class WorkorderController extends Controller
 
         public function actionIssueMaterial(){
             $job_id = Yii::app()->request->getQuery('job_id');
-            if(!$job_id){
+            $request = Jobrequest::model()->findByPk($job_id);
+            
+            if($job_id){
+                $model=new MaterialrequestForm;
                 
+                $model->job_id = $request->job_id;
+                if(isset($_POST['MaterialrequestForm']))
+                {
+                    $model->attributes=$_POST['MaterialrequestForm'];
+                    if($model->validate())
+                    {
+                        // form inputs are valid, do something here
+                        return;
+                    }
+                }
+                
+                $material = new Material();
+                $materialResult = $material->getAllMaterial($request->request_type);
+                
+                $workorder = new Workorder();
+                $personnel = $workorder->getAllAssignedPersonnel($request->job_id);
+                
+                $this->render('issuematerial_form',array('model'=>$model, 'request'=>$request, 'materialResult'=>$materialResult, 'personnel'=>$personnel));
             }
         }
 	// Uncomment the following methods and override them if needed

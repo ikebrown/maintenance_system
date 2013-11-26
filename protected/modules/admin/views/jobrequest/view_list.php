@@ -53,7 +53,7 @@
                 else:
                 ?>
                 <tr>
-                    <td colspan="6" class="text-center">No Results</td>
+                    <td colspan="7" class="text-center">No Results</td>
                 </tr>
                 <?php endif;?>
 

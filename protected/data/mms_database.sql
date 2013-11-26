@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
   CONSTRAINT `FK1_user_requester_id2` FOREIGN KEY (`requester_uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.jobrequest: ~6 rows (approximately)
+-- Dumping data for table mms_db.jobrequest: ~7 rows (approximately)
 DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`, `request_type`) VALUES
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
--- Dumping data for table mms_db.jobrequest_action: ~0 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_action: ~6 rows (approximately)
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
 INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`) VALUES
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `material` (
   CONSTRAINT `FK2_location_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`loc_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
 
--- Dumping data for table mms_db.material: ~1 rows (approximately)
+-- Dumping data for table mms_db.material: ~2 rows (approximately)
 DELETE FROM `material`;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
 INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quantity`, `type_id`, `location_id`, `m_type`) VALUES
@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK2_dept_dept_id` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.user: ~9 rows (approximately)
+-- Dumping data for table mms_db.user: ~11 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `mobile_no`, `email`, `createdate`, `usertype_id`, `dept_id`) VALUES
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `usertype` (
   PRIMARY KEY (`usertype_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.usertype: ~4 rows (approximately)
+-- Dumping data for table mms_db.usertype: ~8 rows (approximately)
 DELETE FROM `usertype`;
 /*!40000 ALTER TABLE `usertype` DISABLE KEYS */;
 INSERT INTO `usertype` (`usertype_id`, `utype`, `status`) VALUES
@@ -350,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `workorder` (
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~10 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~2 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES

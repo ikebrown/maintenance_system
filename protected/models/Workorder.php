@@ -142,4 +142,8 @@ class Workorder extends CActiveRecord
             $command->bindParam(":job_id",$job_id,PDO::PARAM_INT);
             return $command->execute();
         }
+        
+        public function getAllAssignedPersonnel($job_id){
+            return Workorder::model()->findAll('job_id=:job_id', array(':job_id'=>$job_id));
+        }
 }

@@ -14,8 +14,8 @@ class SidemenuWidget extends CWidget
         
         $user_type = Yii::app()->user->user_type;
         if(in_array($user_type, array('CDMO', 'LMO', 'DOIT'))){            
-            $result = $job->getPendingRequestGroupTotal();
-            $total = $job->getPendingRequestTotal();
+            $result = $job->getPendingRequestGroupTotal($user_type);
+            $total = $job->getPendingRequestTotal($user_type);
             $trip_total = $trip->getPendingRequestTotal();
             $data = array('result'=>$result, 'total'=>$total, 'trip_total'=>$trip_total);
 
