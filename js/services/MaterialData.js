@@ -1,9 +1,23 @@
 app.factory('MaterialData', function($resource, $q){
     return {
-
-            addItem: function(request){
+            
+            getItem: function(id){
                 var deferred = $q.defer();
-                $resource(BASE_URL+'/ajax/material/additem', {}).
+                $resource(BASE_URL+'ajax/material/getitem?id=:id', {'id':'@id'}).
+                    get({id:id},
+                    function(data, status, headers, config) {
+                        deferred.resolve(data);
+                    },
+                    function(data, status, headers, config) {                  
+                      deferred.reject(status);
+                    });
+                    
+                    return deferred.promise;
+            },
+            
+            saveMaterial: function(request){
+                var deferred = $q.defer();
+                $resource(BASE_URL+'ajax/material/savejobrequestmaterials', {}).
                     save(request,
                     function(data, status, headers, config) {
                         deferred.resolve(data);
@@ -14,18 +28,7 @@ app.factory('MaterialData', function($resource, $q){
                     
                     return deferred.promise;
             },
-            removeItem: function(request){
-                var deferred = $q.defer();
-                $resource(BASE_URL+'/ajax/material/removeitem', {}).
-                    save(request,
-                    function(data, status, headers, config) {
-                        deferred.resolve(data);
-                    },
-                    function(data, status, headers, config) {                  
-                      deferred.reject(status);
-                    });
-                    
-                    return deferred.promise;
-            }
+            
+            
     };
 });

@@ -31,23 +31,7 @@
                     <td><?php echo $row->date_requested;?></td>
                     <td><span class="badge"><?php echo $row->createstatus;?></span></td>
                     <td>
-                        <!-- Split button -->
-                        <div class="btn-group text-left">
-                          <?php if(count($row->jobrequestMaterials) > 0):?>
-                            <?php echo CHtml::link('Update Work Order', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
-                          <?php else:?>  
-                            <?php echo CHtml::link('Issue Material Needed', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
-                          <?php endif;?>
-                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','On-Hold')">On-Hold</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Canceled')">Cancel</a></li>
-                          </ul>
-                        </div>
-                        
+                        <?php echo CHtml::link('View Job Request', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
                     </td>
                 </tr>
                 <?php endforeach;

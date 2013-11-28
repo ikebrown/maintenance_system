@@ -2,6 +2,7 @@
 	Yii::app()->clientscript
 		->registerCssFile( Yii::app()->theme->baseUrl . '/css/bootstrap.css' )
 		->registerCssFile( Yii::app()->theme->baseUrl . '/css/sb-admin.css' )
+                ->registerCssFile( Yii::app()->getBaseUrl(1) .'/css/nav_bar.css' )
                 ->registerCssFile( Yii::app()->theme->baseUrl . '/font-awesome/css/font-awesome.min.css' )
                 ->registerCssFile( Yii::app()->getBaseUrl(1) . '/css/form.css' )
                 
@@ -19,7 +20,9 @@
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/JobrequestData.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/TriprequestController.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/TriprequestData.js', CClientScript::POS_END )
-             
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/MaterialController.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/MaterialData.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/JobrequestActionData.js', CClientScript::POS_END )
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="app">

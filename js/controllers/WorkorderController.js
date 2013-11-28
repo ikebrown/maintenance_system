@@ -28,8 +28,7 @@ app.controller('WorkorderController',
             
             $scope.assigned_personnel_uid = uid;
         };
-        
-
+     
     }
 );
 

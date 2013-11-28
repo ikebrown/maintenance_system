@@ -4,7 +4,7 @@
 <!--    <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file-o"></i> Job Request  <span class="badge">7</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><?php echo CHtml::link('Construction'.(($result['CONSTRUCTION'])?'&nbsp;<span class="badge">'.$result['CONSTRUCTION'].'</span>':''), array('/superadmin/jobrequest/viewlist', 'nature'=>'construction'))?></li>
+        <li><?php echo CHtml::link('Construction'.((isset($result['CONSTRUCTION']))?'&nbsp;<span class="badge">'.$result['CONSTRUCTION'].'</span>':''), array('/superadmin/jobrequest/viewlist', 'nature'=>'construction'))?></li>
         <li><?php echo CHtml::link('Installation'.((isset($result['INSTALLATION']))?'&nbsp;<span class="badge">'.$result['INSTALLATION'].'</span>':''), array('/superadmin/jobrequest/viewlist', 'nature'=>'installation'))?></li>
         <li><?php echo CHtml::link('Repair'.((isset($result['REPAIR']))?'&nbsp;<span class="badge">'.$result['REPAIR'].'</span>':''), array('/superadmin/jobrequest/viewlist', 'nature'=>'repair'))?></li>
         <li><?php echo CHtml::link('Replacement'.((isset($result['REPLACEMENT_OF_DEFECTIVE_PARTS']))?'&nbsp;<span class="badge">'.$result['REPLACEMENT_OF_DEFECTIVE_PARTS'].'</span>':''), array('/superadmin/jobrequest/viewlist', 'nature'=>'replacement'))?></li>

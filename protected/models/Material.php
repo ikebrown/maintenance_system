@@ -151,10 +151,27 @@ class Material extends CActiveRecord
         }
         
         public function getAllMaterial($m_type = 'CDMO'){
-            return $model = Material::model()->findAll('m_type = :m_type', array(':m_type'=>$m_type));
+            return $model = Material::model()->findAll('m_type = :m_type ORDER BY material_name', array(':m_type'=>$m_type));
         }
+        
         
         public function getMaterialDetails($pk){
             return $model = Material::model()->findByPk($pk);
+        }
+        
+        public function updateMaterialQuantity($pk, $issued_quantity){
+            $model = Material::model()->findByPk($pk);
+            $model->attributes = array(
+              'quantity' => ($model->quantity - $issued_quantity)
+            );
+            $model->update();
+        }
+        
+        public function returnMaterialQuantity($pk, $issued_quantity){
+            $model = Material::model()->findByPk($pk);
+            $model->attributes = array(
+              'quantity' => ($model->quantity + $issued_quantity)
+            );
+            $model->update();
         }
 }

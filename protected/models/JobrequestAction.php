@@ -31,11 +31,11 @@ class JobrequestAction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('job_id, act_id, createdate', 'required'),
+			array('job_id, act_id, createdate, createstatus', 'required'),
 			array('job_id, act_id', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('jobact_id, job_id, act_id, createdate', 'safe', 'on'=>'search'),
+			array('jobact_id, job_id, act_id, createdate, createstatus', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +62,7 @@ class JobrequestAction extends CActiveRecord
 			'job_id' => 'Job',
 			'act_id' => 'Act',
 			'createdate' => 'Createdate',
+                        'createstatus' => 'Status'
 		);
 	}
 
@@ -87,6 +88,7 @@ class JobrequestAction extends CActiveRecord
 		$criteria->compare('job_id',$this->job_id,true);
 		$criteria->compare('act_id',$this->act_id,true);
 		$criteria->compare('createdate',$this->createdate,true);
+                $criteria->compare('createstatus',$this->createstatus,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -103,4 +105,70 @@ class JobrequestAction extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        
+        public function getAllJobAction($job_id){
+        $connection=Yii::app()->db;
+
+                $sql = "SELECT ja.jobact_id, a.act_id, a.`action`, ja.createstatus
+                            FROM jobrequest_action ja
+                                    LEFT JOIN action a
+                                            ON a.act_id = ja.act_id
+                            WHERE ja.job_id = :job_id
+                                    ORDER BY ja.act_id ASC";
+
+                $command = $connection->createCommand($sql);
+                $command->bindParam(":job_id",$job_id,PDO::PARAM_INT);
+                $command->setFetchMode(PDO::FETCH_OBJ);
+                $result = $command->queryAll();
+
+                return $result;
+        }
+        
+        public function getOptionJobAction($job_id){
+        $connection=Yii::app()->db;
+
+                $sql = "SELECT ja.jobact_id, a.`action`
+                            FROM jobrequest_action ja
+                                    LEFT JOIN action a
+                                            ON a.act_id = ja.act_id
+                            WHERE ja.job_id = :job_id
+                                    ORDER BY ja.act_id ASC";
+
+                $command = $connection->createCommand($sql);
+                $command->bindParam(":job_id",$job_id,PDO::PARAM_INT);
+                $command->setFetchMode(PDO::FETCH_KEY_PAIR);
+                $result = $command->queryAll();
+
+                return $result;
+        }
+        
+        
+        public function updateJobAction($pk, $status = 'COMPLETED'){
+            $job = JobrequestAction::model()->findByPk($pk);
+            $job->attributes = array(
+                'createstatus' => $status
+            );
+            $this->completeWorkOrder($pk);
+            $jobrequest = new Jobrequest();
+            $jobrequest->updateJobStatus($job->job_id, 'Closed');
+            return $job->update();
+        }
+        
+        public function completeWorkOrder($jobact_id){
+            $model = JobrequestAction::model()->findByPk($jobact_id);
+            if($model->act_id == 6){
+                $job = Jobrequest::model()->findByPk($model->job_id);
+                $material = new Material();
+                $jobMaterial = new JobrequestMaterial();
+                foreach ($job->jobrequestMaterials as $row) {
+                    if($row->status == 'IN-USE'){
+                        $material->returnMaterialQuantity($row->mat_id, $row->quantity);
+                        $jobMaterial->closeMaterialsUsed($row->jobmat_id);
+                    }
+                }
+             
+            }
+            
+        }
 }

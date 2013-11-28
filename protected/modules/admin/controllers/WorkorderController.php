@@ -58,10 +58,15 @@ class WorkorderController extends Controller
             if(!$status){
                 $status = 'Issued';
             }
+            
             $user_type = Yii::app()->user->user_type;
             $request = Jobrequest::model()->getAllJobRequestByCreatestatus($status, $user_type);
-            $this->render('index', array('request'=>$request, 'status'=>ucwords($status)));
             
+            if($status == 'Closed'){
+                $this->render('index_closed', array('request'=>$request, 'status'=>ucwords($status)));
+            }else{
+                $this->render('index', array('request'=>$request, 'status'=>ucwords($status)));
+            }
 	}
 
         public function actionIssueMaterial(){
@@ -72,23 +77,18 @@ class WorkorderController extends Controller
                 $model=new MaterialrequestForm;
                 
                 $model->job_id = $request->job_id;
-                if(isset($_POST['MaterialrequestForm']))
-                {
-                    $model->attributes=$_POST['MaterialrequestForm'];
-                    if($model->validate())
-                    {
-                        // form inputs are valid, do something here
-                        return;
-                    }
-                }
                 
-                $material = new Material();
-                $materialResult = $material->getAllMaterial($request->request_type);
+                $jobAction = new JobrequestAction();
+                $actions = $jobAction->getAllJobAction($request->job_id);
                 
                 $workorder = new Workorder();
                 $personnel = $workorder->getAllAssignedPersonnel($request->job_id);
                 
-                $this->render('issuematerial_form',array('model'=>$model, 'request'=>$request, 'materialResult'=>$materialResult, 'personnel'=>$personnel));
+                $material = new Material();
+                $materialResult = $material->getAllMaterial($request->request_type);
+                
+                $jobMaterial = $request->jobrequestMaterials;
+                $this->render('issuematerial_form',array('job_id'=>$request->job_id, 'model'=>$model, 'request'=>$request, 'actions' => $actions, 'materialResult'=>$materialResult, 'personnel'=>$personnel, 'jobMaterial'=>$jobMaterial));
             }
         }
 	// Uncomment the following methods and override them if needed

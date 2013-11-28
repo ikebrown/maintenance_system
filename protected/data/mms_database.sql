@@ -91,12 +91,12 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
 DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `createstatus`, `request_type`) VALUES
-	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'CONSTRUCTION', '', 'Issued', 'CDMO'),
+	(7, 'JO2013110007', 3, '2013-11-22', '2013-11-19 07:36:04', 'CONSTRUCTION', '', 'Closed', 'CDMO'),
 	(8, 'JO2013110008', 3, '2013-11-21', '2013-11-19 08:07:20', 'CONSTRUCTION', '', 'Pending', 'LMO'),
 	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
 	(10, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
 	(11, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
-	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Pending', 'CDMO'),
+	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Closed', 'CDMO'),
 	(13, 'JO2013110013', 1, '2013-11-22', '2013-11-26 19:36:48', 'CONSTRUCTION', '', 'Pending', 'DOIT');
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
@@ -107,23 +107,30 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   `job_id` bigint(20) NOT NULL,
   `act_id` bigint(20) NOT NULL,
   `createdate` datetime NOT NULL,
+  `createstatus` set('PENDING','COMPLETED') NOT NULL DEFAULT 'PENDING',
   PRIMARY KEY (`jobact_id`),
   KEY `FK1_job_job_id` (`job_id`),
   KEY `FK2_action_act_id` (`act_id`),
   CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
--- Dumping data for table mms_db.jobrequest_action: ~6 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_action: ~12 rows (approximately)
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
-INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`) VALUES
-	(22, 7, 1, '2013-11-27 00:13:01'),
-	(23, 7, 2, '2013-11-27 00:13:01'),
-	(24, 7, 3, '2013-11-27 00:13:01'),
-	(25, 7, 4, '2013-11-27 00:13:01'),
-	(26, 7, 5, '2013-11-27 00:13:01'),
-	(27, 7, 6, '2013-11-27 00:13:01');
+INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, `createstatus`) VALUES
+	(22, 7, 1, '2013-11-27 00:13:01', 'COMPLETED'),
+	(23, 7, 2, '2013-11-27 00:13:01', 'COMPLETED'),
+	(24, 7, 3, '2013-11-27 00:13:01', 'COMPLETED'),
+	(25, 7, 4, '2013-11-27 00:13:01', 'COMPLETED'),
+	(26, 7, 5, '2013-11-27 00:13:01', 'COMPLETED'),
+	(27, 7, 6, '2013-11-27 00:13:01', 'COMPLETED'),
+	(29, 12, 1, '2013-11-28 22:35:02', 'COMPLETED'),
+	(30, 12, 2, '2013-11-28 22:35:02', 'COMPLETED'),
+	(31, 12, 3, '2013-11-28 22:35:02', 'COMPLETED'),
+	(32, 12, 4, '2013-11-28 22:35:02', 'COMPLETED'),
+	(33, 12, 5, '2013-11-28 22:35:02', 'COMPLETED'),
+	(34, 12, 6, '2013-11-28 22:35:02', 'COMPLETED');
 /*!40000 ALTER TABLE `jobrequest_action` ENABLE KEYS */;
 
 
@@ -134,16 +141,28 @@ CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   `job_id` bigint(20) NOT NULL,
   `quantity` bigint(20) NOT NULL,
   `createdby` bigint(20) NOT NULL,
+  `status` set('IN-USE','CLOSED') NOT NULL,
   PRIMARY KEY (`jobmat_id`),
   KEY `FK1_material_mat_id` (`mat_id`),
   KEY `FK2_job_job_id` (`job_id`),
   CONSTRAINT `FK1_material_mat_id` FOREIGN KEY (`mat_id`) REFERENCES `material` (`mat_id`),
   CONSTRAINT `FK2_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='jobmat_id\r\nmat_id\r\njob_id\r\nquantity\r\ncreatedby\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='jobmat_id\r\nmat_id\r\njob_id\r\nquantity\r\ncreatedby\r\n';
 
--- Dumping data for table mms_db.jobrequest_material: ~0 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_material: ~3 rows (approximately)
 DELETE FROM `jobrequest_material`;
 /*!40000 ALTER TABLE `jobrequest_material` DISABLE KEYS */;
+INSERT INTO `jobrequest_material` (`jobmat_id`, `mat_id`, `job_id`, `quantity`, `createdby`, `status`) VALUES
+	(8, 3, 12, 2, 11, 'CLOSED'),
+	(9, 7, 12, 1, 11, 'CLOSED'),
+	(10, 9, 12, 2, 11, 'CLOSED'),
+	(11, 1, 7, 3, 11, 'CLOSED'),
+	(12, 3, 7, 1, 11, 'CLOSED'),
+	(13, 6, 7, 1, 11, 'CLOSED'),
+	(14, 7, 7, 3, 11, 'CLOSED'),
+	(15, 8, 7, 1, 11, 'CLOSED'),
+	(16, 9, 7, 1, 11, 'CLOSED'),
+	(17, 10, 7, 3, 11, 'CLOSED');
 /*!40000 ALTER TABLE `jobrequest_material` ENABLE KEYS */;
 
 
@@ -195,14 +214,20 @@ CREATE TABLE IF NOT EXISTS `material` (
   KEY `FK2_location_location_id` (`location_id`),
   CONSTRAINT `FK1_type_type_id` FOREIGN KEY (`type_id`) REFERENCES `material_type` (`type_id`),
   CONSTRAINT `FK2_location_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`loc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='mat_id\r\nmaterial_name\r\nmaterial_description\r\nquantity\r\ntype_id\r\nloc_id\r\n';
 
--- Dumping data for table mms_db.material: ~2 rows (approximately)
+-- Dumping data for table mms_db.material: ~8 rows (approximately)
 DELETE FROM `material`;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
 INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quantity`, `type_id`, `location_id`, `m_type`) VALUES
 	(1, 'Hammer', 'Hammer', 4, 2, 1, 'CDMO'),
-	(2, 'Basketball', 'Basketball', 10, 1, 1, 'LMO');
+	(2, 'Basketball', 'Basketball', 10, 1, 1, 'LMO'),
+	(3, 'Grinder', 'Grinder', 8, 2, 1, 'CDMO'),
+	(6, 'Wood Cutter', 'Wood cutter', 4, 2, 1, 'CDMO'),
+	(7, 'Grass Trimmer', 'Grass Trimmer', 6, 2, 1, 'CDMO'),
+	(8, 'Ladder', 'ladder', 4, 2, 1, 'CDMO'),
+	(9, 'Axe', 'axe', 8, 2, 1, 'CDMO'),
+	(10, 'Jack hammer', 'Jack Hammer', 4, 2, 1, 'CDMO');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 
 
@@ -348,14 +373,16 @@ CREATE TABLE IF NOT EXISTS `workorder` (
   KEY `FK2_user_personnel_uid` (`personnel_assigned_uid`),
   CONSTRAINT `FK1_job_jobid` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~2 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~4 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
 	(26, 7, 2, 11, '2013-11-27 00:13:01', '2013-11-27 00:13:01', 11),
-	(27, 7, 3, 11, '2013-11-27 00:13:01', '2013-11-27 00:13:01', 11);
+	(27, 7, 3, 11, '2013-11-27 00:13:01', '2013-11-27 00:13:01', 11),
+	(28, 12, 2, 11, '2013-11-28 22:35:02', '2013-11-28 22:35:02', 11),
+	(29, 12, 3, 11, '2013-11-28 22:35:02', '2013-11-28 22:35:02', 11);
 /*!40000 ALTER TABLE `workorder` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
