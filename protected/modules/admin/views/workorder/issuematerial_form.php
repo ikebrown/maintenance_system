@@ -61,7 +61,7 @@
 <div class="col-lg-3">
     <div class="panel panel-default">
     <div class="panel-heading">Materials Needed</div>
-    <div class="panel-body" style="overflow-y: auto;height: 600px;" id="materials_needed">
+    <div class="panel-body" style="overflow-y: auto;height: 550px;" id="materials_needed">
         
         <?php if(count($jobMaterial) > 0):
             foreach ($jobMaterial as $row):?>
@@ -72,12 +72,13 @@
             <?php endforeach;
             endif;?>
         
+    </div>
+    
         <?php if(count($jobMaterial) == 0):?>
         <div class="text-center">
             <button class="btn btn-primary btn-large" ng-click="saveWorkOrder()">Save Issued Materials</button>
-        </div>
+        </div><br/>
         <?php endif;?>
-    </div>
     </div>
 </div>
 
