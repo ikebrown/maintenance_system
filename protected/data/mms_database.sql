@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table mms_db.action
+DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `act_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `action` varchar(50) NOT NULL,
@@ -31,6 +32,7 @@ INSERT INTO `action` (`act_id`, `action`) VALUES
 
 
 -- Dumping structure for table mms_db.car
+DROP TABLE IF EXISTS `car`;
 CREATE TABLE IF NOT EXISTS `car` (
   `car_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `car_model` varchar(50) NOT NULL,
@@ -50,6 +52,7 @@ INSERT INTO `car` (`car_id`, `car_model`, `plate_no`) VALUES
 
 
 -- Dumping structure for table mms_db.department
+DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `department` varchar(50) NOT NULL,
@@ -72,6 +75,7 @@ INSERT INTO `department` (`dept_id`, `department`, `description`) VALUES
 
 
 -- Dumping structure for table mms_db.jobrequest
+DROP TABLE IF EXISTS `jobrequest`;
 CREATE TABLE IF NOT EXISTS `jobrequest` (
   `job_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_no` varchar(50) DEFAULT NULL,
@@ -102,6 +106,7 @@ INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `d
 
 
 -- Dumping structure for table mms_db.jobrequest_action
+DROP TABLE IF EXISTS `jobrequest_action`;
 CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   `jobact_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -115,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
--- Dumping data for table mms_db.jobrequest_action: ~12 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_action: ~6 rows (approximately)
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
 INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, `createstatus`) VALUES
@@ -129,6 +134,7 @@ INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, 
 
 
 -- Dumping structure for table mms_db.jobrequest_material
+DROP TABLE IF EXISTS `jobrequest_material`;
 CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   `jobmat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_id` bigint(20) NOT NULL,
@@ -143,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   CONSTRAINT `FK2_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='jobmat_id\r\nmat_id\r\njob_id\r\nquantity\r\ncreatedby\r\n';
 
--- Dumping data for table mms_db.jobrequest_material: ~10 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_material: ~4 rows (approximately)
 DELETE FROM `jobrequest_material`;
 /*!40000 ALTER TABLE `jobrequest_material` DISABLE KEYS */;
 INSERT INTO `jobrequest_material` (`jobmat_id`, `mat_id`, `job_id`, `quantity`, `createdby`, `status`) VALUES
@@ -155,6 +161,7 @@ INSERT INTO `jobrequest_material` (`jobmat_id`, `mat_id`, `job_id`, `quantity`, 
 
 
 -- Dumping structure for table mms_db.location
+DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `location` varchar(50) NOT NULL,
@@ -189,6 +196,7 @@ INSERT INTO `location` (`loc_id`, `location`) VALUES
 
 
 -- Dumping structure for table mms_db.material
+DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `mat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(50) NOT NULL,
@@ -220,6 +228,7 @@ INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quan
 
 
 -- Dumping structure for table mms_db.material_type
+DROP TABLE IF EXISTS `material_type`;
 CREATE TABLE IF NOT EXISTS `material_type` (
   `type_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_type` varchar(50) NOT NULL,
@@ -236,6 +245,7 @@ INSERT INTO `material_type` (`type_id`, `mat_type`) VALUES
 
 
 -- Dumping structure for table mms_db.passengers
+DROP TABLE IF EXISTS `passengers`;
 CREATE TABLE IF NOT EXISTS `passengers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trip_id` bigint(20) NOT NULL,
@@ -252,6 +262,7 @@ DELETE FROM `passengers`;
 
 
 -- Dumping structure for table mms_db.triprequest
+DROP TABLE IF EXISTS `triprequest`;
 CREATE TABLE IF NOT EXISTS `triprequest` (
   `trip_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `requester_uid` bigint(20) NOT NULL,
@@ -287,6 +298,7 @@ INSERT INTO `triprequest` (`trip_id`, `requester_uid`, `dateofuse_from`, `dateof
 
 
 -- Dumping structure for table mms_db.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
@@ -325,6 +337,7 @@ INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `m
 
 
 -- Dumping structure for table mms_db.usertype
+DROP TABLE IF EXISTS `usertype`;
 CREATE TABLE IF NOT EXISTS `usertype` (
   `usertype_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `utype` varchar(50) NOT NULL,
@@ -348,6 +361,7 @@ INSERT INTO `usertype` (`usertype_id`, `utype`, `status`) VALUES
 
 
 -- Dumping structure for table mms_db.workorder
+DROP TABLE IF EXISTS `workorder`;
 CREATE TABLE IF NOT EXISTS `workorder` (
   `work_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -363,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `workorder` (
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~4 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~2 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
