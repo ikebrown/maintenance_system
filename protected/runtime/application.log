@@ -1,0 +1,49 @@
+2013/11/29 00:27:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobrequest".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('jobrequest')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('jobrequest')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('main/jobrequest')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/main/jobrequest
+HTTP_REFERER=http://localhost/maintenance_system/main
+---
+2013/11/29 00:27:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobrequest".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('jobrequest')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('jobrequest')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('main/jobrequest')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/main/jobrequest
+HTTP_REFERER=http://localhost/maintenance_system/main
+---
+2013/11/29 00:30:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "viewrequest".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('viewrequest')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dailytrip/viewr...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/dailytrip/viewrequest?trip_id=9
+HTTP_REFERER=http://localhost/maintenance_system/dailytrip
+---
+2013/11/29 00:31:30 [error] [exception.CException] exception 'CException' with message 'DailytripController cannot find the requested view "viewrequest".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): CController->renderPartial('viewrequest', Array, true)
+#1 C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\DailytripController.php(96): CController->render('viewrequest', Array)
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DailytripController->actionViewRequest()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dailytrip/viewr...')
+#8 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/maintenance_system/dailytrip/viewrequest?trip_id=9
+HTTP_REFERER=http://localhost/maintenance_system/dailytrip
+---

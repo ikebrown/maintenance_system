@@ -29,7 +29,7 @@
             <td><?php echo $row->date_requested;?></td>
             <td><?php echo $row->request_type;?></td>
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
-            <td><a href="jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>">View</a></td>
+            <td><a href="/jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>">View</a></td>
         </tr>
         <?php endforeach;?>
         </tbody>
@@ -38,7 +38,7 @@
 
         </div>
     <div class="text-right">
-      <?php echo CHtml::link('View All Request  <i class="fa fa-arrow-circle-right"></i>', array('jobrequest'));?>
+      <?php echo CHtml::link('View All Request  <i class="fa fa-arrow-circle-right"></i>', array('/jobrequest'));?>
     </div>
   </div>
 </div>
@@ -84,7 +84,7 @@
    
         </div>
     <div class="text-right">
-      <?php echo CHtml::link('View All Request  <i class="fa fa-arrow-circle-right"></i>', array('dailytrip'));?>
+      <?php echo CHtml::link('View All Request  <i class="fa fa-arrow-circle-right"></i>', array('/dailytrip'));?>
     </div>
   </div>
 </div>
