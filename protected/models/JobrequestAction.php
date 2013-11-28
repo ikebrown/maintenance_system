@@ -150,8 +150,6 @@ class JobrequestAction extends CActiveRecord
                 'createstatus' => $status
             );
             $this->completeWorkOrder($pk);
-            $jobrequest = new Jobrequest();
-            $jobrequest->updateJobStatus($job->job_id, 'Closed');
             return $job->update();
         }
         
@@ -168,6 +166,9 @@ class JobrequestAction extends CActiveRecord
                     }
                 }
              
+                $jobrequest = new Jobrequest();
+                $jobrequest->updateJobStatus($job->job_id, 'Closed');
+                
             }
             
         }

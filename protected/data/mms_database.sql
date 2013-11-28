@@ -96,7 +96,7 @@ INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `d
 	(9, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
 	(10, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
 	(11, 'JO2013110009', 3, '2013-11-22', '2013-11-19 08:29:41', 'OTHERS', 'Buy Materials', 'Pending', 'CDMO'),
-	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Closed', 'CDMO'),
+	(12, 'JO2013110012', 1, '2013-11-26', '2013-11-22 15:31:04', 'INSTALLATION', '', 'Pending', 'CDMO'),
 	(13, 'JO2013110013', 1, '2013-11-22', '2013-11-26 19:36:48', 'CONSTRUCTION', '', 'Pending', 'DOIT');
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
@@ -119,18 +119,12 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
 INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, `createstatus`) VALUES
-	(22, 7, 1, '2013-11-27 00:13:01', 'COMPLETED'),
-	(23, 7, 2, '2013-11-27 00:13:01', 'COMPLETED'),
-	(24, 7, 3, '2013-11-27 00:13:01', 'COMPLETED'),
-	(25, 7, 4, '2013-11-27 00:13:01', 'COMPLETED'),
-	(26, 7, 5, '2013-11-27 00:13:01', 'COMPLETED'),
-	(27, 7, 6, '2013-11-27 00:13:01', 'COMPLETED'),
-	(29, 12, 1, '2013-11-28 22:35:02', 'COMPLETED'),
-	(30, 12, 2, '2013-11-28 22:35:02', 'COMPLETED'),
-	(31, 12, 3, '2013-11-28 22:35:02', 'COMPLETED'),
-	(32, 12, 4, '2013-11-28 22:35:02', 'COMPLETED'),
-	(33, 12, 5, '2013-11-28 22:35:02', 'COMPLETED'),
-	(34, 12, 6, '2013-11-28 22:35:02', 'COMPLETED');
+	(43, 7, 1, '2013-11-28 23:54:54', 'COMPLETED'),
+	(44, 7, 2, '2013-11-28 23:54:54', 'COMPLETED'),
+	(45, 7, 3, '2013-11-28 23:54:54', 'COMPLETED'),
+	(46, 7, 4, '2013-11-28 23:54:54', 'COMPLETED'),
+	(47, 7, 5, '2013-11-28 23:54:54', 'COMPLETED'),
+	(48, 7, 6, '2013-11-28 23:54:54', 'COMPLETED');
 /*!40000 ALTER TABLE `jobrequest_action` ENABLE KEYS */;
 
 
@@ -149,20 +143,14 @@ CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   CONSTRAINT `FK2_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='jobmat_id\r\nmat_id\r\njob_id\r\nquantity\r\ncreatedby\r\n';
 
--- Dumping data for table mms_db.jobrequest_material: ~3 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_material: ~10 rows (approximately)
 DELETE FROM `jobrequest_material`;
 /*!40000 ALTER TABLE `jobrequest_material` DISABLE KEYS */;
 INSERT INTO `jobrequest_material` (`jobmat_id`, `mat_id`, `job_id`, `quantity`, `createdby`, `status`) VALUES
-	(8, 3, 12, 2, 11, 'CLOSED'),
-	(9, 7, 12, 1, 11, 'CLOSED'),
-	(10, 9, 12, 2, 11, 'CLOSED'),
-	(11, 1, 7, 3, 11, 'CLOSED'),
-	(12, 3, 7, 1, 11, 'CLOSED'),
-	(13, 6, 7, 1, 11, 'CLOSED'),
-	(14, 7, 7, 3, 11, 'CLOSED'),
-	(15, 8, 7, 1, 11, 'CLOSED'),
-	(16, 9, 7, 1, 11, 'CLOSED'),
-	(17, 10, 7, 3, 11, 'CLOSED');
+	(25, 1, 7, 2, 11, 'CLOSED'),
+	(26, 3, 7, 1, 11, 'CLOSED'),
+	(27, 7, 7, 2, 11, 'CLOSED'),
+	(28, 9, 7, 1, 11, 'CLOSED');
 /*!40000 ALTER TABLE `jobrequest_material` ENABLE KEYS */;
 
 
@@ -220,14 +208,14 @@ CREATE TABLE IF NOT EXISTS `material` (
 DELETE FROM `material`;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
 INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quantity`, `type_id`, `location_id`, `m_type`) VALUES
-	(1, 'Hammer', 'Hammer', 4, 2, 1, 'CDMO'),
+	(1, 'Hammer', 'Hammer', 5, 2, 1, 'CDMO'),
 	(2, 'Basketball', 'Basketball', 10, 1, 1, 'LMO'),
-	(3, 'Grinder', 'Grinder', 8, 2, 1, 'CDMO'),
-	(6, 'Wood Cutter', 'Wood cutter', 4, 2, 1, 'CDMO'),
-	(7, 'Grass Trimmer', 'Grass Trimmer', 6, 2, 1, 'CDMO'),
-	(8, 'Ladder', 'ladder', 4, 2, 1, 'CDMO'),
-	(9, 'Axe', 'axe', 8, 2, 1, 'CDMO'),
-	(10, 'Jack hammer', 'Jack Hammer', 4, 2, 1, 'CDMO');
+	(3, 'Grinder', 'Grinder', 5, 2, 1, 'CDMO'),
+	(6, 'Wood Cutter', 'Wood cutter', 5, 2, 1, 'CDMO'),
+	(7, 'Grass Trimmer', 'Grass Trimmer', 5, 2, 1, 'CDMO'),
+	(8, 'Ladder', 'ladder', 5, 2, 1, 'CDMO'),
+	(9, 'Axe', 'axe', 5, 2, 1, 'CDMO'),
+	(10, 'Jack hammer', 'Jack Hammer', 5, 2, 1, 'CDMO');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 
 
@@ -379,10 +367,8 @@ CREATE TABLE IF NOT EXISTS `workorder` (
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
-	(26, 7, 2, 11, '2013-11-27 00:13:01', '2013-11-27 00:13:01', 11),
-	(27, 7, 3, 11, '2013-11-27 00:13:01', '2013-11-27 00:13:01', 11),
-	(28, 12, 2, 11, '2013-11-28 22:35:02', '2013-11-28 22:35:02', 11),
-	(29, 12, 3, 11, '2013-11-28 22:35:02', '2013-11-28 22:35:02', 11);
+	(31, 7, 2, 11, '2013-11-28 23:54:54', '2013-11-28 23:54:54', 11),
+	(32, 7, 3, 11, '2013-11-28 23:54:54', '2013-11-28 23:54:54', 11);
 /*!40000 ALTER TABLE `workorder` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

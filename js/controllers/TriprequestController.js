@@ -5,7 +5,7 @@ app.controller('TriprequestController',
         $scope.updateTriprequest = function(trip_id, status){
             var request = {trip_id:trip_id,status:status};
             TriprequestData.updateTriprequest(request).then(function(data){
-                console.log(data);
+                
                 if(data.response){
                     location.reload();
                 }

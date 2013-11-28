@@ -36,7 +36,7 @@ app.controller('MaterialController',
         
         $scope.addItem = function(id, job_id){
             var quantity = angular.element('#material_'+id).val();
-            console.log(quantity);
+            
             if(quantity !== "" && quantity !== "0"){
                 MaterialData.getItem(id).then(function(response){
                     $scope.items.materials[id] = {
