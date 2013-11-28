@@ -146,4 +146,29 @@ class Workorder extends CActiveRecord
         public function getAllAssignedPersonnel($job_id){
             return Workorder::model()->findAll('job_id=:job_id', array(':job_id'=>$job_id));
         }
+        
+        public function getWorkOrderByUserId($user_id){
+            return Workorder::model()->findAll('personnel_assigned_uid=:user_id', array(':user_id'=>$user_id));
+        }
+        
+        public function getWorkOrderByAssignedPersonnelUid($user_id){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT j.job_no, j.job_id, j.nature, j.date_requested, j.date_needed,
+                            CONCAT(u.last_name, ', ', u.first_name) as requester, d.department, 
+                               j.createstatus
+                    FROM workorder w
+                        LEFT JOIN jobrequest	j
+                                ON j.job_id = w.job_id
+                        LEFT JOIN `user` u
+                                ON u.uid = w.personnel_assigned_uid
+                        LEFT JOIN department d
+                                ON d.dept_id = u.dept_id	
+                        WHERE UCASE(j.createstatus) = 'ISSUED'
+                                AND w.personnel_assigned_uid = :user_id";
+
+            $command = $connection->createCommand($sql);
+            $command->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+            return $command->queryAll();
+        }
 }

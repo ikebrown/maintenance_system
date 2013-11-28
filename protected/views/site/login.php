@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<div class="panel panel-default"  style="margin-top: 50px;">
+<div class="panel panel-default"  style="margin-top: 10px;">
   <div class="panel-heading">
     <h3 class="panel-title">Please login your account.</h3>
   </div>

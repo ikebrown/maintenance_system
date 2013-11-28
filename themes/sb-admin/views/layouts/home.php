@@ -11,6 +11,7 @@
 
         <div class="row">
             <div class="col-lg-3 col-lg-offset-4">
+            <img src="<?php echo Yii::app()->getBaseUrl(1)?>/images/mcl.jpg" width="300"/>
             <?php echo $content;?>
             </div>
         </div><!-- /.row -->
