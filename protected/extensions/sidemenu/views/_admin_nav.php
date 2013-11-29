@@ -23,5 +23,4 @@
         <li><?php echo CHtml::link('Closed', array('/admin/workorder/index', 'status'=>'Closed'))?></li>
       </ul>
     </li>
-    <li><?php echo CHtml::link('<i class="fa fa-wrench"></i> Technician', array('/admin/technician'))?></li>
   </ul>

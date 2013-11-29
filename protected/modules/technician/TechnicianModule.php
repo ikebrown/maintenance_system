@@ -12,6 +12,15 @@ class TechnicianModule extends CWebModule
 			'technician.models.*',
 			'technician.components.*',
 		));
+                
+                if(!Yii::app()->user->isGuest){
+                    $user_type = Yii::app()->user->user_type;
+                    if(!in_array($user_type, array('CDMO_TECH', 'LMO_TECH', 'DOIT_TECH'))){
+                        throw new CHttpException('', 'You have no access rights in this module.');
+                    }
+                }else{
+                      throw new CHttpException('', 'You have no access rights in this module.');
+                }
 	}
 
 	public function beforeControllerAction($controller, $action)

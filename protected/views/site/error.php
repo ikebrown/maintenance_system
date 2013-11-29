@@ -8,8 +8,10 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h2>Error <?php echo $code; ?></h2>
+<h2>Oops Sorry!<?php //echo $code; ?></h2>
 
 <div class="error">
 <?php echo CHtml::encode($message); ?>
+    
+<?php echo CHtml::link('Back to Main', Yii::app()->getBaseUrl(1).'/main')?>    
 </div>

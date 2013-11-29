@@ -7,8 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	//'name'=>'Facilities and Equipment Maintenance Management System',
-        'name'=>'FEMMS',
+	'name'=>'Facilities and Equipment Maintenance Management System',
+        //'name'=>'FEMMS',
         'theme'=>'sb-admin',
 	// preloading 'log' component
 	'preload'=>array('log'),

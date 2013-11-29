@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="<?php echo Yii::app()->getBaseUrl(1);?>"><?php echo Yii::app()->name.' :: '.  ucwords(strtolower(str_replace('_', ' ', Yii::app()->user->user_type)));?></a>
+            <a class="navbar-brand" href="<?php echo Yii::app()->getBaseUrl(1);?>"><?php echo Yii::app()->name.' :: '.  ((!Yii::app()->user->isGuest)?ucwords(strtolower(str_replace('_', ' ', Yii::app()->user->user_type))):'');?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -12,6 +12,15 @@ class SuperadminModule extends CWebModule
 			'superadmin.models.*',
 			'superadmin.components.*',
 		));
+                
+                if(!Yii::app()->user->isGuest){
+                    $user_type = Yii::app()->user->user_type;
+                    if(!in_array($user_type, array('SUPERADMIN'))){
+                        throw new CHttpException('', 'You have no access rights in this module.');
+                    }
+                }else{
+                      throw new CHttpException('', 'You have no access rights in this module.');
+                }
 	}
 
 	public function beforeControllerAction($controller, $action)
