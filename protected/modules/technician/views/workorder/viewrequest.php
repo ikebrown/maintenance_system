@@ -8,7 +8,7 @@
         <div class="table-responsive">
             
        
-<div class="form col-lg-6" >
+<div class="form col-lg-9" >
     <?php $this->widget('zii.widgets.CDetailView', array(
                     'data'=>$request,
                     'attributes'=>array(
@@ -35,13 +35,17 @@
             <td><?php echo $x++;?></td>
             <td><?php echo $row->action;?></td>
             <td id="jobstatus_<?php echo $row->jobact_id?>">
-                <?php //if($row->act_id <= 2):?>
-                    <?php if($row->createstatus == 'COMPLETED'):?>
-                    <small><a href="#" class="badge" ng-click="markActionPending(<?php echo $row->jobact_id?>)">Completed</a><small>
-                    <?php else:?>
-                    <small><a href="#" ng-click="markActionDone(<?php echo $row->jobact_id?>)">Mark as Done</a></small>
+                <?php if($row->act_id <= 2):?>
+                    <?php if($row->createstatus == 'PENDING'):?>
+                        <small><a href="#" ng-click="markActionDone(<?php echo $row->jobact_id?>)">Mark as Done</a><small>
+                    <?php elseif($row->createstatus == 'COMPLETED'):?>
+                        <small><a href="#" class="badge">Completed</a><small>
                     <?php endif;?>
-                <?php //endif;?>
+                <?php else:?>            
+                    <?php if($row->createstatus == 'COMPLETED'):?>
+                        <small><a href="#" class="badge">Completed</a><small>
+                    <?php endif;?>
+                <?php endif;?>
             </td>
         </tr>
     <?php endforeach;?>
@@ -73,40 +77,8 @@
             endif;?>
         
     </div>
-    
-        <?php if(count($jobMaterial) == 0):?>
-        <div class="text-center">
-            <button class="btn btn-primary btn-large" ng-click="saveWorkOrder()">Save Issued Materials</button>
-        </div><br/>
-        <?php endif;?>
-    </div>
-</div>
 
-<div class="col-lg-3">
-
-<?php if(count($jobMaterial) == 0):?>
-    <div class="panel panel-default">
-    <div class="panel-heading">Materials</div>
-    <div class="panel-body" style="overflow-y: auto;height: 600px;">
-        <div class="list-group">
-            <?php foreach ($materialResult as $row):?>
-            <div class="list-group-item">
-              <h4 class="list-group-item-heading"><?php echo $row->material_name;?></h4>
-              <small class="list-group-item-text"><?php echo $row->material_description;?><br/>
-                  On-stock Quantity: <?php echo $row->quantity;?><br/><br/>
-                  <div class="input-group">
-                  <?php echo CHtml::numberField('material_'.$row->mat_id, 0, array('class'=>'form-control input-sm','ng-change'=>'checkValue('.$row->mat_id.','.$row->quantity.')','ng-model'=>'material_'.$row->mat_id));?>
-                  <span class="input-group-btn">
-                      <button class="btn btn-default btn-sm" type="button" ng-click="addItem(<?php echo $row->mat_id;?>, <?php echo $job_id;?>)">Add</button>
-                  </span>
-                  </div>
-              </small>
-            </div>
-            <?php endforeach;?>
-        </div>
     </div>
-</div>
-<?php endif;?>    
 </div>
 
     </div>

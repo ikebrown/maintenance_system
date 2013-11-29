@@ -169,3 +169,198 @@ REQUEST_URI=/maintenance_system/technician
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php (6)
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php (12)
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php (12)
+2013/11/29 02:16:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/
+---
+2013/11/29 02:16:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 02:16:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 02:16:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 02:16:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 02:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 02:16:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "typography.html".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('typography.html')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/typography.html
+HTTP_REFERER=http://localhost/maintenance_system/typography.html
+---
+2013/11/29 11:06:32 [error] [php] Trying to get property of non-object (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php:6)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CListView.php(291): DefaultController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(167): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#4 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(135): CListView->renderContent()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(173): CListView->run()
+#6 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php(12): DefaultController->widget()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): DefaultController->renderInternal()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): DefaultController->renderFile()
+#10 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): DefaultController->renderPartial()
+#11 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php(12): DefaultController->render()
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): DefaultController->runAction()
+#15 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): DefaultController->runActionWithFilters()
+#16 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): DefaultController->run()
+#17 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/technician
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php (6)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php (12)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php (12)
+2013/11/29 11:07:41 [error] [php] Undefined variable: dataProvider (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php:7)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CListView.php(291): DefaultController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(167): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#4 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(135): CListView->renderContent()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(173): CListView->run()
+#6 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php(12): DefaultController->widget()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): DefaultController->renderInternal()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): DefaultController->renderFile()
+#10 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): DefaultController->renderPartial()
+#11 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php(12): DefaultController->render()
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): DefaultController->runAction()
+#15 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): DefaultController->runActionWithFilters()
+#16 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): DefaultController->run()
+#17 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/technician
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php (7)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php (12)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php (12)
+2013/11/29 11:10:33 [error] [php] Undefined variable: dataProvider (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php:7)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CListView.php(291): DefaultController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(167): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#4 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(135): CListView->renderContent()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(173): CListView->run()
+#6 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php(15): DefaultController->widget()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): DefaultController->renderInternal()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): DefaultController->renderFile()
+#10 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): DefaultController->renderPartial()
+#11 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php(12): DefaultController->render()
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): DefaultController->runAction()
+#15 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): DefaultController->runActionWithFilters()
+#16 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): DefaultController->run()
+#17 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/technician
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\_view.php (7)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php (15)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php (12)
+2013/11/29 11:21:59 [error] [php] Trying to get property of non-object (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php:29)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): DefaultController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): DefaultController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php(12): DefaultController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): DefaultController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): DefaultController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): DefaultController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/technician
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\default\index.php (29)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\DefaultController.php (12)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2013/11/29 11:24:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "technician/jobrequest/viewrequest/job_id/14".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('technician/jobr...')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/technician/jobrequest/viewrequest/job_id/14
+HTTP_REFERER=http://localhost/maintenance_system/technician
+---
+2013/11/29 11:49:34 [error] [php] Undefined variable: dataProvider (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\workorder\index.php:26)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): WorkorderController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): WorkorderController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\WorkorderController.php(16): WorkorderController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): WorkorderController->actionIndex()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): WorkorderController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): WorkorderController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): WorkorderController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/technician/workorder/index/status/Closed
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\workorder\index.php (26)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\WorkorderController.php (16)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2013/11/29 11:50:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "viewrequest".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('viewrequest')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/workorder...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/admin/workorder/viewrequest/job_id/7
+HTTP_REFERER=http://localhost/maintenance_system/technician/workorder/index/status/Closed
+---

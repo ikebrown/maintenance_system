@@ -24,6 +24,8 @@ class SidemenuWidget extends CWidget
             }else{
                 $this->render('_admin_nav', $data);
             }
+        }elseif(in_array($user_type, array('CDMO_TECH', 'LMO_TECH', 'DOIT_TECH'))){            
+            $this->render('_technician_nav');
         }elseif($user_type == 'REQUESTER'){
             $this->render('_requester_nav');
         }elseif($user_type == 'SUPERADMIN'){            

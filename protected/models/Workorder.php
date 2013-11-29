@@ -165,10 +165,34 @@ class Workorder extends CActiveRecord
                         LEFT JOIN department d
                                 ON d.dept_id = u.dept_id	
                         WHERE UCASE(j.createstatus) = 'ISSUED'
-                                AND w.personnel_assigned_uid = :user_id";
+                                AND w.personnel_assigned_uid = :user_id
+                        ORDER BY w.createdate ASC";
 
             $command = $connection->createCommand($sql);
             $command->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+            return $command->queryAll();
+        }
+        
+        public function getWorkOrderByAssignedPersonnelUidStatus($user_id, $status = 'Issued'){
+            $connection=Yii::app()->db;
+
+            $sql = "SELECT j.job_no, j.job_id, j.nature, j.date_requested, j.date_needed,
+                            CONCAT(u.last_name, ', ', u.first_name) as requester, d.department, 
+                               j.createstatus
+                    FROM workorder w
+                        LEFT JOIN jobrequest	j
+                                ON j.job_id = w.job_id
+                        LEFT JOIN `user` u
+                                ON u.uid = w.personnel_assigned_uid
+                        LEFT JOIN department d
+                                ON d.dept_id = u.dept_id	
+                        WHERE UCASE(j.createstatus) = :status
+                                AND w.personnel_assigned_uid = :user_id
+                        ORDER BY w.createdate ASC";
+
+            $command = $connection->createCommand($sql);
+            $command->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+            $command->bindParam(":status",$status,PDO::PARAM_STR);
             return $command->queryAll();
         }
 }

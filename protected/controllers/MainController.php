@@ -53,11 +53,11 @@ class MainController extends Controller
                     $this->redirect(Yii::app()->getBaseUrl(1).'/superadmin');
                     break;
                 
-//                case 'CDMO_TECH':
-//                case 'LMO_TECH':
-//                case 'DOIT_TECH':    
-//                        $this->redirect(Yii::app()->getBaseUrl(1).'/technician');
-//                    break;
+                case 'CDMO_TECH':
+                case 'LMO_TECH':
+                case 'DOIT_TECH':    
+                        $this->redirect(Yii::app()->getBaseUrl(1).'/technician');
+                    break;
                 default:
                     break;
             }

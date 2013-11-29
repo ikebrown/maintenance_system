@@ -11,17 +11,16 @@ class WorkorderController extends Controller
                 $status = 'Issued';
             }
             
-            $user_type = Yii::app()->user->user_type;
-            $request = Jobrequest::model()->get($status, $user_type);
-            
-            if($status == 'Closed'){
-                $this->render('index_closed', array('request'=>$request, 'status'=>ucwords($status)));
-            }else{
-                $this->render('index', array('request'=>$request, 'status'=>ucwords($status)));
-            }
+            $work = new Workorder();
+            $request = $work->getWorkOrderByAssignedPersonnelUidStatus(Yii::app()->user->id, $status);
+            $dataProvider=new CArrayDataProvider($request);
+            $this->render('index',array(
+                    'dataProvider'=>$dataProvider,
+                    'status'=>ucwords($status)
+            ));
 	}
 
-        public function actionIssueMaterial(){
+        public function actionViewrequest(){
             $job_id = Yii::app()->request->getQuery('job_id');
             $request = Jobrequest::model()->findByPk($job_id);
             
@@ -40,7 +39,7 @@ class WorkorderController extends Controller
                 $materialResult = $material->getAllMaterial($request->request_type);
                 
                 $jobMaterial = $request->jobrequestMaterials;
-                $this->render('issuematerial_form',array('job_id'=>$request->job_id, 'model'=>$model, 'request'=>$request, 'actions' => $actions, 'materialResult'=>$materialResult, 'personnel'=>$personnel, 'jobMaterial'=>$jobMaterial));
+                $this->render('viewrequest',array('job_id'=>$request->job_id, 'model'=>$model, 'request'=>$request, 'actions' => $actions, 'materialResult'=>$materialResult, 'personnel'=>$personnel, 'jobMaterial'=>$jobMaterial));
             }
         }
 	// Uncomment the following methods and override them if needed

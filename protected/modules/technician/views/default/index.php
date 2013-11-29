@@ -5,16 +5,53 @@
       </div>
       <div class="panel-body">
         <div class="table-responsive">
-                    
-            <?php $this->widget('zii.widgets.CListView', array(
-                    'dataProvider'=>$dataProvider,
-                    'itemView'=>'_view',
-            )); ?>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>JO Order No.</th>
+                    <th>Requester</th>
+                    <th>Department</th>
+                    <th>Date Needed</th>
+                    <th>Date Requested</th>
+                    <th>Nature</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $x = 1;
+                if(count($dataProvider->getData()) > 0):
+                foreach ($dataProvider->getData() as $row):?>
+                <tr>
+                    <td><?php echo $x++?></td>
+                    <td><?php echo CHtml::link($row['job_no'], array('/technician/workorder/viewrequest', 'job_id'=>$row['job_id']));?></td>
+                    <td><?php echo $row['requester'];?></td>
+                    <td><?php echo $row['department'];?></td>
+                    <td><?php echo $row['date_needed'];?></td>
+                    <td><?php echo $row['date_requested'];?></td>
+                    <td><?php echo $row['nature'];?></td>
+                    <td><span class="badge"><?php echo $row['createstatus'];?></span></td>
+                    <td>
+                        <!-- Split button -->
+                        <div class="btn-group text-left">
+                            <?php echo CHtml::link('View Work Order', array('/technician/workorder/viewrequest','job_id'=>$row['job_id']), array('class'=>'btn btn-primary'))?>
+                        </div>
+                        
+                    </td>
+                </tr>
+                <?php endforeach;
+                else:
+                ?>
+                <tr>
+                    <td colspan="9" class="text-center">No Results</td>
+                </tr>
+                <?php endif;?>
 
+                </tbody>
+            </table>
 
-        </div>
-        <div class="text-right">
-            <?php echo CHtml::link('View All Pending Request  <i class="fa fa-arrow-circle-right"></i>', array('/admin/jobrequest/index','status'=>'Pending'));?>
         </div>
   </div>
 </div>
