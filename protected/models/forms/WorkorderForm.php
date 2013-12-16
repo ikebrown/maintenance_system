@@ -12,6 +12,9 @@ class WorkorderForm extends CFormModel
         public $personnel_name;
         public $personnel_assigned_uid;
         public $createstatus;
+        public $reason;
+        public $materials_needed;
+        
         
 
 	
@@ -24,7 +27,7 @@ class WorkorderForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('name, department, date_created, date_needed, nature_of_job, personnel_assigned_uid, createstatus', 'required'),
+			array('name, department, date_created, nature_of_job, personnel_assigned_uid, createstatus', 'required'),
 		);
 	}
 

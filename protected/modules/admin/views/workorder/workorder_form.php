@@ -17,13 +17,15 @@
                             'name',
                             'department',
                             'date_created',
-                            'date_needed',
+                            //'date_needed',
                             'nature_of_job',
+                            'reason',
+                            'materials_needed',
                             'createstatus'
                     ),
                     'htmlOptions'=>array('class'=>'table table-hover')
             )); ?>
-    
+   
         <div  class="col-lg-3">
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -69,7 +71,7 @@
 	// you need to use the performAjaxValidation()-method described there.
 	'enableAjaxValidation'=>false,
 )); ?>
-        
+         <?php echo $form->errorSummary($model); ?>
 	<div class="row col-md-6">
 		<?php echo $form->textField($model,'personnel_assigned_uid', array('class'=>'form-control', 'ng-model'=>'assigned_personnel_uid', 'ng-hide'=>'true')); ?>
 		<?php echo $form->error($model,'personnel_assigned_uid'); ?>

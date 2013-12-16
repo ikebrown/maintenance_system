@@ -15,6 +15,8 @@
                             'date_created',
                             'date_needed',
                             'nature_of_job',
+                            'reason',
+                            'materials_needed',
                             'createstatus'
                     ),
                     'htmlOptions'=>array('class'=>'table table-hover')

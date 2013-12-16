@@ -17,7 +17,9 @@
                             'requesterU.last_name',
                             'requesterU.dept.department',
                             'date_requested',
-                            'date_needed',
+                            //'date_needed',
+                            'reason',
+                            'materials_needed',
                             'nature',
                             'createstatus'
                     ),
@@ -79,6 +81,9 @@
             <button class="btn btn-primary btn-large" ng-click="saveWorkOrder()">Save Issued Materials</button>
         </div><br/>
         <?php endif;?>
+        <div class="text-center">
+        <?php echo CHtml::link('Send Message', array('/messages/sendmessage', 'to'=>$request->requester_uid, 'job_id'=>$request->job_id), array('class'=>'btn btn-primary'))?>
+            </div><br/>
     </div>
 </div>
 

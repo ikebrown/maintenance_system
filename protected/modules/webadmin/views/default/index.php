@@ -12,7 +12,7 @@
                     <th>No.</th>
                     <th>Requester</th>
                     <th>JO Order No.</th>
-                    <th>Date Needed</th>
+<!--                    <th>Date Needed</th>-->
                     <th>Date Requested</th>
                     <th>Nature</th>
                     <th>Status</th>
@@ -27,7 +27,7 @@
                     <td><?php echo $x++?></td>
                     <td><?php echo $row->requesterU->first_name. ' '.$row->requesterU->last_name;?></td>
                     <td><?php echo CHtml::link($row->job_no, array('/superadmin/jobrequest/viewrequest', 'job_id'=>$row->job_id));?></td>
-                    <td><?php echo $row->date_needed;?></td>
+<!--                    <td><?php echo $row->date_needed;?></td>-->
                     <td><?php echo $row->date_requested;?></td>
                     <td><?php echo $row->nature;?></td>
                     <td><span class="badge"><?php echo $row->createstatus;?></span></td>
@@ -59,7 +59,7 @@
   </div>
 </div>
 </div>            
-
+<?php /* ?>
 <div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -123,3 +123,4 @@
   </div>
 </div>
 </div>        
+<?php */ ?>

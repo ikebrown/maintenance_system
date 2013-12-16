@@ -3,6 +3,7 @@
 class WorkorderController extends Controller
 {
 	public function actionCreateWorkorder(){
+            try{
             $model=new WorkorderForm;
 
             // uncomment the following code to enable ajax-based validation
@@ -23,12 +24,17 @@ class WorkorderController extends Controller
             $model->date_created = date('Y-m-d',  strtotime($request->date_requested));
             $model->date_needed = $request->date_needed;
             $model->nature_of_job=$request->nature;
+            $model->reason=$request->reason;
+            $model->materials_needed=$request->materials_needed;
+            
             $model->createstatus = $request->createstatus;
             if(isset($_POST['WorkorderForm']))
             {
+                
                 $model->attributes=$_POST['WorkorderForm'];
+                
+                
                 if($model->validate()){
-                    
                     $personnel_uid = explode('|', substr($model->personnel_assigned_uid, 0, strlen($model->personnel_assigned_uid)-1));
                     
                     $work = new Workorder();
@@ -49,6 +55,9 @@ class WorkorderController extends Controller
             }
             
             $this->render('workorder_form',array('model'=>$model));
+            }  catch (CHttpException $e){
+                echo $e;die;
+            }
         }
 
 	public function actionIndex()

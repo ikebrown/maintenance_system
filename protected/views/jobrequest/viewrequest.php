@@ -17,7 +17,7 @@
             
         <div class="row">
 	<div class="col-lg-6 well-sm"><b>Date Created:</b> <?php echo $model->date_created;?></div>
-	<div class="col-lg-6 well-sm"><b>Date Needed:</b> <?php echo $request->date_needed;?></div>
+<!--	<div class="col-lg-6 well-sm"><b>Date Needed:</b> <?php echo $request->date_needed;?></div>-->
         </div>
         
         <div class="row">

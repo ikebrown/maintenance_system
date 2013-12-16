@@ -1,6 +1,6 @@
 <?php
 
-class SuperadminModule extends CWebModule
+class WebadminModule extends CWebModule
 {
 	public function init()
 	{
@@ -9,13 +9,13 @@ class SuperadminModule extends CWebModule
 
 		// import the module-level models and components
 		$this->setImport(array(
-			'superadmin.models.*',
-			'superadmin.components.*',
+			'webadmin.models.*',
+			'webadmin.components.*',
 		));
                 
                 if(!Yii::app()->user->isGuest){
                     $user_type = Yii::app()->user->user_type;
-                    if(!in_array($user_type, array('SUPERADMIN'))){
+                    if(!in_array($user_type, array('WEBADMIN'))){
                         throw new CHttpException('', 'You have no access rights in this module.');
                     }
                 }else{

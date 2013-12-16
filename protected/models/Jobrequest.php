@@ -11,7 +11,10 @@
  * @property string $date_requested
  * @property string $nature
  * @property string $other_specified
+ * @property string $reason
  * @property string $createstatus
+ * @property string $request_type
+ * @property string $materials_needed
  *
  * The followings are the available model relations:
  * @property User $requesterU
@@ -37,12 +40,14 @@ class Jobrequest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requester_uid, date_needed, date_requested, nature, createstatus, request_type', 'required'),
+			array('requester_uid, date_requested, nature, reason, createstatus', 'required'),
 			array('job_no, other_specified', 'length', 'max'=>50),
 			array('requester_uid', 'length', 'max'=>20),
+			array('reason', 'length', 'max'=>250),
+			array('date_needed, request_type, materials_needed', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('job_id, job_no, requester_uid, date_needed, date_requested, nature, other_specified, createstatus, request_type', 'safe', 'on'=>'search'),
+			array('job_id, job_no, requester_uid, date_needed, date_requested, nature, other_specified, reason, createstatus, request_type, materials_needed', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,7 +79,10 @@ class Jobrequest extends CActiveRecord
 			'date_requested' => 'Date Requested',
 			'nature' => 'Nature',
 			'other_specified' => 'Other Specified',
+			'reason' => 'Reason',
 			'createstatus' => 'Createstatus',
+			'request_type' => 'Request Type',
+			'materials_needed' => 'Materials Needed',
 		);
 	}
 
@@ -103,7 +111,10 @@ class Jobrequest extends CActiveRecord
 		$criteria->compare('date_requested',$this->date_requested,true);
 		$criteria->compare('nature',$this->nature,true);
 		$criteria->compare('other_specified',$this->other_specified,true);
+		$criteria->compare('reason',$this->reason,true);
 		$criteria->compare('createstatus',$this->createstatus,true);
+		$criteria->compare('request_type',$this->request_type,true);
+		$criteria->compare('materials_needed',$this->materials_needed,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -182,8 +193,8 @@ class Jobrequest extends CActiveRecord
         public function getRequestType(){
             $type = array(
                 'CDMO' => 'CDMO',
-                'LMO' => 'LMO',
-                'DOIT' => 'DOIT',
+                //'LMO' => 'LMO',
+                //'DOIT' => 'DOIT',
             );
             
             return $type;

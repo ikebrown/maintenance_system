@@ -11,7 +11,7 @@
         <tr>
             <th>No.</th>
             <th>JO Order No.</th>
-            <th>Date Needed</th>
+<!--            <th>Date Needed</th>-->
             <th>Date Requested</th>
             <th>Request Type</th>
             <th>Status</th>
@@ -25,11 +25,11 @@
         <tr>
             <td><?php echo $x++?></td>
             <td><?php echo $row->job_no;?></td>
-            <td><?php echo $row->date_needed;?></td>
+<!--            <td><?php //echo $row->date_needed;?></td>-->
             <td><?php echo $row->date_requested;?></td>
             <td><?php echo $row->request_type;?></td>
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
-            <td><a href="/jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>">View</a></td>
+            <td><a href="<?php echo Yii::app()->getBaseUrl(1)?>/jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>">View</a></td>
         </tr>
         <?php endforeach;?>
         </tbody>
@@ -44,7 +44,8 @@
 </div>
 </div>            
 
-<div class="col-lg-12">
+<?php /*?>
+<!--<div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-file-text"></i>&nbsp;My Daily Trip Requests</h3>
@@ -88,4 +89,5 @@
     </div>
   </div>
 </div>
-</div>        
+</div>        -->
+<?php */ ?>

@@ -46,10 +46,11 @@ class JobrequestController extends Controller
                 $model->name = Yii::app()->user->display_name;
                 $model->department = Yii::app()->user->department;
                 $model->date_created = date('Y-m-d',  strtotime($request->date_requested));
-                $model->date_needed = $request->date_needed;
+                //$model->date_needed = $request->date_needed;
                 $model->nature_of_job=$request->nature;
                 $model->other_specified=$request->other_specified;
                 $model->createstatus = $request->createstatus;
+                $model->materials_needed = $request->materials_needed;
                 
 		$this->render('viewrequest', array('model'=>$model, 'request'=>$request));
         }
@@ -68,6 +69,7 @@ class JobrequestController extends Controller
             $model->name = Yii::app()->user->display_name;
             $model->department = Yii::app()->user->department;
             $model->date_created = date('Y-m-d');
+            $model->date_needed = date('Y-m-d');
 
             if(isset($_POST['JobrequestForm']))
             {
@@ -83,12 +85,14 @@ class JobrequestController extends Controller
                         'nature'=>$model->nature_of_job,
                         'other_specified'=>$model->other_specified,
                         'createstatus'=>'PENDING',
-                        'request_type'=>$model->request_type
+                        //'request_type'=>$model->request_type,
+                        'materials_needed'=>$model->materials_needed,
+                        'reason'=>$model->reason,
                     );
                     
                     if($jobRequest->save()){
                         $request = Jobrequest::model()->findByPk($jobRequest->job_id);
-                        $request->attributes = array('job_no'=>'JO'.  date('Ym').sprintf("%04s", $jobRequest->job_id));
+                        $request->attributes = array('job_no'=> date('y').'-'.sprintf("%04s", $jobRequest->job_id));
                         $request->update();
                         
                         $this->redirect('success?jo='.$request->job_no);

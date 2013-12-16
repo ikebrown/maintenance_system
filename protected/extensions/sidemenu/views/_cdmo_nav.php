@@ -23,13 +23,16 @@
         <li><?php echo CHtml::link('Closed', array('/admin/workorder/index', 'status'=>'Closed'))?></li>
       </ul>
     </li>
-    <li class="dropdown">
+    <li>
+        <?php echo CHtml::link('<i class="fa fa-envelope"></i> Messages '.'<span class="badge">'.$message_count.'</span>', array('/messages'))?>
+    </li>
+<!--    <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request  <?php echo (($trip_total != 0)?'&nbsp;<span class="badge">'.$trip_total.'</span>':'')?><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><?php echo CHtml::link('Pending', array('/admin/dailytrip/index', 'status'=>'Pending'))?></li>
-        <li><?php echo CHtml::link('Approved', array('/admin/dailytrip/index', 'status'=>'Approved'))?></li>
-        <li><?php echo CHtml::link('Denied', array('/admin/dailytrip/index', 'status'=>'Denied'))?></li>
-        <li><?php echo CHtml::link('Closed', array('/admin/dailytrip/index', 'status'=>'Closed'))?></li>
+        <li><?php //echo CHtml::link('Pending', array('/admin/dailytrip/index', 'status'=>'Pending'))?></li>
+        <li><?php //echo CHtml::link('Approved', array('/admin/dailytrip/index', 'status'=>'Approved'))?></li>
+        <li><?php //echo CHtml::link('Denied', array('/admin/dailytrip/index', 'status'=>'Denied'))?></li>
+        <li><?php //echo CHtml::link('Closed', array('/admin/dailytrip/index', 'status'=>'Closed'))?></li>
       </ul>
-    </li>
+    </li>-->
   </ul>

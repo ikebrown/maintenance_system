@@ -18,7 +18,7 @@
             
         <div class="form">
 
-    
+            <?php echo $form->errorSummary($model); ?>
 	<div class="row col-md-6">
                 <?php echo $form->labelEx($model,'Name'); ?>
 		<?php echo $form->textField($model,'name', array('class'=>'form-control', 'placeholder'=>'Name', 'disabled'=>'disabled')); ?>
@@ -31,11 +31,11 @@
 		<?php echo $form->textField($model,'department', array('class'=>'form-control', 'placeholder'=>'Department', 'disabled'=>'disabled')); ?>
 		<?php echo $form->error($model,'department'); ?>
 	</div>
-        
+
 	<div class="row col-md-6">
-		<?php echo $form->labelEx($model,'date_needed'); ?>
+		<?php /*echo $form->labelEx($model,'date_needed'); ?>
 		<?php echo $form->dateField($model,'date_needed', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'date_needed'); ?>
+		<?php echo $form->error($model,'date_needed');*/ ?>
 	</div>
 
 	<div class="row col-md-6 col-md-offset-6">
@@ -55,16 +55,29 @@
             
 		<?php echo $form->textField($model,'other_specified', array('class'=>'form-control', 'placeholder'=>'Please specify')); ?>
 		<?php echo $form->error($model,'nature_of_job'); ?>
+            
+                <br/>
+                
+                <?php echo $form->labelEx($model,'reason'); ?>
+		<?php echo $form->textField($model,'reason', array('class'=>'form-control', 'placeholder'=>'Reason')); ?>
+		<?php echo $form->error($model,'reason'); ?>
+                
 	</div>
         <div class="row col-md-6">
-		<?php echo $form->labelEx($model,'request_type'); ?>
+		<?php /*echo $form->labelEx($model,'request_type'); ?>
                 <?php echo $form->radioButtonList(
                         $model,
                         'request_type', 
                         $model->getRequestType(),
                         array( 'labelOptions'=>array('style'=>'display:inline;width:150px;'), 'template'=>"{input} {label}", 'separator'=>'<br/>'));
                   ?>
-		<?php echo $form->error($model,'request_type'); ?>
+		<?php echo $form->error($model,'request_type');*/ ?>
+	</div>
+
+        <div class="row col-md-6 col-md-offset-6">
+            <?php echo $form->labelEx($model,'materials_needed'); ?>
+            <?php echo $form->textField($model,'materials_needed', array('class'=>'form-control', 'rows'=>'10', 'placeholder'=>'Materials')); ?>
+            <?php echo $form->error($model,'materials_needed'); ?>
 	</div>
     <div class="clearfix "></div>
 </div><!-- form -->

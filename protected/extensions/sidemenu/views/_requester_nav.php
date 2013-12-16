@@ -9,10 +9,13 @@
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request<b class="caret"></b></a>
+        <?php echo CHtml::link('<i class="fa fa-envelope"></i> Messages '.'<span class="badge">'.$message_count.'</span>', array('/messages'))?>
+    </li>
+<!--    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages<b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><?php echo CHtml::link('Create Trip Request', array('/dailytrip/createrequest'))?></li>
         <li><?php echo CHtml::link('My Trip Request', array('/dailytrip'))?></li>
       </ul>
-    </li>
+    </li>-->
   </ul>

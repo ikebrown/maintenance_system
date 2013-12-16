@@ -29,6 +29,8 @@ class JobrequestController extends Controller
                 $model->nature_of_job=$request->nature;
                 $model->other_specified=$request->other_specified;
                 $model->createstatus = $request->createstatus;
+                $model->reason = $request->reason;
+                $model->materials_needed = $request->materials_needed;
                 
 		$this->render('viewrequest', array('model'=>$model, 'request'=>$request));
         }

@@ -10,7 +10,9 @@ class JobrequestForm extends CFormModel
         public $nature_of_job;
         public $other_specified;
         public $createstatus;
-        public $request_type;
+//        public $request_type;
+        public $materials_needed;
+        public $reason;
 
 	
 	/**
@@ -22,7 +24,7 @@ class JobrequestForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('name, department, date_created, date_needed, nature_of_job, request_type', 'required'),
+			array('name, department, date_created, nature_of_job, materials_needed, reason', 'required'),
                         array('other_specified', 'safe'),
                         array('nature_of_job', 'checkOthers'),
 		);
@@ -56,7 +58,9 @@ class JobrequestForm extends CFormModel
                     	'nature_of_job'=>'Nature of Job Request',
                         'other_specified'=>'Others',
                         'createstatus'=>'Status',
-                        'request_type'=>'Request Type'
+//                        'request_type'=>'Request Type',
+                        'materials_needed'=>'Materials Needed',
+                        'reason'=>'Reason'
 		);
 	}
         
