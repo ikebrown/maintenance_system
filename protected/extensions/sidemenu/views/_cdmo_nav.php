@@ -19,8 +19,6 @@
         <li><?php echo CHtml::link('Issued', array('/admin/workorder/index', 'status'=>'Issued'))?></li>
         <li><?php echo CHtml::link('Denied', array('/admin/workorder/index', 'status'=>'Denied'))?></li>
         <li><?php echo CHtml::link('On-hold', array('/admin/workorder/index', 'status'=>'On-Hold'))?></li>
-        <li><?php echo CHtml::link('Canceled', array('/admin/workorder/index', 'status'=>'Canceled'))?></li>
-        <li><?php echo CHtml::link('Closed', array('/admin/workorder/index', 'status'=>'Closed'))?></li>
       </ul>
     </li>
     <li>

@@ -35,7 +35,7 @@
             <td><?php echo $x++;?></td>
             <td><?php echo $row->action;?></td>
             <td id="jobstatus_<?php echo $row->jobact_id?>">
-                <?php if($row->act_id <= 2):?>
+                <?php if($row->act_id <= 20):?>
                     <?php if($row->createstatus == 'PENDING'):?>
                         <small><a href="#" ng-click="markActionDone(<?php echo $row->jobact_id?>)">Mark as Done</a><small>
                     <?php elseif($row->createstatus == 'COMPLETED'):?>
@@ -66,6 +66,10 @@
     <div class="panel panel-default">
     <div class="panel-heading">Materials Needed</div>
     <div class="panel-body" style="overflow-y: auto;height: 550px;" id="materials_needed">
+        <div>
+            <?php echo nl2br($request->materials_needed)?>
+        </div>
+        
         
         <?php if(count($jobMaterial) > 0):
             foreach ($jobMaterial as $row):?>

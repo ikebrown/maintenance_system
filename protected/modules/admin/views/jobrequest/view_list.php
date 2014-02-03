@@ -41,9 +41,8 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','On-Hold')">On-Hold</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Denied')">Denied</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Canceled')">Cancel</a></li>
+                            <li><?php echo CHtml::link('On-Hold', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'On-Hold'), array('class'=>''))?></li>
+                            <li><?php echo CHtml::link('Denied', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'Denied'), array('class'=>''))?></li>
                           </ul>
                         </div>
                         

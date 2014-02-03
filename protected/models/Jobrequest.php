@@ -43,7 +43,7 @@ class Jobrequest extends CActiveRecord
 			array('requester_uid, date_requested, nature, reason, createstatus', 'required'),
 			array('job_no, other_specified', 'length', 'max'=>50),
 			array('requester_uid', 'length', 'max'=>20),
-			array('reason', 'length', 'max'=>250),
+			array('reason, status_reason', 'length', 'max'=>250),
 			array('date_needed, request_type, materials_needed', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -83,6 +83,7 @@ class Jobrequest extends CActiveRecord
 			'createstatus' => 'Createstatus',
 			'request_type' => 'Request Type',
 			'materials_needed' => 'Materials Needed',
+                        'status_reason' => 'Status Reason',
 		);
 	}
 
@@ -115,6 +116,7 @@ class Jobrequest extends CActiveRecord
 		$criteria->compare('createstatus',$this->createstatus,true);
 		$criteria->compare('request_type',$this->request_type,true);
 		$criteria->compare('materials_needed',$this->materials_needed,true);
+                $criteria->compare('status_reason',$this->status_reason,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

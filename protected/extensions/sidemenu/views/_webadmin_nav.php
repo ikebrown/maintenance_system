@@ -39,7 +39,7 @@
         <li><?php echo CHtml::link('View All Users',Yii::app()->getBaseUrl(1).'/webadmin/user')?></li>
       </ul>
     </li>
-    <li class="dropdown">
+<!--    <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-briefcase"></i> Assets<b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><?php echo CHtml::link('Material',Yii::app()->getBaseUrl(1).'/webadmin/material')?></li>
@@ -47,7 +47,7 @@
         <li><?php echo CHtml::link('Car',Yii::app()->getBaseUrl(1).'/webadmin/car')?></li>
         <li><?php echo CHtml::link('Location',Yii::app()->getBaseUrl(1).'/webadmin/location')?></li>
       </ul>
-    </li>
+    </li>-->
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i> Settings<b class="caret"></b></a>
       <ul class="dropdown-menu">

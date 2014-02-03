@@ -42,7 +42,6 @@
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','On-Hold')">On-Hold</a></li>
                             <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Denied')">Denied</a></li>
-                            <li><a href="#" ng-click="updateJobrequest('<?php echo $row->job_id?>','Canceled')">Cancel</a></li>
                           </ul>
                         </div>
                     </td>

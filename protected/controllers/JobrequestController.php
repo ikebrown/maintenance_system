@@ -92,7 +92,7 @@ class JobrequestController extends Controller
                     
                     if($jobRequest->save()){
                         $request = Jobrequest::model()->findByPk($jobRequest->job_id);
-                        $request->attributes = array('job_no'=> date('y').'-'.sprintf("%04s", $jobRequest->job_id));
+                        $request->attributes = array('job_no'=> 'JO'.date('y').'-'.sprintf("%04s", $jobRequest->job_id));
                         $request->update();
                         
                         $this->redirect('success?jo='.$request->job_no);

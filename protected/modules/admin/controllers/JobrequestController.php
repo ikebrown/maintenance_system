@@ -35,6 +35,32 @@ class JobrequestController extends Controller
 		$this->render('viewrequest', array('model'=>$model, 'request'=>$request));
         }
         
+        public function actionDeniedHold(){
+            $job_id = Yii::app()->request->getQuery('job_id');
+            $request = Jobrequest::model()->findByPk($job_id);
+
+            $model=new JobrequestForm;
+            $model->job_no = $request->job_no;    
+            $model->name = Yii::app()->user->display_name;
+            $model->department = Yii::app()->user->department;
+            $model->date_created = date('Y-m-d',  strtotime($request->date_requested));
+            $model->date_needed = $request->date_needed;
+            $model->nature_of_job=$request->nature;
+            $model->other_specified=$request->other_specified;
+            $model->createstatus = $request->createstatus;
+            $model->reason = $request->reason;
+            $model->materials_needed = $request->materials_needed;
+            
+            if(Yii::app()->request->getIsPostRequest()){
+                $request->status_reason = $_POST['status_reason'];
+                $request->createstatus = $_POST['status'];
+                $request->update();
+                $this->redirect(Yii::app()->getBaseUrl(true).'/admin/jobrequest');
+            }
+
+            $this->render('denied_hold', array('model'=>$model, 'request'=>$request));
+        }
+        
         public function actionViewList()
 	{
             $nature = Yii::app()->request->getQuery('nature');

@@ -80,8 +80,6 @@
             <li class="dropdown user-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo ucwords(Yii::app()->user->display_name)?> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Account Settings</a></li>
                 <li class="divider"></li>
                 <li>
                     <?php echo CHtml::link('<i class="fa fa-power-off"></i> Log Out', Yii::app()->getBaseUrl(1).'/site/logout')?>

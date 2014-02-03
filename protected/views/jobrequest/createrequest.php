@@ -76,7 +76,7 @@
 
         <div class="row col-md-6 col-md-offset-6">
             <?php echo $form->labelEx($model,'materials_needed'); ?>
-            <?php echo $form->textField($model,'materials_needed', array('class'=>'form-control', 'rows'=>'10', 'placeholder'=>'Materials')); ?>
+            <?php echo $form->textArea($model,'materials_needed', array('class'=>'form-control', 'rows'=>'10', 'placeholder'=>'Materials')); ?>
             <?php echo $form->error($model,'materials_needed'); ?>
 	</div>
     <div class="clearfix "></div>

@@ -17,13 +17,18 @@
                             'nature_of_job',
                             'reason',
                             'materials_needed',
-                            'createstatus'
+                            'createstatus',
+                            'status_reason'
                     ),
                     'htmlOptions'=>array('class'=>'table table-hover')
             )); ?>
 
         </div>
     
+          
+          
+          
+        <?php if($model->createstatus != 'Denied'):?>  
         <div class="text-right">
                   <!-- Split button -->
                         <div class="btn-group text-left">
@@ -33,12 +38,12 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">On-Hold</a></li>
-                            <li><a href="#">Denied</a></li>
-                            <li><a href="#">Cancel</a></li>
+                            <li><?php echo CHtml::link('On-Hold', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'On-Hold'), array('class'=>''))?></li>
+                            <li><?php echo CHtml::link('Denied', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'Denied'), array('class'=>''))?></li>
                           </ul>
                         </div>
         </div>
+        <?php endif;?>
   </div>
 </div>
 </div>            

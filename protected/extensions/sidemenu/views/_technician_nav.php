@@ -7,8 +7,6 @@
         <li><?php echo CHtml::link('Issued', array('/technician/workorder/index', 'status'=>'Issued'))?></li>
         <li><?php echo CHtml::link('Denied', array('/technician/workorder/index', 'status'=>'Denied'))?></li>
         <li><?php echo CHtml::link('On-hold', array('/technician/workorder/index', 'status'=>'On-Hold'))?></li>
-        <li><?php echo CHtml::link('Canceled', array('/technician/workorder/index', 'status'=>'Canceled'))?></li>
-        <li><?php echo CHtml::link('Closed', array('/technician/workorder/index', 'status'=>'Closed'))?></li>
       </ul>
     </li>
   </ul>

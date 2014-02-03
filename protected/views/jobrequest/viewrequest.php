@@ -31,7 +31,9 @@
         <div class="row">
             <div class="col-lg-6 well-sm"><b>Status:</b> <span class="badge badge-important"><?php echo $request->createstatus;?></span></div>
         </div>    
-        
+        <div class="row">
+            <div class="col-lg-6 well-sm"><b>Status Reason:</b> <?php echo $request->status_reason;?></div>
+        </div>    
         </div>
   </div>
 </div>
