@@ -28,7 +28,7 @@
           
           
           
-        <?php if($model->createstatus != 'Denied'):?>  
+        <?php if(!in_array($model->createstatus, array('Denied', 'Issued'))):?>  
         <div class="text-right">
                   <!-- Split button -->
                         <div class="btn-group text-left">
@@ -38,8 +38,8 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><?php echo CHtml::link('On-Hold', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'On-Hold'), array('class'=>''))?></li>
-                            <li><?php echo CHtml::link('Denied', array('/admin/jobrequest/deniedhold','job_id'=>$row->job_id, 'status'=>'Denied'), array('class'=>''))?></li>
+                            <li><?php echo CHtml::link('On-Hold', array('/admin/jobrequest/deniedhold','job_id'=>$request->job_id, 'status'=>'On-Hold'), array('class'=>''))?></li>
+                            <li><?php echo CHtml::link('Denied', array('/admin/jobrequest/deniedhold','job_id'=>$request->job_id, 'status'=>'Denied'), array('class'=>''))?></li>
                           </ul>
                         </div>
         </div>

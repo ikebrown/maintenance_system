@@ -36,7 +36,7 @@
                           <?php if(count($row->jobrequestMaterials) > 0):?>
                             <?php echo CHtml::link('Update Work Order', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
                           <?php else:?>  
-                            <?php echo CHtml::link('Issue Material Needed', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
+                            <?php echo CHtml::link('View', array('/admin/workorder/issuematerial','job_id'=>$row->job_id), array('class'=>'btn btn-primary'))?>
                           <?php endif;?>
                           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>

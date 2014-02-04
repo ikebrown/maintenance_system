@@ -8,7 +8,7 @@
         <div class="table-responsive">
             
        
-<div class="form col-lg-6" >
+<div class="form col-lg-9" >
     <?php $this->widget('zii.widgets.CDetailView', array(
                     'data'=>$request,
                     'attributes'=>array(
@@ -19,7 +19,7 @@
                             'date_requested',
                             //'date_needed',
                             'reason',
-                            'materials_needed',
+                            //'materials_needed',
                             'nature',
                             'createstatus'
                     ),
@@ -64,29 +64,31 @@
     <div class="panel panel-default">
     <div class="panel-heading">Materials Needed</div>
     <div class="panel-body" style="overflow-y: auto;height: 550px;" id="materials_needed">
-        
-        <?php if(count($jobMaterial) > 0):
+        <?php
+         echo nl2br($request->materials_needed);
+        ?>
+        <?php /*if(count($jobMaterial) > 0):
             foreach ($jobMaterial as $row):?>
             <div class="list-group-item">
               <h4 class="list-group-item-heading"><?php echo $row->mat->material_name;?></h4>
               <p>Quantity: <?php echo $row->quantity;?></p>
             </div>
             <?php endforeach;
-            endif;?>
+            endif; */?>
         
     </div>
     
-        <?php if(count($jobMaterial) == 0):?>
+        <?php /*if(count($jobMaterial) == 0):?>
         <div class="text-center">
             <button class="btn btn-primary btn-large" ng-click="saveWorkOrder()">Save Issued Materials</button>
         </div><br/>
-        <?php endif;?>
+        <?php endif;*/?>
         <div class="text-center">
         <?php echo CHtml::link('Send Message', array('/messages/sendmessage', 'to'=>$request->requester_uid, 'job_id'=>$request->job_id), array('class'=>'btn btn-primary'))?>
             </div><br/>
     </div>
 </div>
-
+<?php /* 
 <div class="col-lg-3">
 
 <?php if(count($jobMaterial) == 0):?>
@@ -113,7 +115,7 @@
 </div>
 <?php endif;?>    
 </div>
-
+<?php */?>
     </div>
   </div>
 </div>

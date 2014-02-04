@@ -80,3 +80,37 @@ Stack trace:
 REQUEST_URI=/maintenance_system/jobrequest/createrequest
 HTTP_REFERER=http://localhost/maintenance_system/jobrequest/createrequest
 ---
+2014/02/04 08:26:58 [error] [php] Undefined variable: row (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\views\jobrequest\viewrequest.php:41)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\JobrequestController.php(35): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/admin/jobrequest/viewrequest/job_id/2
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\views\jobrequest\viewrequest.php (41)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\JobrequestController.php (35)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2014/02/04 08:28:22 [error] [php] Undefined variable: row (C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\views\jobrequest\viewrequest.php:41)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): JobrequestController->renderFile()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): JobrequestController->renderPartial()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\JobrequestController.php(35): JobrequestController->render()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): JobrequestController->runAction()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestController->runActionWithFilters()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestController->run()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system/admin/jobrequest/viewrequest/job_id/2
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\views\jobrequest\viewrequest.php (41)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\JobrequestController.php (35)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)

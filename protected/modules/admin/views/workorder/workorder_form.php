@@ -79,7 +79,7 @@
 
         <div class="clearfix"></div>
 	<div class="text-right">
-		<?php echo CHtml::submitButton('Issue Work Order', array('class'=>'btn btn-primary')); ?>
+		<?php echo CHtml::submitButton('View', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
