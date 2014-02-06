@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   KEY `FK2_action_act_id` (`act_id`),
   CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
 -- Dumping data for table mms_db.jobrequest_action: ~36 rows (approximately)
 DELETE FROM `jobrequest_action`;
@@ -306,6 +306,83 @@ CREATE TABLE IF NOT EXISTS `passengers` (
 DELETE FROM `passengers`;
 /*!40000 ALTER TABLE `passengers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `passengers` ENABLE KEYS */;
+
+
+-- Dumping structure for table mms_db.pms_activity
+DROP TABLE IF EXISTS `pms_activity`;
+CREATE TABLE IF NOT EXISTS `pms_activity` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mid` bigint(20) NOT NULL,
+  `activity` text,
+  PRIMARY KEY (`id`),
+  KEY `FK1_maitain_id` (`mid`),
+  CONSTRAINT `FK1_maitain_id` FOREIGN KEY (`mid`) REFERENCES `pms_maintain` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table mms_db.pms_activity: ~4 rows (approximately)
+DELETE FROM `pms_activity`;
+/*!40000 ALTER TABLE `pms_activity` DISABLE KEYS */;
+INSERT INTO `pms_activity` (`id`, `mid`, `activity`) VALUES
+	(1, 1, 'Check for belt or chain tension. Check for too much tension (bearing overheating), belt speed is too high.'),
+	(2, 1, 'Check temperature. After start up period, check bearing temperature with a thermometer.'),
+	(3, 1, 'Check lubrication. Motor at stand still: remove drain plug. Cleaned off hardened grease and purge old grease before bearing grease is added.'),
+	(4, 1, 'Inspect for performance');
+/*!40000 ALTER TABLE `pms_activity` ENABLE KEYS */;
+
+
+-- Dumping structure for table mms_db.pms_maintain
+DROP TABLE IF EXISTS `pms_maintain`;
+CREATE TABLE IF NOT EXISTS `pms_maintain` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `maintain_year` year(4) DEFAULT NULL,
+  `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table mms_db.pms_maintain: ~1 rows (approximately)
+DELETE FROM `pms_maintain`;
+/*!40000 ALTER TABLE `pms_maintain` DISABLE KEYS */;
+INSERT INTO `pms_maintain` (`id`, `title`, `maintain_year`, `createdate`) VALUES
+	(1, 'Sewage Treatment Plant', '2014', '2014-02-04 15:01:14');
+/*!40000 ALTER TABLE `pms_maintain` ENABLE KEYS */;
+
+
+-- Dumping structure for table mms_db.pms_tech
+DROP TABLE IF EXISTS `pms_tech`;
+CREATE TABLE IF NOT EXISTS `pms_tech` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mid` bigint(20) NOT NULL,
+  `uid` bigint(20) NOT NULL,
+  `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK2_matain_id` (`mid`),
+  KEY `FK2_user_id` (`uid`),
+  CONSTRAINT `FK2_matain_id` FOREIGN KEY (`mid`) REFERENCES `pms_maintain` (`id`),
+  CONSTRAINT `FK2_user_id` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table mms_db.pms_tech: ~0 rows (approximately)
+DELETE FROM `pms_tech`;
+/*!40000 ALTER TABLE `pms_tech` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pms_tech` ENABLE KEYS */;
+
+
+-- Dumping structure for table mms_db.pms_techactivity
+DROP TABLE IF EXISTS `pms_techactivity`;
+CREATE TABLE IF NOT EXISTS `pms_techactivity` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) NOT NULL,
+  `act_id` bigint(20) NOT NULL,
+  `remarks` text,
+  `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table mms_db.pms_techactivity: ~0 rows (approximately)
+DELETE FROM `pms_techactivity`;
+/*!40000 ALTER TABLE `pms_techactivity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pms_techactivity` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.triprequest

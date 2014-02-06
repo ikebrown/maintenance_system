@@ -13,14 +13,14 @@ class AdminModule extends CWebModule
 			'admin.components.*',
 		));
                 
-                if(!Yii::app()->user->isGuest){
-                            $user_type = Yii::app()->user->user_type;
-                            if(!in_array($user_type, array('CDMO', 'LMO', 'DOIT'))){
-                                throw new CHttpException('', 'You have no access rights in this module.');
-                    }
-                }else{
-                      throw new CHttpException('', 'You have no access rights in this module.');
-                }
+//                if(!Yii::app()->user->isGuest){
+//                            $user_type = Yii::app()->user->user_type;
+//                            if(!in_array($user_type, array('CDMO', 'LMO', 'DOIT'))){
+//                                throw new CHttpException('', 'You have no access rights in this module.');
+//                    }
+//                }else{
+//                      throw new CHttpException('', 'You have no access rights in this module.');
+//                }
                 
 	}
 

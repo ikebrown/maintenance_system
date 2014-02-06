@@ -24,6 +24,9 @@
     <li>
         <?php echo CHtml::link('<i class="fa fa-envelope"></i> Messages '.'<span class="badge">'.$message_count.'</span>', array('/messages'))?>
     </li>
+    <li>
+        <?php echo CHtml::link('<i class="fa fa-file-o"></i> Preventive Maintainance', array('/admin/maintain'))?>
+    </li>
 <!--    <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ticket"></i> Daily Trip Request  <?php echo (($trip_total != 0)?'&nbsp;<span class="badge">'.$trip_total.'</span>':'')?><b class="caret"></b></a>
       <ul class="dropdown-menu">
