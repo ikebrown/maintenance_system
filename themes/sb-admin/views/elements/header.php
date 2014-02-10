@@ -15,6 +15,7 @@
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/directives.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/filters.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/WorkorderController.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/MaintenanceController.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/UserData.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/JobrequestController.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/JobrequestData.js', CClientScript::POS_END )

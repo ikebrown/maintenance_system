@@ -5,7 +5,7 @@
 
 <table  class="table">
     <tr>
-        <td class="col-sm-8">
+        <td class="col-sm-5">
             <?php echo CHtml::link(CHtml::encode($data->title), array('view', 'id'=>$data->id)); ?>
         </td>
         <td class="col-sm-2">
@@ -13,6 +13,15 @@
 	</td>
         <td class="col-sm-2">
 	<?php echo CHtml::encode($data->createdate); ?>
+        </td>
+        <td class="col-sm-2">
+            
+            <?php foreach($data->teches as $tech):?>
+                <?php echo $tech->u->first_name.' '.$tech->u->last_name;?>
+            <?php endforeach;?>
+        </td>
+        <td class="col-sm-3">
+            <?php echo CHtml::link(CHtml::encode('View Checklist'), array('checklist', 'id'=>$data->id)); ?>
         </td>
     </tr>
 </table>

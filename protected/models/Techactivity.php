@@ -7,6 +7,7 @@
  * @property string $id
  * @property string $uid
  * @property string $act_id
+ * @property integer $act_month
  * @property string $remarks
  * @property string $createdate
  */
@@ -28,12 +29,13 @@ class Techactivity extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('uid, act_id', 'required'),
+			array('uid, act_id, act_month', 'required'),
+			array('act_month', 'numerical', 'integerOnly'=>true),
 			array('uid, act_id', 'length', 'max'=>20),
 			array('remarks, createdate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, uid, act_id, remarks, createdate', 'safe', 'on'=>'search'),
+			array('id, uid, act_id, act_month, remarks, createdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,6 +59,7 @@ class Techactivity extends CActiveRecord
 			'id' => 'ID',
 			'uid' => 'Uid',
 			'act_id' => 'Act',
+			'act_month' => 'Act Month',
 			'remarks' => 'Remarks',
 			'createdate' => 'Createdate',
 		);
@@ -83,6 +86,7 @@ class Techactivity extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('uid',$this->uid,true);
 		$criteria->compare('act_id',$this->act_id,true);
+		$criteria->compare('act_month',$this->act_month);
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('createdate',$this->createdate,true);
 

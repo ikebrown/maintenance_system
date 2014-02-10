@@ -5,13 +5,9 @@
 $this->breadcrumbs=array(
 	'Maintains',
 );
-
-$this->menu=array(
-	array('label'=>'Create Maintain', 'url'=>array('create')),
-);
 ?>
 
-<h1>Maintains</h1>
+<h1>Preventive Maintenance</h1>
 
 <table  class="table">
     <tr>
@@ -23,9 +19,6 @@ $this->menu=array(
 	</td>
         <td  class="col-sm-2">
             <b>Date Created</b>
-        </td>
-        <td  class="col-sm-2">
-            <b>Assigned Personnel</b>
         </td>
         <td  class="col-sm-3">
             &nbsp;

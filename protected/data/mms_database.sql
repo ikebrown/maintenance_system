@@ -11,7 +11,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table mms_db.action
-DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `act_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `action` varchar(50) NOT NULL,
@@ -32,7 +31,6 @@ INSERT INTO `action` (`act_id`, `action`) VALUES
 
 
 -- Dumping structure for table mms_db.car
-DROP TABLE IF EXISTS `car`;
 CREATE TABLE IF NOT EXISTS `car` (
   `car_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `car_model` varchar(50) NOT NULL,
@@ -52,7 +50,6 @@ INSERT INTO `car` (`car_id`, `car_model`, `plate_no`) VALUES
 
 
 -- Dumping structure for table mms_db.department
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `department` varchar(50) NOT NULL,
@@ -75,7 +72,6 @@ INSERT INTO `department` (`dept_id`, `department`, `description`) VALUES
 
 
 -- Dumping structure for table mms_db.jobrequest
-DROP TABLE IF EXISTS `jobrequest`;
 CREATE TABLE IF NOT EXISTS `jobrequest` (
   `job_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_no` varchar(50) DEFAULT NULL,
@@ -98,16 +94,15 @@ CREATE TABLE IF NOT EXISTS `jobrequest` (
 DELETE FROM `jobrequest`;
 /*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `reason`, `createstatus`, `request_type`, `materials_needed`, `status_reason`) VALUES
-	(1, 'JO13-0001', 1, NULL, '2013-12-16 14:48:15', 'CONSTRUCTION', '', 'sdfgs', 'Issued', 'CDMO', 'sdfgsdf', 'no stock'),
-	(2, 'JO13-0002', 1, NULL, '2013-12-16 14:48:45', 'REPAIR', '', 'asdfasdf', 'Issued', 'CDMO', 'teasdf', 'denied na to'),
-	(3, '14-0003', 1, '2014-02-02', '2014-02-02 11:46:40', 'CONSTRUCTION', '', 'need a new set of computer', 'Issued', 'CDMO', 'computer', 'denied na... wala na kasing stock'),
-	(4, '14-0004', 1, '2014-02-02', '2014-02-02 11:53:34', 'COST_ESTIMATION', '', 'new printer', 'Issued', 'CDMO', 'printer', 'asdfasdfa'),
-	(5, 'JO14-0005', 1, '2014-02-03', '2014-02-03 10:24:22', 'CONSTRUCTION', '', 'Gagawa ng magagawa', 'Issued', 'CDMO', '1 kg. pako\r\n1 kg bulak\r\n2 martilyo\r\n3 hamburger\r\n', NULL);
+	(1, 'JO13-0001', 1, NULL, '2013-12-16 14:48:15', 'CONSTRUCTION', '', 'Test', 'Issued', 'CDMO', 'sdfgsdf', NULL),
+	(2, 'JO13-0002', 1, NULL, '2013-12-16 14:48:45', 'REPAIR', '', 'asdfasdf', 'Pending', 'CDMO', 'teasdf', NULL),
+	(3, 'JO14-0003', 1, '2014-02-02', '2014-02-02 11:46:40', 'CONSTRUCTION', '', 'need a new set of computer', 'Pending', 'CDMO', 'computer', NULL),
+	(4, 'JO14-0004', 1, '2014-02-02', '2014-02-02 11:53:34', 'COST_ESTIMATION', '', 'new printer', 'Pending', 'CDMO', 'printer', NULL),
+	(5, 'JO14-0005', 1, '2014-02-03', '2014-02-03 10:24:22', 'CONSTRUCTION', '', 'Gagawa ng magagawa', 'Pending', 'CDMO', '1 kg. pako\r\n1 kg bulak\r\n2 martilyo\r\n3 hamburger\r\n', NULL);
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.jobrequest_action
-DROP TABLE IF EXISTS `jobrequest_action`;
 CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   `jobact_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -119,53 +114,22 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   KEY `FK2_action_act_id` (`act_id`),
   CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
--- Dumping data for table mms_db.jobrequest_action: ~36 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_action: ~6 rows (approximately)
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
 INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, `createstatus`) VALUES
-	(1, 2, 1, '2013-12-16 15:55:46', 'PENDING'),
-	(2, 2, 2, '2013-12-16 15:55:46', 'PENDING'),
-	(3, 2, 3, '2013-12-16 15:55:46', 'PENDING'),
-	(4, 2, 4, '2013-12-16 15:55:46', 'PENDING'),
-	(5, 2, 5, '2013-12-16 15:55:46', 'PENDING'),
-	(6, 2, 6, '2013-12-16 15:55:46', 'PENDING'),
-	(7, 1, 1, '2014-02-02 12:57:13', 'COMPLETED'),
-	(8, 1, 2, '2014-02-02 12:57:13', 'PENDING'),
-	(9, 1, 3, '2014-02-02 12:57:13', 'PENDING'),
-	(10, 1, 4, '2014-02-02 12:57:13', 'PENDING'),
-	(11, 1, 5, '2014-02-02 12:57:13', 'PENDING'),
-	(12, 1, 6, '2014-02-02 12:57:13', 'PENDING'),
-	(14, 2, 1, '2014-02-02 12:57:24', 'PENDING'),
-	(15, 2, 2, '2014-02-02 12:57:24', 'PENDING'),
-	(16, 2, 3, '2014-02-02 12:57:24', 'PENDING'),
-	(17, 2, 4, '2014-02-02 12:57:24', 'PENDING'),
-	(18, 2, 5, '2014-02-02 12:57:24', 'PENDING'),
-	(19, 2, 6, '2014-02-02 12:57:24', 'PENDING'),
-	(21, 4, 1, '2014-02-02 12:57:29', 'PENDING'),
-	(22, 4, 2, '2014-02-02 12:57:29', 'PENDING'),
-	(23, 4, 3, '2014-02-02 12:57:29', 'PENDING'),
-	(24, 4, 4, '2014-02-02 12:57:29', 'PENDING'),
-	(25, 4, 5, '2014-02-02 12:57:29', 'PENDING'),
-	(26, 4, 6, '2014-02-02 12:57:29', 'PENDING'),
-	(28, 3, 1, '2014-02-02 12:57:35', 'PENDING'),
-	(29, 3, 2, '2014-02-02 12:57:35', 'PENDING'),
-	(30, 3, 3, '2014-02-02 12:57:35', 'PENDING'),
-	(31, 3, 4, '2014-02-02 12:57:35', 'PENDING'),
-	(32, 3, 5, '2014-02-02 12:57:35', 'PENDING'),
-	(33, 3, 6, '2014-02-02 12:57:35', 'PENDING'),
-	(35, 5, 1, '2014-02-03 10:38:19', 'PENDING'),
-	(36, 5, 2, '2014-02-03 10:38:19', 'PENDING'),
-	(37, 5, 3, '2014-02-03 10:38:19', 'PENDING'),
-	(38, 5, 4, '2014-02-03 10:38:19', 'PENDING'),
-	(39, 5, 5, '2014-02-03 10:38:19', 'PENDING'),
-	(40, 5, 6, '2014-02-03 10:38:19', 'PENDING');
+	(1, 1, 1, '2014-02-07 14:32:27', 'PENDING'),
+	(2, 1, 2, '2014-02-07 14:32:27', 'PENDING'),
+	(3, 1, 3, '2014-02-07 14:32:27', 'PENDING'),
+	(4, 1, 4, '2014-02-07 14:32:27', 'PENDING'),
+	(5, 1, 5, '2014-02-07 14:32:27', 'PENDING'),
+	(6, 1, 6, '2014-02-07 14:32:27', 'PENDING');
 /*!40000 ALTER TABLE `jobrequest_action` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.jobrequest_material
-DROP TABLE IF EXISTS `jobrequest_material`;
 CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   `jobmat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_id` bigint(20) NOT NULL,
@@ -187,7 +151,6 @@ DELETE FROM `jobrequest_material`;
 
 
 -- Dumping structure for table mms_db.location
-DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `location` varchar(50) NOT NULL,
@@ -222,7 +185,6 @@ INSERT INTO `location` (`loc_id`, `location`) VALUES
 
 
 -- Dumping structure for table mms_db.material
-DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `mat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(50) NOT NULL,
@@ -254,7 +216,6 @@ INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quan
 
 
 -- Dumping structure for table mms_db.material_type
-DROP TABLE IF EXISTS `material_type`;
 CREATE TABLE IF NOT EXISTS `material_type` (
   `type_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_type` varchar(50) NOT NULL,
@@ -271,7 +232,6 @@ INSERT INTO `material_type` (`type_id`, `mat_type`) VALUES
 
 
 -- Dumping structure for table mms_db.messages
-DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sender_uid` bigint(20) DEFAULT NULL,
@@ -292,7 +252,6 @@ INSERT INTO `messages` (`id`, `sender_uid`, `receipient_uid`, `message`, `is_rea
 
 
 -- Dumping structure for table mms_db.passengers
-DROP TABLE IF EXISTS `passengers`;
 CREATE TABLE IF NOT EXISTS `passengers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trip_id` bigint(20) NOT NULL,
@@ -309,7 +268,6 @@ DELETE FROM `passengers`;
 
 
 -- Dumping structure for table mms_db.pms_activity
-DROP TABLE IF EXISTS `pms_activity`;
 CREATE TABLE IF NOT EXISTS `pms_activity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mid` bigint(20) NOT NULL,
@@ -331,7 +289,6 @@ INSERT INTO `pms_activity` (`id`, `mid`, `activity`) VALUES
 
 
 -- Dumping structure for table mms_db.pms_maintain
-DROP TABLE IF EXISTS `pms_maintain`;
 CREATE TABLE IF NOT EXISTS `pms_maintain` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -349,7 +306,6 @@ INSERT INTO `pms_maintain` (`id`, `title`, `maintain_year`, `createdate`) VALUES
 
 
 -- Dumping structure for table mms_db.pms_tech
-DROP TABLE IF EXISTS `pms_tech`;
 CREATE TABLE IF NOT EXISTS `pms_tech` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mid` bigint(20) NOT NULL,
@@ -360,33 +316,39 @@ CREATE TABLE IF NOT EXISTS `pms_tech` (
   KEY `FK2_user_id` (`uid`),
   CONSTRAINT `FK2_matain_id` FOREIGN KEY (`mid`) REFERENCES `pms_maintain` (`id`),
   CONSTRAINT `FK2_user_id` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_tech: ~0 rows (approximately)
+-- Dumping data for table mms_db.pms_tech: ~1 rows (approximately)
 DELETE FROM `pms_tech`;
 /*!40000 ALTER TABLE `pms_tech` DISABLE KEYS */;
+INSERT INTO `pms_tech` (`id`, `mid`, `uid`, `createdate`) VALUES
+	(4, 1, 2, '2014-02-07 14:16:17');
 /*!40000 ALTER TABLE `pms_tech` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.pms_techactivity
-DROP TABLE IF EXISTS `pms_techactivity`;
 CREATE TABLE IF NOT EXISTS `pms_techactivity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` bigint(20) NOT NULL,
   `act_id` bigint(20) NOT NULL,
+  `act_month` int(11) NOT NULL,
   `remarks` text,
   `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_techactivity: ~0 rows (approximately)
+-- Dumping data for table mms_db.pms_techactivity: ~1 rows (approximately)
 DELETE FROM `pms_techactivity`;
 /*!40000 ALTER TABLE `pms_techactivity` DISABLE KEYS */;
+INSERT INTO `pms_techactivity` (`id`, `uid`, `act_id`, `act_month`, `remarks`, `createdate`) VALUES
+	(37, 2, 1, 2, 'User test', '2014-02-10 11:58:18'),
+	(38, 2, 2, 2, 'test123', '2014-02-10 11:59:06'),
+	(39, 2, 3, 2, 'test123', '2014-02-10 11:59:17'),
+	(40, 2, 4, 2, 'test123', '2014-02-10 11:59:20');
 /*!40000 ALTER TABLE `pms_techactivity` ENABLE KEYS */;
 
 
 -- Dumping structure for table mms_db.triprequest
-DROP TABLE IF EXISTS `triprequest`;
 CREATE TABLE IF NOT EXISTS `triprequest` (
   `trip_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `requester_uid` bigint(20) NOT NULL,
@@ -417,7 +379,6 @@ DELETE FROM `triprequest`;
 
 
 -- Dumping structure for table mms_db.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
@@ -451,7 +412,6 @@ INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `m
 
 
 -- Dumping structure for table mms_db.usertype
-DROP TABLE IF EXISTS `usertype`;
 CREATE TABLE IF NOT EXISTS `usertype` (
   `usertype_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `utype` varchar(50) NOT NULL,
@@ -471,7 +431,6 @@ INSERT INTO `usertype` (`usertype_id`, `utype`, `status`) VALUES
 
 
 -- Dumping structure for table mms_db.workorder
-DROP TABLE IF EXISTS `workorder`;
 CREATE TABLE IF NOT EXISTS `workorder` (
   `work_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -485,23 +444,13 @@ CREATE TABLE IF NOT EXISTS `workorder` (
   KEY `FK2_user_personnel_uid` (`personnel_assigned_uid`),
   CONSTRAINT `FK1_job_jobid` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~11 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~1 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
-	(1, 2, 3, 11, '2013-12-16 15:55:46', '2013-12-16 15:55:46', 11),
-	(2, 1, 2, 11, '2014-02-02 12:57:13', '2014-02-02 12:57:13', 11),
-	(3, 1, 3, 11, '2014-02-02 12:57:13', '2014-02-02 12:57:13', 11),
-	(4, 2, 2, 11, '2014-02-02 12:57:24', '2014-02-02 12:57:24', 11),
-	(5, 2, 3, 11, '2014-02-02 12:57:24', '2014-02-02 12:57:24', 11),
-	(6, 4, 2, 11, '2014-02-02 12:57:29', '2014-02-02 12:57:29', 11),
-	(7, 4, 3, 11, '2014-02-02 12:57:29', '2014-02-02 12:57:29', 11),
-	(8, 3, 2, 11, '2014-02-02 12:57:34', '2014-02-02 12:57:34', 11),
-	(9, 3, 3, 11, '2014-02-02 12:57:35', '2014-02-02 12:57:35', 11),
-	(10, 5, 2, 11, '2014-02-03 10:38:19', '2014-02-03 10:38:19', 11),
-	(11, 5, 3, 11, '2014-02-03 10:38:19', '2014-02-03 10:38:19', 11);
+	(13, 1, 2, 11, '2014-02-07 14:32:27', '2014-02-07 14:32:27', 11);
 /*!40000 ALTER TABLE `workorder` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
