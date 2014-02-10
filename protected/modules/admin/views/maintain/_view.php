@@ -18,6 +18,7 @@
             
             <?php foreach($data->teches as $tech):?>
                 <?php echo $tech->u->first_name.' '.$tech->u->last_name;?>
+                <?php echo CHtml::link("<i class='fa fa-envelope'></i>", array('/messages/sendmessage', 'to'=>$tech->u->uid), array('title'=>'Send Message'))?>
             <?php endforeach;?>
         </td>
         <td class="col-sm-3">

@@ -9,5 +9,8 @@
         <li><?php echo CHtml::link('On-hold', array('/technician/workorder/index', 'status'=>'On-Hold'))?></li>
       </ul>
     </li>
+    <li>
+        <?php echo CHtml::link('<i class="fa fa-envelope"></i> Messages '.'<span class="badge">'.$message_count.'</span>', array('/messages'))?>
+    </li>
     <li><?php echo CHtml::link('<i class="fa fa-file"></i> Preventive Maintenance', array('/technician/maintenance'))?></li>
   </ul>

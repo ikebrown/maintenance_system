@@ -7,9 +7,11 @@
  * @property string $id
  * @property string $mid
  * @property string $uid
+ * @property string $createdby
  * @property string $createdate
  *
  * The followings are the available model relations:
+ * @property User $createdby0
  * @property Maintain $m
  * @property User $u
  */
@@ -32,11 +34,11 @@ class Tech extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('mid, uid', 'required'),
-			array('mid, uid', 'length', 'max'=>20),
+			array('mid, uid, createdby', 'length', 'max'=>20),
 			array('createdate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, mid, uid, createdate', 'safe', 'on'=>'search'),
+			array('id, mid, uid, createdby, createdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +50,7 @@ class Tech extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'createdby0' => array(self::BELONGS_TO, 'User', 'createdby'),
 			'm' => array(self::BELONGS_TO, 'Maintain', 'mid'),
 			'u' => array(self::BELONGS_TO, 'User', 'uid'),
 		);
@@ -62,6 +65,7 @@ class Tech extends CActiveRecord
 			'id' => 'ID',
 			'mid' => 'Mid',
 			'uid' => 'Uid',
+			'createdby' => 'Createdby',
 			'createdate' => 'Createdate',
 		);
 	}
@@ -87,6 +91,7 @@ class Tech extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('mid',$this->mid,true);
 		$criteria->compare('uid',$this->uid,true);
+		$criteria->compare('createdby',$this->createdby,true);
 		$criteria->compare('createdate',$this->createdate,true);
 
 		return new CActiveDataProvider($this, array(

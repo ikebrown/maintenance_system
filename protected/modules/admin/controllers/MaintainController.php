@@ -108,7 +108,8 @@ class MaintainController extends Controller
                         $tech = new Tech();
                         $tech->attributes = array(
                             'mid'=>$mid,
-                            'uid'=>$uid
+                            'uid'=>$uid,
+                            'createdby'=>Yii::app()->user->id
                         );
                         $tech->save();
                     }

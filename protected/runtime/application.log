@@ -1305,3 +1305,56 @@ in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
 2014/02/10 11:48:50 [warning] [application] Failed to set unsafe attribute "remarks" of "MaintenanceForm".
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\MaintenanceController.php (30)
 in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2014/02/10 15:05:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "sendmessage".' in C:\Devroot\workspace\risingtide\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(270): CController->missingAction('sendmessage')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('sendmessage')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/maintain/...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/maintenance_system/admin/maintain/sendmessage/to/2
+HTTP_REFERER=http://localhost/maintenance_system/admin/maintain
+---
+2014/02/10 15:05:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/messages/sendmessage/to/2".' in C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/messages/...')
+#1 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/maintenance_system/admin/messages/sendmessage/to/2
+HTTP_REFERER=http://localhost/maintenance_system/admin/maintain
+---
+2014/02/10 15:13:30 [warning] [application] Failed to set unsafe attribute "created_by" of "Tech".
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\MaintainController.php (109)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2014/02/10 15:16:30 [error] [exception.CException] exception 'CException' with message 'Property "Maintain.createdby" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('createdby')
+#1 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\maintenance\_view.php(18): CActiveRecord->__get('createdby')
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(130): require('C:\Devroot\work...')
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Devroot\work...', Array, false)
+#4 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CListView.php(291): CBaseController->renderFile('C:\Devroot\work...', Array)
+#5 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(167): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback('/{(\w+)}/', Array, '{summary}?{sort...')
+#8 C:\Devroot\workspace\risingtide\yii\framework\zii\widgets\CBaseListView.php(135): CBaseListView->renderContent()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(173): CBaseListView->run()
+#10 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\maintenance\index.php(34): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(126): require('C:\Devroot\work...')
+#12 C:\Devroot\workspace\risingtide\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\Devroot\work...', Array, true)
+#13 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\Devroot\work...', Array, true)
+#14 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#15 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\MaintenanceController.php(13): CController->render('index', Array)
+#16 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): MaintenanceController->actionIndex()
+#17 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('')
+#21 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('technician/main...')
+#22 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#23 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/maintenance_system/technician/maintenance
+HTTP_REFERER=http://localhost/maintenance_system/technician
+---

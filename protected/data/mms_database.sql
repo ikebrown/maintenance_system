@@ -96,7 +96,7 @@ DELETE FROM `jobrequest`;
 INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `date_requested`, `nature`, `other_specified`, `reason`, `createstatus`, `request_type`, `materials_needed`, `status_reason`) VALUES
 	(1, 'JO13-0001', 1, NULL, '2013-12-16 14:48:15', 'CONSTRUCTION', '', 'Test', 'Issued', 'CDMO', 'sdfgsdf', NULL),
 	(2, 'JO13-0002', 1, NULL, '2013-12-16 14:48:45', 'REPAIR', '', 'asdfasdf', 'Pending', 'CDMO', 'teasdf', NULL),
-	(3, 'JO14-0003', 1, '2014-02-02', '2014-02-02 11:46:40', 'CONSTRUCTION', '', 'need a new set of computer', 'Pending', 'CDMO', 'computer', NULL),
+	(3, 'JO14-0003', 1, '2014-02-02', '2014-02-02 11:46:40', 'CONSTRUCTION', '', 'need a new set of computer', 'Issued', 'CDMO', 'computer', 'Just hold for a minute'),
 	(4, 'JO14-0004', 1, '2014-02-02', '2014-02-02 11:53:34', 'COST_ESTIMATION', '', 'new printer', 'Pending', 'CDMO', 'printer', NULL),
 	(5, 'JO14-0005', 1, '2014-02-03', '2014-02-03 10:24:22', 'CONSTRUCTION', '', 'Gagawa ng magagawa', 'Pending', 'CDMO', '1 kg. pako\r\n1 kg bulak\r\n2 martilyo\r\n3 hamburger\r\n', NULL);
 /*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
@@ -114,9 +114,9 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   KEY `FK2_action_act_id` (`act_id`),
   CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
--- Dumping data for table mms_db.jobrequest_action: ~6 rows (approximately)
+-- Dumping data for table mms_db.jobrequest_action: ~12 rows (approximately)
 DELETE FROM `jobrequest_action`;
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
 INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, `createstatus`) VALUES
@@ -125,7 +125,13 @@ INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, 
 	(3, 1, 3, '2014-02-07 14:32:27', 'PENDING'),
 	(4, 1, 4, '2014-02-07 14:32:27', 'PENDING'),
 	(5, 1, 5, '2014-02-07 14:32:27', 'PENDING'),
-	(6, 1, 6, '2014-02-07 14:32:27', 'PENDING');
+	(6, 1, 6, '2014-02-07 14:32:27', 'PENDING'),
+	(8, 3, 1, '2014-02-10 15:02:12', 'PENDING'),
+	(9, 3, 2, '2014-02-10 15:02:12', 'PENDING'),
+	(10, 3, 3, '2014-02-10 15:02:12', 'PENDING'),
+	(11, 3, 4, '2014-02-10 15:02:12', 'PENDING'),
+	(12, 3, 5, '2014-02-10 15:02:12', 'PENDING'),
+	(13, 3, 6, '2014-02-10 15:02:12', 'PENDING');
 /*!40000 ALTER TABLE `jobrequest_action` ENABLE KEYS */;
 
 
@@ -240,14 +246,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `is_read` tinyint(4) NOT NULL DEFAULT '0',
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.messages: ~2 rows (approximately)
+-- Dumping data for table mms_db.messages: ~4 rows (approximately)
 DELETE FROM `messages`;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
 INSERT INTO `messages` (`id`, `sender_uid`, `receipient_uid`, `message`, `is_read`, `createdate`) VALUES
 	(2, 11, 1, 'We found that your Job Order Request (JO13-0002) has no available materials. We will process your request once new stocks has been delivered.', 1, '2013-12-16 17:50:08'),
-	(4, 1, 11, 'ok po', 1, '2013-12-16 18:59:48');
+	(4, 1, 11, 'ok po', 1, '2013-12-16 18:59:48'),
+	(5, 11, 2, 'Hi what is up to you?', 0, '2014-02-10 15:06:02'),
+	(6, 11, 2, 'test message', 0, '2014-02-10 15:14:37'),
+	(7, 2, 11, 'hey rey', 0, '2014-02-10 15:21:05');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 
 
@@ -275,16 +284,17 @@ CREATE TABLE IF NOT EXISTS `pms_activity` (
   PRIMARY KEY (`id`),
   KEY `FK1_maitain_id` (`mid`),
   CONSTRAINT `FK1_maitain_id` FOREIGN KEY (`mid`) REFERENCES `pms_maintain` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_activity: ~4 rows (approximately)
+-- Dumping data for table mms_db.pms_activity: ~5 rows (approximately)
 DELETE FROM `pms_activity`;
 /*!40000 ALTER TABLE `pms_activity` DISABLE KEYS */;
 INSERT INTO `pms_activity` (`id`, `mid`, `activity`) VALUES
 	(1, 1, 'Check for belt or chain tension. Check for too much tension (bearing overheating), belt speed is too high.'),
 	(2, 1, 'Check temperature. After start up period, check bearing temperature with a thermometer.'),
 	(3, 1, 'Check lubrication. Motor at stand still: remove drain plug. Cleaned off hardened grease and purge old grease before bearing grease is added.'),
-	(4, 1, 'Inspect for performance');
+	(4, 1, 'Inspect for performance'),
+	(5, 2, 'Check all working computers');
 /*!40000 ALTER TABLE `pms_activity` ENABLE KEYS */;
 
 
@@ -295,13 +305,14 @@ CREATE TABLE IF NOT EXISTS `pms_maintain` (
   `maintain_year` year(4) DEFAULT NULL,
   `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_maintain: ~1 rows (approximately)
+-- Dumping data for table mms_db.pms_maintain: ~2 rows (approximately)
 DELETE FROM `pms_maintain`;
 /*!40000 ALTER TABLE `pms_maintain` DISABLE KEYS */;
 INSERT INTO `pms_maintain` (`id`, `title`, `maintain_year`, `createdate`) VALUES
-	(1, 'Sewage Treatment Plant', '2014', '2014-02-04 15:01:14');
+	(1, 'Sewage Treatment Plant', '2014', '2014-02-04 15:01:14'),
+	(2, 'Computer Laboratory', '2014', '2014-02-10 15:12:37');
 /*!40000 ALTER TABLE `pms_maintain` ENABLE KEYS */;
 
 
@@ -310,19 +321,23 @@ CREATE TABLE IF NOT EXISTS `pms_tech` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mid` bigint(20) NOT NULL,
   `uid` bigint(20) NOT NULL,
+  `createdby` bigint(20) DEFAULT NULL,
   `createdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FK2_matain_id` (`mid`),
   KEY `FK2_user_id` (`uid`),
+  KEY `FK3_createdby` (`createdby`),
+  CONSTRAINT `FK3_createdby` FOREIGN KEY (`createdby`) REFERENCES `user` (`uid`),
   CONSTRAINT `FK2_matain_id` FOREIGN KEY (`mid`) REFERENCES `pms_maintain` (`id`),
   CONSTRAINT `FK2_user_id` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_tech: ~1 rows (approximately)
+-- Dumping data for table mms_db.pms_tech: ~2 rows (approximately)
 DELETE FROM `pms_tech`;
 /*!40000 ALTER TABLE `pms_tech` DISABLE KEYS */;
-INSERT INTO `pms_tech` (`id`, `mid`, `uid`, `createdate`) VALUES
-	(4, 1, 2, '2014-02-07 14:16:17');
+INSERT INTO `pms_tech` (`id`, `mid`, `uid`, `createdby`, `createdate`) VALUES
+	(4, 1, 2, 11, '2014-02-07 14:16:17'),
+	(8, 2, 2, 11, '2014-02-10 15:14:08');
 /*!40000 ALTER TABLE `pms_tech` ENABLE KEYS */;
 
 
@@ -337,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `pms_techactivity` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.pms_techactivity: ~1 rows (approximately)
+-- Dumping data for table mms_db.pms_techactivity: ~4 rows (approximately)
 DELETE FROM `pms_techactivity`;
 /*!40000 ALTER TABLE `pms_techactivity` DISABLE KEYS */;
 INSERT INTO `pms_techactivity` (`id`, `uid`, `act_id`, `act_month`, `remarks`, `createdate`) VALUES
@@ -444,13 +459,14 @@ CREATE TABLE IF NOT EXISTS `workorder` (
   KEY `FK2_user_personnel_uid` (`personnel_assigned_uid`),
   CONSTRAINT `FK1_job_jobid` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_user_personnel_uid` FOREIGN KEY (`personnel_assigned_uid`) REFERENCES `user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mms_db.workorder: ~1 rows (approximately)
+-- Dumping data for table mms_db.workorder: ~2 rows (approximately)
 DELETE FROM `workorder`;
 /*!40000 ALTER TABLE `workorder` DISABLE KEYS */;
 INSERT INTO `workorder` (`work_id`, `job_id`, `personnel_assigned_uid`, `modifiedby`, `createdate`, `modifieddate`, `createdby`) VALUES
-	(13, 1, 2, 11, '2014-02-07 14:32:27', '2014-02-07 14:32:27', 11);
+	(13, 1, 2, 11, '2014-02-07 14:32:27', '2014-02-07 14:32:27', 11),
+	(14, 3, 3, 11, '2014-02-10 15:02:12', '2014-02-10 15:02:12', 11);
 /*!40000 ALTER TABLE `workorder` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

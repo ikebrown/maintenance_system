@@ -20,6 +20,9 @@ $this->breadcrumbs=array(
         <td  class="col-sm-2">
             <b>Date Created</b>
         </td>
+        <td>
+            Assigned By
+        </td>
         <td  class="col-sm-3">
             &nbsp;
         </td>

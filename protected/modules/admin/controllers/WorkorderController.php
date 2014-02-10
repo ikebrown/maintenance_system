@@ -75,6 +75,8 @@ class WorkorderController extends Controller
                 $this->render('index_closed', array('request'=>$request, 'status'=>ucwords($status)));
             }elseif($status == 'Denied'){
                 $this->render('index_denied', array('request'=>$request, 'status'=>ucwords($status)));
+            }elseif($status == 'On-Hold'){
+                $this->render('index_hold', array('request'=>$request, 'status'=>ucwords($status)));
             }else{
                 $this->render('index', array('request'=>$request, 'status'=>ucwords($status)));
             }
