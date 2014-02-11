@@ -37,7 +37,7 @@ class DepartmentController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('superadmin'),
+				'users'=>array('webadmin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

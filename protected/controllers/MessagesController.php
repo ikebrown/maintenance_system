@@ -66,6 +66,12 @@ class MessagesController extends Controller
                 if($job_id){
                     $job = Jobrequest::model()->findByPk($job_id);
                     $model->message = "We found that your Job Order Request (". $job->job_no .") has no available materials. We will process your request once new stocks has been delivered.";
+                    
+                    if(strtoupper($request->getQuery('status')) == 'DENIED'){
+                        $model->message = "Your Job Order Request (". $job->job_no .") has been denied due to the following reasons:";
+                    }elseif(strtoupper($request->getQuery('status')) == 'ON-HOLD'){
+                        $model->message = "Your Job Order Request (". $job->job_no .") will be put ON-HOLD for the following reasons:";
+                    }
                 }
                 
                 $model->name = $user->first_name . ' '.$user->last_name;

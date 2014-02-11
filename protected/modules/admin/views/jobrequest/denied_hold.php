@@ -30,6 +30,7 @@
                 <textarea name="status_reason" class="form-control" cols="20"></textarea><br/>
                 <input type="hidden" name="status" value="<?php echo $_GET['status'];?>"/>
                 <?php echo CHtml::submitButton($_GET['status'], array('class'=>'btn btn-lg btn-primary')); ?>
+                <?php echo CHtml::link('Send Message', array('/messages/sendmessage', 'to'=>$request->requester_uid, 'job_id'=>$request->job_id, 'status'=> $_GET['status']), array('class'=>'btn btn-primary btn-lg'))?>
             </form>
         </div>   
           
