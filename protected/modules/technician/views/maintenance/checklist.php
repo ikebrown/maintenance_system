@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="MaintenanceController">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -34,64 +34,111 @@
 <!--                    $activity->m->teches[0]->uid-->
                 </td>
                 
-                <?php $jan = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>1));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>1));?>
                 <th class="text-center">
-                    <?php echo (($jan)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $feb = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>2));?>
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>2));?>
                 <th class="text-center">
-                    <?php echo (($feb)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $mar = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>3));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>3));?>
                 <th class="text-center">
-                    <?php echo (($mar)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $apr = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>4));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>4));?>
                 <th class="text-center">
-                    <?php echo (($apr)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $may = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>5));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>5));?>
                 <th class="text-center">
-                    <?php echo (($may)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $june = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>6));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>6));?>
                 <th class="text-center">
-                    <?php echo (($june)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $july = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>7));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>7));?>
                 <th class="text-center">
-                    <?php echo (($july)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $aug = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>8));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>8));?>
                 <th class="text-center">
-                    <?php echo (($aug)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $sept = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>9));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>9));?>
                 <th class="text-center">
-                    <?php echo (($sept)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $oct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>10));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>10));?>
                 <th class="text-center">
-                    <?php echo (($oct)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $nov = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>11));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>11));?>
                 <th class="text-center">
-                    <?php echo (($nov)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
-                <?php $dec = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>12));?>
+                
+                <?php $monthAct = Techactivity::model()->find('uid = :uid AND act_id=:act_id AND act_month=:act_month',array(':uid'=>Yii::app()->user->id,':act_id'=>$activity->id, ':act_month'=>12));?>
                 <th class="text-center">
-                    <?php echo (($dec)?'<i class="fa fa-check"></i>':'&nbsp;');?>                
+                    <?php if($monthAct):?>
+                    <i class="fa fa-check"></i>
+                    <sup style="margin-right:-8px;" class="pull-right"><a href="#" title="Remove" ng-click="removeCheck(<?php echo $monthAct->id;?>)">&times;</a></sup>
+                    <?php endif;?>
                 </th>
                 
                 <th class="text-center">

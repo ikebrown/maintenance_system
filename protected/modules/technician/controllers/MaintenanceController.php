@@ -51,6 +51,7 @@ class MaintenanceController extends Controller
             $this->render('checklist', array('activities'=>$activities, 'model'=>$model));
             
 	}
+        
 
 	// Uncomment the following methods and override them if needed
 	/*

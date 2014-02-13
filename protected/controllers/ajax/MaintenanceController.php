@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller
+class MaintenanceController extends Controller
 {
     
         /**
@@ -22,7 +22,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index', 'gettechnician'),
+				'actions'=>array('index', 'removeCheck'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -36,25 +36,19 @@ class UserController extends Controller
             
 	}
         
-        public function actionGetTechnician(){
-            $user_type = Yii::app()->user->user_type;
-            
-            switch ($user_type) {
-                case 'CDMO':
-                case 'CDMO_TECH':
-                    $tech = 'CDMO_TECH';
-                    break;
-                case 'LMO':
-                    $tech = 'LMO_TECH';
-                    break;
-                case 'DOIT':
-                    $tech = 'DOIT_TECH';
-                    break;
+        
+        public function actionRemoveCheck()
+	{
+            $request = Yii::app()->request;
+            if($request->getIsPostRequest()){
+                $data = json_decode(file_get_contents("php://input"));
+                Techactivity::model()->deleteByPk($data->id);
+                echo CJSON::encode(array('data'=> "Preventive Maintenance Activity has been remove! "));
+                   
             }
             
-            $user = User::model()->getUserList($tech);
-            echo CJSON::encode(array('data'=>$user,'count'=> count($user)));
-        }
+	}
+        
 
 	// Uncomment the following methods and override them if needed
 	/*

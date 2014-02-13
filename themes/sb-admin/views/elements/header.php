@@ -24,6 +24,7 @@
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/controllers/MaterialController.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/MaterialData.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/JobrequestActionData.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/services/MaintenanceData.js', CClientScript::POS_END )
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
