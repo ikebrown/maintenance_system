@@ -1460,3 +1460,18 @@ REQUEST_URI=/maintenance_system/technician/maintenance/checklist/id/1
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\views\maintenance\checklist.php (46)
 in C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\technician\controllers\MaintenanceController.php (51)
 in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)
+2014/02/18 10:39:38 [error] [exception.CException] exception 'CException' with message 'Property "JobrequestForm.status_reason" is not defined.' in C:\Devroot\workspace\risingtide\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\maintenance_system\protected\modules\admin\controllers\JobrequestController.php(34): CComponent->__set('status_reason', 'sdfsdfsdafsdf')
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\actions\CInlineAction.php(49): JobrequestController->actionViewRequest()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): CController->run('viewrequest')
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/jobreques...')
+#7 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/maintenance_system/admin/jobrequest/viewrequest/job_id/5
+HTTP_REFERER=http://localhost/maintenance_system/admin/workorder/index/status/Denied
+---

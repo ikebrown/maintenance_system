@@ -31,6 +31,7 @@ class JobrequestController extends Controller
                 $model->createstatus = $request->createstatus;
                 $model->reason = $request->reason;
                 $model->materials_needed = $request->materials_needed;
+                $model->status_reason = $request->status_reason;
                 
 		$this->render('viewrequest', array('model'=>$model, 'request'=>$request));
         }

@@ -13,6 +13,7 @@ class JobrequestForm extends CFormModel
 //        public $request_type;
         public $materials_needed;
         public $reason;
+        public $status_reason;
 
 	
 	/**
@@ -25,7 +26,7 @@ class JobrequestForm extends CFormModel
 		return array(
 			// username and password are required
 			array('name, department, date_created, nature_of_job, materials_needed, reason', 'required'),
-                        array('other_specified', 'safe'),
+                        array('other_specified, status_reason', 'safe'),
                         array('nature_of_job', 'checkOthers'),
 		);
 	}
@@ -60,7 +61,9 @@ class JobrequestForm extends CFormModel
                         'createstatus'=>'Status',
 //                        'request_type'=>'Request Type',
                         'materials_needed'=>'Materials Needed',
-                        'reason'=>'Reason'
+                        'reason'=>'Reason',
+                        'status_reason'=>'Status Reason',
+                        
 		);
 	}
         
