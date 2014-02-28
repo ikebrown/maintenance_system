@@ -25,14 +25,22 @@
         </div>
     
         <div>
-            <form action="?status=<?php echo $_GET['status'].'&job_id='.$_GET['job_id'];?>" method="POST">
+            <form id="requestForm" action="?status=<?php echo $_GET['status'].'&job_id='.$_GET['job_id'];?>" method="POST">
                 <label>Reason to <?php echo $_GET['status'];?></label><br/>
                 <textarea name="status_reason" class="form-control" cols="20"></textarea><br/>
                 <input type="hidden" name="status" value="<?php echo $_GET['status'];?>"/>
-                <?php echo CHtml::submitButton($_GET['status'], array('class'=>'btn btn-lg btn-primary')); ?>
+                <?php echo CHtml::button($_GET['status'], array('class'=>'btn btn-lg btn-primary', 'onclick'=>'submitForm()')); ?>
                 <?php echo CHtml::link('Send Message', array('/messages/sendmessage', 'to'=>$request->requester_uid, 'job_id'=>$request->job_id, 'status'=> $_GET['status']), array('class'=>'btn btn-primary btn-lg'))?>
             </form>
         </div>   
+          <script type="text/javascript">
+              var submitForm = function(){
+                  var ans = confirm("Are you sure you want to "+ '<?php echo $_GET['status'];?>'+ " this request?");
+                  if(ans){
+                      $("#requestForm").submit();
+                  }
+              };
+          </script>
           
   </div>
 </div>

@@ -60,7 +60,7 @@ class JobrequestForm extends CFormModel
                         'other_specified'=>'Others',
                         'createstatus'=>'Status',
 //                        'request_type'=>'Request Type',
-                        'materials_needed'=>'Materials Needed',
+                        'materials_needed'=>'Job Order Details',
                         'reason'=>'Reason',
                         'status_reason'=>'Status Reason',
                         

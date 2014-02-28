@@ -42,10 +42,11 @@ class JobrequestActionController extends Controller
                 $data = json_decode(file_get_contents("php://input"));
 
                 $model = new JobrequestAction();
-                if($model->updateJobAction($data->id, $data->status)){
+                $result = $model->updateJobAction($data->id, $data->status);
+                if($result){
                     echo CJSON::encode(array('response'=>true));
                 }else{
-                    echo CJSON::encode(array('response'=>false));
+                    echo CJSON::encode(array('response'=>$result));
                 }
                 
             }

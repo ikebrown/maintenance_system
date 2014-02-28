@@ -1475,3 +1475,21 @@ Stack trace:
 REQUEST_URI=/maintenance_system/admin/jobrequest/viewrequest/job_id/5
 HTTP_REFERER=http://localhost/maintenance_system/admin/workorder/index/status/Denied
 ---
+2014/02/28 16:17:29 [error] [php] Undefined variable: job_id (C:\Devroot\workspace\risingtide\maintenance_system\protected\models\JobrequestAction.php:154)
+Stack trace:
+#0 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(133): JobrequestActionController->runAction()
+#2 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CInlineFilter.php(58): JobrequestActionController->filterAccessControl()
+#5 C:\Devroot\workspace\risingtide\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Devroot\workspace\risingtide\yii\framework\web\CController.php(265): JobrequestActionController->runActionWithFilters()
+#8 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(282): JobrequestActionController->run()
+#9 C:\Devroot\workspace\risingtide\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\Devroot\workspace\risingtide\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\Devroot\workspace\risingtide\maintenance_system\index.php(13): CWebApplication->run()
+REQUEST_URI=/maintenance_system//ajax/jobrequestaction/updatejobrequestaction
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\models\JobrequestAction.php (154)
+in C:\Devroot\workspace\risingtide\maintenance_system\protected\controllers\ajax\JobrequestActionController.php (45)
+in C:\Devroot\workspace\risingtide\maintenance_system\index.php (13)

@@ -68,6 +68,8 @@ app.controller('MaterialController',
                 if(data.response){
                     var html = '<small><a href="#" class="badge" ng-click="markActionPending('+id+')">Completed</a></small>';
                     angular.element('#jobstatus_'+id).html($compile(html)($scope));
+                }else{
+                    alert("Please complete other task first.");
                 }
             });
         };

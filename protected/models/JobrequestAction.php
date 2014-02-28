@@ -149,12 +149,21 @@ class JobrequestAction extends CActiveRecord
             $job->attributes = array(
                 'createstatus' => $status
             );
+            
+            if($job->act_id == 6){
+                if(!$this->checkActionsTaken($job->job_id)){
+                    return false;
+                }
+            }
+            
             $this->completeWorkOrder($pk);
+            
             return $job->update();
         }
         
         public function completeWorkOrder($jobact_id){
             $model = JobrequestAction::model()->findByPk($jobact_id);
+            
             if($model->act_id == 6){
                 $job = Jobrequest::model()->findByPk($model->job_id);
                 $material = new Material();
@@ -171,5 +180,17 @@ class JobrequestAction extends CActiveRecord
                 
             }
             
+        }
+        
+        public function checkActionsTaken($job_id){
+            $activities = JobrequestAction::model()->findAll('job_id=:job_id AND act_id != 6', array(':job_id'=>$job_id));
+            
+            foreach ($activities as $value) {
+                if($value->createstatus == 'PENDING'){
+                    return false;
+                }
+            }
+            
+            return true;
         }
 }
