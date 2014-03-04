@@ -2,7 +2,7 @@
 <div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-file-text"></i> Issue Materials</h3>
+        <h3 class="panel-title"><i class="fa fa-file-text"></i> Checklist</h3>
       </div>
       <div class="panel-body">
         <div class="table-responsive">
@@ -64,7 +64,7 @@
 </div><!-- form -->
 <div class="col-lg-3">
     <div class="panel panel-default">
-    <div class="panel-heading">Materials Needed</div>
+    <div class="panel-heading">Job Order Details</div>
     <div class="panel-body" style="overflow-y: auto;height: 550px;" id="materials_needed">
         <div>
             <?php echo nl2br($request->materials_needed)?>

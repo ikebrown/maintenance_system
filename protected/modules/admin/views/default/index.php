@@ -15,6 +15,7 @@
 <!--                    <th>Date Needed</th>-->
                     <th>Date Requested</th>
                     <th>Nature</th>
+                    <th>Room</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -30,6 +31,7 @@
 <!--                    <td><?php echo $row->date_needed;?></td>-->
                     <td><?php echo $row->date_requested;?></td>
                     <td><?php echo $row->nature;?></td>
+                    <td><?php echo $row->room;?></td>
                     <td><span class="badge"><?php echo $row->createstatus;?></span></td>
                     <td>
                         <!-- Split button -->

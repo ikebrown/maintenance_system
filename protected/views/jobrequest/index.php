@@ -13,7 +13,8 @@
             <th>JO Order No.</th>
 <!--            <th>Date Needed</th>-->
             <th>Date Requested</th>
-            <th>Request Type</th>
+            <th>Nature</th>
+            <th>Room</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -28,7 +29,8 @@
             <td><?php echo $row->job_no;?></td>
 <!--            <td><?php //echo $row->date_needed;?></td>-->
             <td><?php echo $row->date_requested;?></td>
-            <td><?php echo $row->request_type;?></td>
+            <td><?php echo $row->nature;?></td>
+            <td><?php echo $row->room;?></td>
             <td><span class="badge"><?php echo $row->createstatus;?></span></td>
             <td><a href="<?php echo Yii::app()->getBaseUrl(1)?>/jobrequest/viewrequest?job_id=<?php echo $row->job_id;?>">View</a></td>
         </tr>

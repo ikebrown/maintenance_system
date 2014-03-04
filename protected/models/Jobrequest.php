@@ -15,6 +15,8 @@
  * @property string $createstatus
  * @property string $request_type
  * @property string $materials_needed
+ * @property string $status_reason
+ * @property string $room
  *
  * The followings are the available model relations:
  * @property User $requesterU
@@ -40,8 +42,8 @@ class Jobrequest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requester_uid, date_requested, nature, reason, createstatus', 'required'),
-			array('job_no, other_specified', 'length', 'max'=>50),
+			array('requester_uid, date_requested, nature, reason, createstatus, room', 'required'),
+			array('job_no, other_specified, room', 'length', 'max'=>50),
 			array('requester_uid', 'length', 'max'=>20),
 			array('reason, status_reason', 'length', 'max'=>250),
 			array('date_needed, request_type, materials_needed', 'safe'),
@@ -82,8 +84,9 @@ class Jobrequest extends CActiveRecord
 			'reason' => 'Reason',
 			'createstatus' => 'Createstatus',
 			'request_type' => 'Request Type',
-			'materials_needed' => 'Materials Needed',
+			'materials_needed' => 'Job Order Details',
                         'status_reason' => 'Status Reason',
+			'room' => 'Room',
 		);
 	}
 
@@ -117,6 +120,7 @@ class Jobrequest extends CActiveRecord
 		$criteria->compare('request_type',$this->request_type,true);
 		$criteria->compare('materials_needed',$this->materials_needed,true);
                 $criteria->compare('status_reason',$this->status_reason,true);
+                $criteria->compare('room',$this->room,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -200,5 +204,10 @@ class Jobrequest extends CActiveRecord
             );
             
             return $type;
+        }
+        
+        
+        public function getJobByRoom($room, $nature){
+            return Jobrequest::model()->find('room=:room AND nature=:nature', array(':room'=>$room, ':nature'=>$nature));
         }
 }

@@ -34,6 +34,9 @@
         <div class="row">
             <div class="col-lg-6 well-sm"><b>Status Reason:</b> <?php echo $request->status_reason;?></div>
         </div>    
+        <div class="row">
+            <div class="col-lg-6 well-sm"><b>Room:</b> <?php echo $request->room;?></div>
+        </div>    
         </div>
   </div>
 </div>

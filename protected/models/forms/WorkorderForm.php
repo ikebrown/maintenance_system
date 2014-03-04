@@ -44,7 +44,8 @@ class WorkorderForm extends CFormModel
                     	'date_needed'=>'Date Needed',
                     	'nature_of_job'=>'Nature of Job Request',
                         'personnel_assigned_uid'=>'Assigned Personnel',
-                        'createstatus'=>'Status'
+                        'createstatus'=>'Status',
+                        'materials_needed' => 'Job Order Details'
 		);
 	}
 

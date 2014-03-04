@@ -23,7 +23,7 @@ class JobrequestController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index', 'viewrequest', 'createrequest', 'success'),
+				'actions'=>array('index', 'viewrequest', 'createrequest', 'success', 'samerequest'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -77,6 +77,12 @@ class JobrequestController extends Controller
                 if($model->validate())
                 {
                     $jobRequest = new Jobrequest();
+                    $jobRoom = $jobRequest->getJobByRoom($model->room, $model->nature_of_job);
+                    $jobRoomId = "";
+                    if($jobRoom != '' && $jobRoom->createstatus == 'Pending'){
+                        $this->redirect('samerequest?jobroomid='.$jobRoom->job_id);
+                        die;
+                    }
                     
                     $jobRequest->attributes = array(
                         'requester_uid'=>Yii::app()->user->id,
@@ -88,6 +94,7 @@ class JobrequestController extends Controller
                         //'request_type'=>$model->request_type,
                         'materials_needed'=>$model->materials_needed,
                         'reason'=>$model->reason,
+                        'room'=>$model->room,
                     );
                     
                     if($jobRequest->save()){
@@ -96,6 +103,7 @@ class JobrequestController extends Controller
                         $request->update();
                         
                         $this->redirect('success?jo='.$request->job_no);
+                        
                     }
                 }
             }
@@ -104,6 +112,12 @@ class JobrequestController extends Controller
 
         public function actionSuccess(){
             $this->render('success', array('job_no'=>Yii::app()->request->getQuery('jo')));
+        }
+        
+        public function actionSameRequest(){
+            $jobRequest = Jobrequest::model()->findByPk(Yii::app()->request->getQuery('jobroomid'));
+            
+            $this->render('samerequest', array('request'=>$jobRequest));
         }
         
 	// Uncomment the following methods and override them if needed

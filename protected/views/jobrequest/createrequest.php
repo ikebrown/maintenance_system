@@ -62,6 +62,12 @@
 		<?php echo $form->textField($model,'reason', array('class'=>'form-control', 'placeholder'=>'Reason')); ?>
 		<?php echo $form->error($model,'reason'); ?>
                 
+                <br/>
+                
+                <?php echo $form->labelEx($model,'room'); ?>
+		<?php echo $form->textField($model,'room', array('class'=>'form-control', 'placeholder'=>'Room')); ?>
+		<?php echo $form->error($model,'room'); ?>
+                
 	</div>
         <div class="row col-md-6">
 		<?php /*echo $form->labelEx($model,'request_type'); ?>
