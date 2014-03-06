@@ -11,7 +11,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table mms_db.action
-DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `act_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `action` varchar(50) NOT NULL,
@@ -31,7 +30,6 @@ INSERT INTO `action` (`act_id`, `action`) VALUES
 
 
 -- Dumping structure for table mms_db.car
-DROP TABLE IF EXISTS `car`;
 CREATE TABLE IF NOT EXISTS `car` (
   `car_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `car_model` varchar(50) NOT NULL,
@@ -50,7 +48,6 @@ INSERT INTO `car` (`car_id`, `car_model`, `plate_no`) VALUES
 
 
 -- Dumping structure for table mms_db.department
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `department` varchar(50) NOT NULL,
@@ -72,7 +69,6 @@ INSERT INTO `department` (`dept_id`, `department`, `description`) VALUES
 
 
 -- Dumping structure for table mms_db.jobrequest
-DROP TABLE IF EXISTS `jobrequest`;
 CREATE TABLE IF NOT EXISTS `jobrequest` (
   `job_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_no` varchar(50) DEFAULT NULL,
@@ -109,7 +105,6 @@ INSERT INTO `jobrequest` (`job_id`, `job_no`, `requester_uid`, `date_needed`, `d
 
 
 -- Dumping structure for table mms_db.jobrequest_action
-DROP TABLE IF EXISTS `jobrequest_action`;
 CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   `jobact_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,
@@ -121,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `jobrequest_action` (
   KEY `FK2_action_act_id` (`act_id`),
   CONSTRAINT `FK1_job_job_id` FOREIGN KEY (`job_id`) REFERENCES `jobrequest` (`job_id`),
   CONSTRAINT `FK2_action_act_id` FOREIGN KEY (`act_id`) REFERENCES `action` (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 COMMENT='jobact_id\r\njob_id\r\nact_id\r\ncreatedate\r\n';
 
 -- Dumping data for table mms_db.jobrequest_action: ~12 rows (approximately)
 /*!40000 ALTER TABLE `jobrequest_action` DISABLE KEYS */;
@@ -142,7 +137,6 @@ INSERT INTO `jobrequest_action` (`jobact_id`, `job_id`, `act_id`, `createdate`, 
 
 
 -- Dumping structure for table mms_db.jobrequest_material
-DROP TABLE IF EXISTS `jobrequest_material`;
 CREATE TABLE IF NOT EXISTS `jobrequest_material` (
   `jobmat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_id` bigint(20) NOT NULL,
@@ -163,7 +157,6 @@ CREATE TABLE IF NOT EXISTS `jobrequest_material` (
 
 
 -- Dumping structure for table mms_db.location
-DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `location` varchar(50) NOT NULL,
@@ -197,7 +190,6 @@ INSERT INTO `location` (`loc_id`, `location`) VALUES
 
 
 -- Dumping structure for table mms_db.material
-DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `mat_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `material_name` varchar(50) NOT NULL,
@@ -228,7 +220,6 @@ INSERT INTO `material` (`mat_id`, `material_name`, `material_description`, `quan
 
 
 -- Dumping structure for table mms_db.material_type
-DROP TABLE IF EXISTS `material_type`;
 CREATE TABLE IF NOT EXISTS `material_type` (
   `type_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mat_type` varchar(50) NOT NULL,
@@ -244,7 +235,6 @@ INSERT INTO `material_type` (`type_id`, `mat_type`) VALUES
 
 
 -- Dumping structure for table mms_db.messages
-DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sender_uid` bigint(20) DEFAULT NULL,
@@ -267,7 +257,6 @@ INSERT INTO `messages` (`id`, `sender_uid`, `receipient_uid`, `message`, `is_rea
 
 
 -- Dumping structure for table mms_db.passengers
-DROP TABLE IF EXISTS `passengers`;
 CREATE TABLE IF NOT EXISTS `passengers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trip_id` bigint(20) NOT NULL,
@@ -283,7 +272,6 @@ CREATE TABLE IF NOT EXISTS `passengers` (
 
 
 -- Dumping structure for table mms_db.pms_activity
-DROP TABLE IF EXISTS `pms_activity`;
 CREATE TABLE IF NOT EXISTS `pms_activity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mid` bigint(20) NOT NULL,
@@ -305,7 +293,6 @@ INSERT INTO `pms_activity` (`id`, `mid`, `activity`) VALUES
 
 
 -- Dumping structure for table mms_db.pms_maintain
-DROP TABLE IF EXISTS `pms_maintain`;
 CREATE TABLE IF NOT EXISTS `pms_maintain` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -323,7 +310,6 @@ INSERT INTO `pms_maintain` (`id`, `title`, `maintain_year`, `createdate`) VALUES
 
 
 -- Dumping structure for table mms_db.pms_tech
-DROP TABLE IF EXISTS `pms_tech`;
 CREATE TABLE IF NOT EXISTS `pms_tech` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `mid` bigint(20) NOT NULL,
@@ -348,7 +334,6 @@ INSERT INTO `pms_tech` (`id`, `mid`, `uid`, `createdby`, `createdate`) VALUES
 
 
 -- Dumping structure for table mms_db.pms_techactivity
-DROP TABLE IF EXISTS `pms_techactivity`;
 CREATE TABLE IF NOT EXISTS `pms_techactivity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` bigint(20) NOT NULL,
@@ -367,8 +352,23 @@ INSERT INTO `pms_techactivity` (`id`, `uid`, `act_id`, `act_month`, `remarks`, `
 /*!40000 ALTER TABLE `pms_techactivity` ENABLE KEYS */;
 
 
+-- Dumping structure for table mms_db.room
+CREATE TABLE IF NOT EXISTS `room` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `room_name` varchar(250) NOT NULL,
+  `room_description` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table mms_db.room: ~0 rows (approximately)
+/*!40000 ALTER TABLE `room` DISABLE KEYS */;
+INSERT INTO `room` (`id`, `room_name`, `room_description`) VALUES
+	(1, 'Room1', 'Room1'),
+	(2, 'Room2', 'Room2');
+/*!40000 ALTER TABLE `room` ENABLE KEYS */;
+
+
 -- Dumping structure for table mms_db.triprequest
-DROP TABLE IF EXISTS `triprequest`;
 CREATE TABLE IF NOT EXISTS `triprequest` (
   `trip_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `requester_uid` bigint(20) NOT NULL,
@@ -398,7 +398,6 @@ CREATE TABLE IF NOT EXISTS `triprequest` (
 
 
 -- Dumping structure for table mms_db.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
@@ -431,7 +430,6 @@ INSERT INTO `user` (`uid`, `username`, `password`, `first_name`, `last_name`, `m
 
 
 -- Dumping structure for table mms_db.usertype
-DROP TABLE IF EXISTS `usertype`;
 CREATE TABLE IF NOT EXISTS `usertype` (
   `usertype_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `utype` varchar(50) NOT NULL,
@@ -450,7 +448,6 @@ INSERT INTO `usertype` (`usertype_id`, `utype`, `status`) VALUES
 
 
 -- Dumping structure for table mms_db.workorder
-DROP TABLE IF EXISTS `workorder`;
 CREATE TABLE IF NOT EXISTS `workorder` (
   `work_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `job_id` bigint(20) NOT NULL,

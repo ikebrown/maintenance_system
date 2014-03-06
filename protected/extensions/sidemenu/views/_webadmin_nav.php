@@ -53,6 +53,7 @@
       <ul class="dropdown-menu">
         <li><?php echo CHtml::link('Department',Yii::app()->getBaseUrl(1).'/webadmin/department')?></li>
         <li><?php echo CHtml::link('Job Action',Yii::app()->getBaseUrl(1).'/webadmin/action')?></li>
+        <li><?php echo CHtml::link('Room',Yii::app()->getBaseUrl(1).'/webadmin/room')?></li>
       </ul>
     </li>
   </ul>

@@ -5,11 +5,13 @@
                 ->registerCssFile( Yii::app()->getBaseUrl(1) .'/css/nav_bar.css' )
                 ->registerCssFile( Yii::app()->theme->baseUrl . '/font-awesome/css/font-awesome.min.css' )
                 ->registerCssFile( Yii::app()->getBaseUrl(1) . '/css/form.css' )
+                ->registerCssFile( Yii::app()->getBaseUrl(1) . '/lib/autocomplete/autocomplete.css' )
                 
                 ->registerCoreScript( 'jquery', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/lib/angular/angular.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/lib/angular/angular-resource.js', CClientScript::POS_END )
+                ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/lib/autocomplete/autocomplete.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/lib/angular/bootstrap/ui-bootstrap-tpls-0.6.0.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/app.js', CClientScript::POS_END )
                 ->registerScriptFile( Yii::app()->getBaseUrl(1) . '/js/directives.js', CClientScript::POS_END )

@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<div class="col-lg-12" ng-controller="MyCtrl">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-file-text"></i>&nbsp;Create Job Order</h3>
@@ -65,8 +65,14 @@
                 <br/>
                 
                 <?php echo $form->labelEx($model,'room'); ?>
-		<?php echo $form->textField($model,'room', array('class'=>'form-control', 'placeholder'=>'Room')); ?>
+		<?php echo $form->textField($model,'room', array('class'=>'form-control hidden', 'placeholder'=>'Room', 'ng-model'=>'room')); ?>
 		<?php echo $form->error($model,'room'); ?>
+              
+
+                <div ng-controller="MyCtrl">
+                  <autocomplete ng-model="result" attr-placeholder="type to search room..." click-activation="true" data="movies" on-type="doSomething"></autocomplete>
+                </div>
+                
                 
 	</div>
         <div class="row col-md-6">
